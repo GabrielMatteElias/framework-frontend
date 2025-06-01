@@ -1,0 +1,33 @@
+.filter_bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter_button {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter_button:hover {
+  background-color: #e0e0e0;
+}
+
+.filter_button.active {
+  background-color: #0066cc;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .filter_bar {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+}

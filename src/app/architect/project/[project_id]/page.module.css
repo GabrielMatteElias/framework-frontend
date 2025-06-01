@@ -1,0 +1,124 @@
+.project_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project_content h1 {
+    font-size: 2.2rem;
+}
+
+.info {
+    display: flex;
+    gap: 1rem;
+
+    padding-top: 0.5rem;
+
+    color: rgb(34, 34, 34);
+
+    font-size: 1.6rem;
+}
+
+
+.gallery {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.main_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.secondary_images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.secondary_images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Cel responsive border radius */
+.main_image img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.secondary_images img:nth-child(4) {
+    border-bottom-right-radius: 10px;
+}
+
+@media (min-width: 768px) {
+    .main_image img {
+        border-top-right-radius: 0px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .secondary_images img:nth-child(2) {
+        border-top-right-radius: 10px;
+    }
+
+    .secondary_images img:nth-child(4) {
+        border-bottom-right-radius: 10px;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+.description {
+    display: flex;
+    flex-direction: row;
+    gap: 0.7rem;
+
+    font-size: 1.6rem;
+}
+
+.archutect_name{
+    font-size: 1.2rem;
+}
+
+
+.contributors h2 {
+    font-size: 2.2rem;
+    font-weight: 500;
+}
+
+.contributors {
+    margin: 3rem 0;
+
+    border: none;
+    border-top: 1px solid rgb(221, 221, 221);
+    border-bottom: 1px solid rgb(221, 221, 221);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 2.2rem 0;
+}
+
+.contributors_profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

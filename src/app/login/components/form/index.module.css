@@ -1,0 +1,66 @@
+.form_Wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+
+    padding: 1.5rem 5rem;
+    font-size: 1rem;
+}
+
+.form_Wrapper h2{
+    font-size: 1.3rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.form button {
+    height: 4rem;
+    width: 100%;
+}
+
+.button_google_login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-left: 1.4rem;
+
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+    background-color: white;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    transition: background-color 0.3s;
+}
+
+.button_google_login span {
+    display: none;
+}
+
+@media (min-width: 650px) {
+    .button_google_login span {
+        display: block;
+    }
+
+    .form_Wrapper h2{
+        font-size: 1.6rem;
+    }
+
+}
+
+.button_google_login:hover {
+    background-color: #eeeeee;
+
+}
+
+
+.button_google_login span {
+    flex: 1;
+    font-size: 1.5rem;
+}

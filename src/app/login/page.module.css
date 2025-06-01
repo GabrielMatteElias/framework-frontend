@@ -1,0 +1,34 @@
+.page_background {
+    background-image: url('https://myloview.com.br/adesivo-perspectiva-de-construcao-de-arquitetura-abstrata-projetando-no-656A537');
+}
+
+.container {
+    background-color: #fff;
+
+    margin: 0;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    width: 26.8rem;
+    max-height: 54.9rem;
+    height: 49.9rem;
+
+    border-radius: 1.2rem;
+
+    filter: drop-shadow(2px 2px 12px #00000093);
+
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 650px) {
+    .container {       
+        width: 46.8rem;
+        
+    }
+
+}

@@ -1,0 +1,41 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Next.js
+.next/
+out/                  # usado apenas com next export
+!.next/cache/image/   # opcional: mantenha se quiser cache otimizado
+
+# Build output
+build/
+dist/
+
+# Vercel
+.vercel/              # armazena config local do projeto no Vercel (ignorar)
+
+# Env files - NUNCA suba isso
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Editor configs
+.vscode/
+.idea/
+
+# Outros opcionais
+coverage/
+.eslintcache
+turbo/

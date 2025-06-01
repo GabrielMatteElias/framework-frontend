@@ -1,0 +1,60 @@
+.avatars_modal {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: #fff;
+
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    outline: none;
+
+    width: 30rem;
+}
+
+.avatars_title {
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.avatars_title h2 {
+    padding: 2rem;
+}
+
+.avatars {
+    max-height: 48rem;
+    overflow: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    padding: 1rem 2rem;
+}
+
+.avatars_content {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.avatars_content:hover {
+    color: #000000a4;
+}
+
+
+@media (min-width: 650px) {
+    .avatars {
+        gap: 2rem;
+    }
+
+    .avatars_modal {
+        width: 45rem;
+    }
+
+    .avatars_content {
+        font-size: 1.6rem;
+    }
+
+}
