@@ -8,8 +8,13 @@ import Badge from '@/components/arquitetoEhome/Badge';
 import { useState } from 'react';
 import SearchBar from '@/components/arquitetoEhome/SearchBar';
 import FilterBar from '@/components/arquitetoEhome/FilterBar';
+
 import reformaGrandParis from '@/assets/foto4.png'
 import casaSustentavel from '@/assets/casa_sustentavel.webp'
+import orlaGuaiba from '@/assets/revitalizacao-orla-guaiba.webp'
+import museuNacional from '@/assets/museu-nacional-rj.webp'
+import edificioComercial from '@/assets/edificio-comercial.webp'
+import hafencityHamburgo from '@/assets/hafencity-hamburgo.webp'
 
 export default function HomePage() {
   const projetosDestaque = getProjetosDestaque();
@@ -26,8 +31,20 @@ export default function HomePage() {
     setSelectedFilter(filter);
   };
 
+  const getProjectImage = (id) => {        
+        const imagens = {
+            "le-grand-palais": reformaGrandParis,
+            "casa-sustentavel": casaSustentavel,
+            "revitalizacao-orla-guaiba": orlaGuaiba,
+            "museu-nacional-rj": museuNacional,
+            "edificio-comercial": edificioComercial,
+            "hafencity-hamburgo": hafencityHamburgo
+        };
+
+        return imagens[id] || null; // ou uma imagem padrão
+    };
+
   return (
-    <main>
       <Container>
         <section className={styles.hero_banner}>
           <div className={styles.hero_content}>
@@ -67,7 +84,7 @@ export default function HomePage() {
               <div key={projeto.id} className={`${styles.project_card} ${projeto.seloESG ? styles.esg : ''}`} style={{display: projeto.seloESG ? 'none' : ''}}>
                 <div className={styles.project_image}>
                   <Image
-                    src={projeto.id == 'le-grand-palais' ? reformaGrandParis : casaSustentavel}
+                    src={getProjectImage(projeto.id)}
                     alt={projeto.titulo}
                     width={400}
                     height={300}
@@ -109,7 +126,7 @@ export default function HomePage() {
               <div key={projeto.id} className={`${styles.project_card} ${projeto.seloESG ? styles.esg : ''}`}>
                 <div className={styles.project_image}>
                   <Image
-                    src={projeto.id == 'le-grand-palais' ? reformaGrandParis : casaSustentavel}
+                    src={getProjectImage(projeto.id)}
                     alt={projeto.titulo}
                     width={400}
                     height={300}
@@ -206,6 +223,5 @@ export default function HomePage() {
           </div>
         </footer>
       </Container>
-    </main>
   );
 }

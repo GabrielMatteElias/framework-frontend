@@ -21,7 +21,7 @@ export default function Login() {
     return (
         <div className={styles.page_background}>
             {/* <PositionedSnackbar state={snackbar} setState={setSnackbar} text={snackbarMessage} /> */}
-            <main className={styles.container}>
+            <div className={styles.container}>
                 {/* <Image
                 className={styles.}
                     src={frameworkIcon}
@@ -31,7 +31,7 @@ export default function Login() {
                 <BasicTabs tabsList={['Sig in', 'Register']}>
                     {array}
                 </BasicTabs>
-            </main>
+            </div>
         </div>
 
     )

@@ -5,8 +5,6 @@ import styles from './index.module.css'
 import Link from 'next/link';
 
 const ExtraAvatarsModal = ({ open, handleClose, allAvatars }) => {
-    console.log(allAvatars);
-
     return (
         <Modal open={open} onClose={handleClose}>
             <Box component={'section'} className={styles.avatars_modal}>

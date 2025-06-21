@@ -38,7 +38,6 @@ export function FormLogin({ isRegister }) {
         e.preventDefault();
         // setErrorConfirmPassword(false)
         // setHelperErrorConfirmPassword('')
-        console.log('');
 
         // if (isRegister) { //register
         //     if (password !== confirmPassword) {
@@ -78,8 +77,6 @@ export function FormLogin({ isRegister }) {
     }
 
     const { status, data } = useSession()
-    console.log(status);
-    console.log(data);
 
     // useEffect(() => {
     //     if (data && data.user) {

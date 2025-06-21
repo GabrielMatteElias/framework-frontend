@@ -4,8 +4,6 @@ export const requestConfig = (method, dados, token = null) => { //request config
 
     let config
 
-    console.log(dados);
-
     config = {
         method: method,
         body: JSON.stringify({ document: dados }),

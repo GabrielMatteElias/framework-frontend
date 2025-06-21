@@ -7,7 +7,8 @@ export const arquitetos = [
     dataNascimento: "01/01/1993", // ano de fundação
     formacao: {
       instituicao: "École Nationale Supérieure d'Architecture de Paris",
-      ano: 1993
+      ano: 1993,
+      localizacao: "Paris, França"
     },
     localizacao: {
       cidade: "Paris",

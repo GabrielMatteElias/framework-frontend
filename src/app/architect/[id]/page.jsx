@@ -6,8 +6,13 @@ import { getProjetosByArquiteto } from '@/data/projetos';
 import Badge from '@/components/arquitetoEhome/Badge';
 import { getArquitetoById } from '@/data/arquitetos';
 import Link from 'next/link';
+
 import reformaGrandParis from '@/assets/foto4.png'
 import casaSustentavel from '@/assets/casa_sustentavel.webp'
+import orlaGuaiba from '@/assets/revitalizacao-orla-guaiba.webp'
+import museuNacional from '@/assets/museu-nacional-rj.webp'
+import edificioComercial from '@/assets/edificio-comercial.webp'
+import hafencityHamburgo from '@/assets/hafencity-hamburgo.webp'
 
 export default function ArquitetoPage({ params }) {
 
@@ -25,7 +30,19 @@ export default function ArquitetoPage({ params }) {
             </Container>
         );
     }
-    console.log('==============================================================', arquiteto.foto);
+
+    const getProjectImage = (id) => {        
+        const imagens = {
+            "le-grand-palais": reformaGrandParis,
+            "casa-sustentavel": casaSustentavel,
+            "revitalizacao-orla-guaiba": orlaGuaiba,
+            "museu-nacional-rj": museuNacional,
+            "edificio-comercial": edificioComercial,
+            "hafencity-hamburgo": hafencityHamburgo
+        };
+
+        return imagens[id] || null; // ou uma imagem padrão
+    };
 
     return (
         <main>
@@ -119,7 +136,7 @@ export default function ArquitetoPage({ params }) {
                             <div key={projeto.id} className={`${styles.project_card} ${projeto.seloESG ? styles.esg : ''}`}>
                                 <div className={styles.project_image}>
                                     <Image
-                                        src={projeto.id == 'le-grand-palais' ? reformaGrandParis : casaSustentavel}
+                                        src={getProjectImage(projeto.id)}
                                         alt={projeto.titulo}
                                         width={400}
                                         height={300}
@@ -127,7 +144,7 @@ export default function ArquitetoPage({ params }) {
                                     />
                                     {projeto.seloESG && (
                                         <div className={styles.esg_badge}>
-                                            <Badge type="esg" size='large'/>
+                                            <Badge type="esg" size='large' />
                                         </div>
                                     )}
                                 </div>
@@ -139,7 +156,7 @@ export default function ArquitetoPage({ params }) {
                                         <span> • {projeto.localizacao}</span>
                                         <span> • {projeto.ano}</span>
                                     </div>
-                                    <Link href={`/architect/project/${projeto.id}`} className={styles.view_project}>
+                                    <Link href={`/architect/chatillon-architectes/project/${projeto.id}`} className={styles.view_project}>
                                         Ver projeto
                                     </Link>
                                 </div>

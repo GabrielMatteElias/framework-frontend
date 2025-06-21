@@ -1,12 +1,12 @@
 export const projetos = [
   {
+    arquitetoId: "chatillon-architectes",
     id: "le-grand-palais",
     titulo: "Reforma do Le Grand Palais",
     descricao: "Reforma e modernização do icônico Grand Palais em Paris, preservando sua arquitetura histórica enquanto atualiza sua infraestrutura.",
     area: "72000m²",
     localizacao: "Paris, França",
     ano: 2015,
-    arquitetoId: "chatillon-architectes",
     imagens: [
       "/projetos/grand-palais/principal.jpg",
       "/projetos/grand-palais/img1.jpg",
@@ -18,13 +18,48 @@ export const projetos = [
     seloESG: false,
     destaque: true
   },
-// ------------------------------------------
+  {
+    id: "edificio-comercial",
+    titulo: "Edifício Comercial Sustentável",
+    descricao: "Prédio comercial com certificação LEED Gold, utilizando tecnologias de eficiência energética e reaproveitamento de água.",
+    area: "15000m²",
+    localizacao: "Porto Alegre, RS, Brasil",
+    ano: 2021,
+    arquitetoId: "chatillon-architectes",
+    imagens: [
+      "/projetos/edificio-comercial/principal.jpg",
+      "/projetos/edificio-comercial/img1.jpg",
+      "/projetos/edificio-comercial/img2.jpg"
+    ],
+    descricaoCompleta: "Projeto inovador de edifício comercial que integra tecnologias sustentáveis como painéis solares, sistema de captação de água da chuva, jardins verticais e materiais de baixo impacto ambiental. O design prioriza a iluminação natural e ventilação cruzada, reduzindo significativamente o consumo energético.",
+    seloESG: true,
+    destaque: false
+  },
+  // ------------------------------------------
+
+  {
+    id: "museu-nacional-rj",
+    titulo: "Reconstrução do Museu Nacional",
+    descricao: "Projeto de reconstrução e modernização do Museu Nacional após o incêndio, combinando restauração histórica e inovação tecnológica.",
+    area: "13600m²",
+    localizacao: "Rio de Janeiro, RJ, Brasil",
+    ano: 2023,
+    arquitetoId: "chatillon-architectes",
+    imagens: [
+      "/projetos/museu-nacional-rj/principal.jpg",
+      "/projetos/museu-nacional-rj/img1.jpg",
+      "/projetos/museu-nacional-rj/img2.jpg"
+    ],
+    descricaoCompleta: "Após o incêndio devastador de 2018, o projeto de reconstrução do Museu Nacional buscou preservar a memória arquitetônica do edifício, ao mesmo tempo em que incorporou tecnologias de última geração para segurança, climatização e museografia interativa. A proposta também ampliou a acessibilidade, criou novos espaços expositivos e fortaleceu o vínculo entre ciência, cultura e sociedade.",
+    seloESG: false,
+    destaque: true
+  },
   {
     id: "casa-sustentavel",
-    titulo: "Casa Sustentável Ipanema",
+    titulo: "Casa Sustentável",
     descricao: "Residência de alto padrão com certificação LEED Platinum, utilizando materiais ecológicos e sistemas de energia renovável.",
     area: "450m²",
-    localizacao: "Rio de Janeiro, RJ, Brasil",
+    localizacao: "Manaus, AM, Brasil",
     ano: 2022,
     arquitetoId: "chatillon-architectes",
     imagens: [
@@ -37,58 +72,42 @@ export const projetos = [
     seloESG: true,
     destaque: true
   },
+  {
+    id: "revitalizacao-orla-guaiba",
+    titulo: "Revitalização da Orla do Guaíba",
+    descricao: "Projeto de requalificação urbana que transforma a orla em um espaço público vibrante, acessível e integrado à cidade.",
+    area: "150000m²",
+    localizacao: "Porto Alegre, RS, Brasil",
+    ano: 2020,
+    arquitetoId: "chatillon-architectes",
+    imagens: [
+      "/projetos/revitalizacao-orla-guaiba/principal.jpg",
+      "/projetos/revitalizacao-orla-guaiba/img1.jpg",
+      "/projetos/revitalizacao-orla-guaiba/img2.jpg"
+    ],
+    descricaoCompleta: "A revitalização da Orla do Guaíba é um marco de urbanismo contemporâneo, promovendo a integração entre cidade e natureza. O projeto envolveu a criação de ciclovias, áreas de lazer, passarelas acessíveis, paisagismo nativo e iluminação eficiente. Tudo foi pensado para estimular o convívio social, práticas esportivas e a valorização ambiental, respeitando as características naturais do lago.",
+    seloESG: false,
+    destaque: true
+  },
+  {
+  id: "hafencity-hamburgo",
+  titulo: "Desenvolvimento Sustentável HafenCity",
+  descricao: "Transformação da antiga zona portuária de Hamburgo em um distrito urbano moderno, sustentável e vibrante.",
+  area: "157 hectares",
+  localizacao: "Hamburgo, Alemanha",
+  ano: 2022,
+  arquitetoId: "chatillon-architectes",
+  imagens: [
+    "/projetos/hafencity-hamburgo/principal.jpg",
+    "/projetos/hafencity-hamburgo/img1.jpg",
+    "/projetos/hafencity-hamburgo/img2.jpg"
+  ],
+  descricaoCompleta: "O projeto HafenCity representa uma das maiores iniciativas de reurbanização da Europa. A proposta reconverte uma área portuária industrial em um bairro dinâmico, com uso misto, infraestrutura resiliente e soluções arquitetônicas contemporâneas. Com foco em sustentabilidade ambiental, mobilidade urbana e inovação social, HafenCity integra edifícios residenciais, culturais, comerciais e educacionais, além de amplos espaços públicos e sistemas avançados de controle de cheias.",
+  seloESG: true,
+  destaque: true
+}
 
-  // {
-  //   id: "parque-linear",
-  //   titulo: "Parque Linear Tietê",
-  //   descricao: "Revitalização urbana transformando áreas degradadas às margens do rio em espaços públicos de lazer e convivência.",
-  //   area: "12km²",
-  //   localizacao: "São Paulo, SP, Brasil",
-  //   ano: 2020,
-  //   arquitetoId: "ana-silva",
-  //   imagens: [
-  //     "/projetos/parque-linear/principal.jpg",
-  //     "/projetos/parque-linear/img1.jpg",
-  //     "/projetos/parque-linear/img2.jpg"
-  //   ],
-  //   descricaoCompleta: "O projeto de revitalização urbana transforma áreas anteriormente degradadas às margens do Rio Tietê em um extenso parque linear que serve como espaço de lazer, prática esportiva e reconexão com a natureza. O parque inclui ciclovias, áreas de descanso, playgrounds e anfiteatros ao ar livre, além de extensas áreas de vegetação nativa que ajudam na recuperação do ecossistema local.",
-  //   seloESG: true,
-  //   destaque: true
-  // },
-  // {
-  //   id: "museu-historico",
-  //   titulo: "Restauração Museu Histórico Nacional",
-  //   descricao: "Restauração meticulosa do edifício histórico do século XVIII, preservando elementos originais enquanto moderniza instalações.",
-  //   area: "8500m²",
-  //   localizacao: "Belo Horizonte, MG, Brasil",
-  //   ano: 2018,
-  //   arquitetoId: "carlos-ferreira",
-  //   imagens: [
-  //     "/projetos/museu-historico/principal.jpg",
-  //     "/projetos/museu-historico/img1.jpg",
-  //     "/projetos/museu-historico/img2.jpg"
-  //   ],
-  //   descricaoCompleta: "Trabalho minucioso de restauração que recuperou a grandiosidade original deste importante patrimônio histórico. O projeto envolveu pesquisa histórica detalhada, recuperação de elementos arquitetônicos originais e integração discreta de tecnologias modernas para climatização, iluminação e segurança, sem comprometer a autenticidade do edifício.",
-  //   seloESG: false,
-  //   destaque: false
-  // },
-  // {
-  //   id: "edificio-comercial",
-  //   titulo: "Edifício Comercial Sustentável",
-  //   descricao: "Prédio comercial com certificação LEED Gold, utilizando tecnologias de eficiência energética e reaproveitamento de água.",
-  //   area: "15000m²",
-  //   localizacao: "Porto Alegre, RS, Brasil",
-  //   ano: 2021,
-  //   arquitetoId: "gabriel-matte",
-  //   imagens: [
-  //     "/projetos/edificio-comercial/principal.jpg",
-  //     "/projetos/edificio-comercial/img1.jpg",
-  //     "/projetos/edificio-comercial/img2.jpg"
-  //   ],
-  //   descricaoCompleta: "Projeto inovador de edifício comercial que integra tecnologias sustentáveis como painéis solares, sistema de captação de água da chuva, jardins verticais e materiais de baixo impacto ambiental. O design prioriza a iluminação natural e ventilação cruzada, reduzindo significativamente o consumo energético.",
-  //   seloESG: true,
-  //   destaque: false
-  // }
+
 ];
 
 export const getProjetosByArquiteto = (arquitetoId) => {

@@ -3,10 +3,9 @@
 import { Avatar, AvatarGroup } from '@mui/material';
 import ArrowTooltips from '../Tooltip';
 import { useState } from 'react';
-import ExtraAvatarsModal from '@/app/architect/project/[project_id]/components/AvatarsModal';
+import ExtraAvatarsModal from '@/app/architect/[id]/project/[project_id]/components/AvatarsModal/index';
 
 export default function AvatarsGroup({ avatars }) {
-    console.log(avatars);
 
     const [openModal, setOpenModal] = useState(false);
 
