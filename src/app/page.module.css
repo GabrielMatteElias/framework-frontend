@@ -176,11 +176,10 @@
 
 .esg_badge {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 5px;
-  padding: 0.3rem 0.5rem;
+  top: 6px;
+  right: 4px;
+  width: 4rem !important;
+  filter: drop-shadow(2px 2px 2px #33333385);
 }
 
 .project_info {
