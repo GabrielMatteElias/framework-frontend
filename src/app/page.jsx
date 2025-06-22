@@ -107,7 +107,7 @@ export default function HomePage() {
                   <div className={styles.project_architect}>
                     {arquitetos.find(arq => arq.id === projeto.arquitetoId)?.nome}
                   </div>
-                  <a href={`/projetos/${projeto.id}`} className={styles.view_project}>
+                  <a href={`/architect/chatillon-architectes/project/${projeto.id}`} className={styles.view_project}>
                     Ver projeto
                   </a>
                 </div>
@@ -149,7 +149,7 @@ export default function HomePage() {
                   <div className={styles.project_architect}>
                     {arquitetos.find(arq => arq.id === projeto.arquitetoId)?.nome}
                   </div>
-                  <a href={`/projetos/${projeto.id}`} className={styles.view_project}>
+                  <a href={`/architect/chatillon-architectes/project/${projeto.id}`} className={styles.view_project}>
                     Ver projeto
                   </a>
                 </div>

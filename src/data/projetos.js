@@ -1,6 +1,6 @@
 export const projetos = [
   {
-    arquitetoId: "chatillon-architectes",
+    arquitetoId: "francois-chatillon",
     id: "le-grand-palais",
     titulo: "Reforma do Le Grand Palais",
     descricao: "Reforma e modernização do icônico Grand Palais em Paris, preservando sua arquitetura histórica enquanto atualiza sua infraestrutura.",
@@ -25,7 +25,7 @@ export const projetos = [
     area: "15000m²",
     localizacao: "Porto Alegre, RS, Brasil",
     ano: 2021,
-    arquitetoId: "chatillon-architectes",
+    arquitetoId: "francois-chatillon",
     imagens: [
       "/projetos/edificio-comercial/principal.jpg",
       "/projetos/edificio-comercial/img1.jpg",
@@ -44,7 +44,7 @@ export const projetos = [
     area: "13600m²",
     localizacao: "Rio de Janeiro, RJ, Brasil",
     ano: 2023,
-    arquitetoId: "chatillon-architectes",
+    arquitetoId: "francois-chatillon",
     imagens: [
       "/projetos/museu-nacional-rj/principal.jpg",
       "/projetos/museu-nacional-rj/img1.jpg",
@@ -61,7 +61,7 @@ export const projetos = [
     area: "450m²",
     localizacao: "Manaus, AM, Brasil",
     ano: 2022,
-    arquitetoId: "chatillon-architectes",
+    arquitetoId: "francois-chatillon",
     imagens: [
       "/projetos/casa-sustentavel/img1.jpg",
       "/projetos/casa-sustentavel/img1.jpg",
@@ -79,7 +79,7 @@ export const projetos = [
     area: "150000m²",
     localizacao: "Porto Alegre, RS, Brasil",
     ano: 2020,
-    arquitetoId: "chatillon-architectes",
+    arquitetoId: "francois-chatillon",
     imagens: [
       "/projetos/revitalizacao-orla-guaiba/principal.jpg",
       "/projetos/revitalizacao-orla-guaiba/img1.jpg",
@@ -96,7 +96,7 @@ export const projetos = [
   area: "157 hectares",
   localizacao: "Hamburgo, Alemanha",
   ano: 2022,
-  arquitetoId: "chatillon-architectes",
+  arquitetoId: "francois-chatillon",
   imagens: [
     "/projetos/hafencity-hamburgo/principal.jpg",
     "/projetos/hafencity-hamburgo/img1.jpg",

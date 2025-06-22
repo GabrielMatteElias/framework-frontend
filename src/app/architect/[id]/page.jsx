@@ -13,6 +13,7 @@ import orlaGuaiba from '@/assets/revitalizacao-orla-guaiba.webp'
 import museuNacional from '@/assets/museu-nacional-rj.webp'
 import edificioComercial from '@/assets/edificio-comercial.webp'
 import hafencityHamburgo from '@/assets/hafencity-hamburgo.webp'
+import seloESG from '@/assets/selo-esg.png'
 
 export default function ArquitetoPage({ params }) {
 
@@ -31,7 +32,7 @@ export default function ArquitetoPage({ params }) {
         );
     }
 
-    const getProjectImage = (id) => {        
+    const getProjectImage = (id) => {
         const imagens = {
             "le-grand-palais": reformaGrandParis,
             "casa-sustentavel": casaSustentavel,
@@ -50,7 +51,7 @@ export default function ArquitetoPage({ params }) {
                 <section className={styles.profile_header}>
                     <div className={styles.profile_avatar_container}>
                         <ProfileAvatar
-                            image='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg/250px-Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg'
+                            image='https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg'
                             name='Chatillon Architectes'
                             width={120}
                             height={120} />
@@ -141,10 +142,16 @@ export default function ArquitetoPage({ params }) {
                                         width={400}
                                         height={300}
                                         layout="responsive"
+                                        className={styles.project_image_content}
                                     />
                                     {projeto.seloESG && (
-                                        <div className={styles.esg_badge}>
-                                            <Badge type="esg" size='large' />
+                                        <div>
+                                            <Image
+                                                src={seloESG}
+                                                alt='Selo ESG'
+                                                className={styles.esg_badge}
+                                                layout="responsive"
+                                            />
                                         </div>
                                     )}
                                 </div>

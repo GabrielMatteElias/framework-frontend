@@ -36,10 +36,7 @@ export function Header() {
                 </div>
                 <nav className={styles.nav}>
                     <Link href="/architect/chatillon-architectes">
-                        Architect
-                    </Link>
-                    <Link href="/architect/project/9">
-                        Project
+                        Arquitetos
                     </Link>
                 </nav>
 

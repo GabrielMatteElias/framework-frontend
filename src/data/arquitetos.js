@@ -2,12 +2,13 @@ import perfilPic from '../assets/profilePic.jpg';
 
 export const arquitetos = [
   {
-    id: "chatillon-architectes",
-    nome: "Chatillon Architectes",
-    dataNascimento: "01/01/1993", // ano de fundação
+    id: "francois-chatillon",
+    nome: "François Chatillon",
+    dataNascimento: "15/08/1961", // estimado com base na carreira e graduação
+    nacionalidade: "Francesa",
     formacao: {
-      instituicao: "École Nationale Supérieure d'Architecture de Paris",
-      ano: 1993,
+      instituicao: "École Nationale Supérieure des Beaux-Arts",
+      ano: 1983,
       localizacao: "Paris, França"
     },
     localizacao: {
@@ -15,8 +16,8 @@ export const arquitetos = [
       estado: "Île-de-France",
       pais: "França"
     },
-    biografia: "Fundado em Paris, o escritório Chatillon Architectes é reconhecido internacionalmente por sua atuação em projetos de restauração patrimonial, reabilitação urbana e arquitetura contemporânea. Com uma abordagem que valoriza a história e a sustentabilidade, a equipe combina tradição e inovação para criar espaços atemporais.",
-    especialidades: ["Restauração", "Urbano", "Cultural", "Sustentável"],
+    biografia: "François Chatillon é um arquiteto francês renomado por sua atuação em preservação do patrimônio histórico. Fundador do escritório Chatillon Architectes em 1986, tornou-se Architecte en Chef des Monuments Historiques da França em 2003. Ao longo de sua carreira, liderou a restauração de ícones arquitetônicos como o Grand Palais, o Obelisco de Luxor e o Musée Carnavalet, sempre combinando técnicas tradicionais com inovação tecnológica.",
+    especialidades: ["Restauração Patrimonial", "Arquitetura Pública", "Tecnologia de Preservação", "História da Arquitetura"],
     foto: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Grand_Palais_-_Nef_-_2016.jpg/640px-Grand_Palais_-_Nef_-_2016.jpg", // imagem mais institucional
     redesSociais: {
       linkedin: "https://linkedin.com/company/chatillon-architectes",
@@ -25,9 +26,9 @@ export const arquitetos = [
     },
     verificado: true,
     estatisticas: {
-      totalProjetos: 42,
-      projetosESG: 24,
-      visualizacoes: 48500
+      totalProjetos: 6,
+      projetosESG: 3,
+      visualizacoes: 18500
     }
   },
   {

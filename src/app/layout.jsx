@@ -7,7 +7,7 @@ export const metadata = {
   title: "Framework",
   description: "A sua plataforma de projetos",
   icons: {
-    icon: "/favicon.ico", // ou .png / .svg
+    icon: "/favicon.ico",
   },
 };
 
