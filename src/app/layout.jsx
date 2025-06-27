@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       <body>
         <AuthProvider>
           <Header />
-          <main style={{ paddingTop: "10rem" }}>{children}</main>
+          <main style={{ paddingTop: "3rem" }}>{children}</main>
         </AuthProvider>
       </body>
     </html>

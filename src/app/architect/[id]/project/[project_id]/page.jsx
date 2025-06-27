@@ -4,7 +4,6 @@ import AvatarImageGroup from '@/components/AvatarGroup';
 
 import gabriel from '@/assets/gabriel_arquiteto.png'
 import fernando from '@/assets/fernando_arquiteto.png'
-import bernardo from '@/assets/bernardo_arquiteto.png'
 import ProfileAvatar from '@/components/Avatar';
 import Image from 'next/image';
 
@@ -25,10 +24,6 @@ const contributors = [
         img: fernando
     },
     {
-        name: "Bernardo da Rosa Pinheiro",
-        img: bernardo
-    },
-    {
         name: "João Vicente Utzig",
         img: null
     },
@@ -41,10 +36,6 @@ const contributors = [
         img: fernando
     },
     {
-        name: "Bernardo da Rosa Pinheiro",
-        img: bernardo
-    },
-    {
         name: "João Vicente Utzig",
         img: null
     },
@@ -55,10 +46,6 @@ const contributors = [
     {
         name: "Fernando dos Santos Fagundes",
         img: fernando
-    },
-    {
-        name: "Bernardo da Rosa Pinheiro",
-        img: bernardo
     },
     {
         name: "João Vicente Utzig",

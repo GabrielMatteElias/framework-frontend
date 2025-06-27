@@ -51,7 +51,7 @@ export default function HomePage() {
         <div className={styles.hero_content}>
           <h1>Arquitetura Sustentável para um Futuro Melhor</h1>
           <p>Conectando os melhores arquitetos com projetos que respeitam o meio ambiente e transformam vidas.</p>
-          <a href="/cadastro" className={styles.cta_button}>
+          <a href="/cadastro" className='primary_button'>
             Quero cadastrar meu perfil
           </a>
         </div>
@@ -78,7 +78,7 @@ export default function HomePage() {
       <section className={styles.featured_projects}>
         <div className={styles.section_header}>
           <h2>Projetos em Destaque</h2>
-          <a href="/projetos" className={styles.view_all}>Ver todos</a>
+          <a href="/projetos" className='view_all'>Ver todos</a>
         </div>
         <div className={styles.projects_grid}>
           {projetosDestaque.map((projeto) => (
@@ -89,7 +89,6 @@ export default function HomePage() {
                   alt={projeto.titulo}
                   width={400}
                   height={300}
-                  layout="responsive"
                 />
                 {projeto.seloESG && (
                   <div className={styles.esg_badge}>
@@ -108,7 +107,7 @@ export default function HomePage() {
                 <div className={styles.project_architect}>
                   {arquitetos.find(arq => arq.id === projeto.arquitetoId)?.nome}
                 </div>
-                <a href={`/architect/chatillon-architectes/project/${projeto.id}`} className={styles.view_project}>
+                <a href={`/architect/chatillon-architectes/project/${projeto.id}`} className='primary_button'>
                   Ver projeto
                 </a>
               </div>
@@ -120,7 +119,7 @@ export default function HomePage() {
       <section className={styles.esg_projects}>
         <div className={styles.section_header}>
           <h2>Projetos com Selo ESG</h2>
-          <a href="/projetos/esg" className={styles.view_all}>Ver todos</a>
+          <a href="/projetos/esg" className='view_all'>Ver todos</a>
         </div>
         <div className={styles.esg_grid}>
           {projetosESG.slice(0, 3).map((projeto) => (
@@ -131,7 +130,6 @@ export default function HomePage() {
                   alt={projeto.titulo}
                   width={400}
                   height={300}
-                  layout="responsive"
                 />
                 {projeto.seloESG && (
                   <div>
@@ -139,7 +137,6 @@ export default function HomePage() {
                       src={seloESG}
                       alt='Selo ESG'
                       className={styles.esg_badge}
-                      layout="responsive"
                     />
                   </div>
                 )}
@@ -155,7 +152,7 @@ export default function HomePage() {
                 <div className={styles.project_architect}>
                   {arquitetos.find(arq => arq.id === projeto.arquitetoId)?.nome}
                 </div>
-                <a href={`/architect/chatillon-architectes/project/${projeto.id}`} className={styles.view_project}>
+                <a href={`/architect/chatillon-architectes/project/${projeto.id}`} className='primary_button'>
                   Ver projeto
                 </a>
               </div>
@@ -189,7 +186,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className={styles.cta_container}>
-          <a href="/cadastro" className={styles.cta_button_large}>
+          <a href="/cadastro" className='primary_button'>
             Quero cadastrar meu perfil
           </a>
         </div>
