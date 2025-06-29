@@ -2,9 +2,7 @@
 
 import styles from './index.module.css';
 
-export default function ViewToggle({layout, setLayout}) {
-    console.log(layout);
-    
+export default function ViewToggle({layout, setLayout}) {    
     return (
         <div className={styles.view_toggle_container}>
             <div className={`${styles.view_toggle} ${layout === 'list' ? styles.active : ''}`} onClick={() => setLayout('list')}>

@@ -1,13 +1,8 @@
-'use client'
 import { Container } from '@/components/arquitetoEhome/Container';
 import styles from './page.module.css';
 import Image from 'next/image';
 import { getProjetosDestaque, getProjetosESG } from '@/data/projetos';
 import { arquitetos } from '@/data/arquitetos';
-import Badge from '@/components/arquitetoEhome/Badge';
-import { useState } from 'react';
-import SearchBar from '@/components/arquitetoEhome/SearchBar';
-import FilterBar from '@/components/arquitetoEhome/FilterBar';
 
 import reformaGrandParis from '@/assets/foto4.png'
 import casaSustentavel from '@/assets/casa_sustentavel.webp'
@@ -15,22 +10,12 @@ import orlaGuaiba from '@/assets/revitalizacao-orla-guaiba.webp'
 import museuNacional from '@/assets/museu-nacional-rj.webp'
 import edificioComercial from '@/assets/edificio-comercial.webp'
 import hafencityHamburgo from '@/assets/hafencity-hamburgo.webp'
-import seloESG from '@/assets/selo-esg.png'
+import SearchAndFilters from './components/SearchAndFilters';
+import Link from 'next/link';
 
 export default function HomePage() {
   const projetosDestaque = getProjetosDestaque();
   const projetosESG = getProjetosESG();
-
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedFilter, setSelectedFilter] = useState('todos');
-
-  const handleSearch = (term) => {
-    setSearchTerm(term);
-  };
-
-  const handleFilterChange = (filter) => {
-    setSelectedFilter(filter);
-  };
 
   const getProjectImage = (id) => {
     const imagens = {
@@ -57,23 +42,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.search_section}>
-        <div className={styles.search_container}>
-          <SearchBar onSearch={handleSearch} placeholder="Buscar por nome do arquiteto ou projeto..." />
-          <FilterBar
-            filters={[
-              { id: 'todos', label: 'Todos' },
-              { id: 'residencial', label: 'Residencial' },
-              { id: 'comercial', label: 'Comercial' },
-              { id: 'urbano', label: 'Urbano' },
-              { id: 'sustentavel', label: 'Sustentável' },
-              { id: 'esg', label: 'Selo ESG' }
-            ]}
-            selectedFilter={selectedFilter}
-            onFilterChange={handleFilterChange}
-          />
-        </div>
-      </section>
+      <SearchAndFilters />
 
       <section className={styles.featured_projects}>
         <div className={styles.section_header}>
@@ -90,26 +59,23 @@ export default function HomePage() {
                   width={400}
                   height={300}
                 />
-                {projeto.seloESG && (
-                  <div className={styles.esg_badge}>
-                    <Badge type="esg" />
-                  </div>
-                )}
               </div>
               <div className={styles.project_info}>
                 <h3>{projeto.titulo}</h3>
                 <p>{projeto.descricao}</p>
                 <div className={styles.project_meta}>
                   <span>{projeto.area}</span>
-                  <span> • {projeto.localizacao}</span>
+                  <span> • {projeto.localizacao.cidade}, {projeto.localizacao.pais}</span>
                   <span> • {projeto.ano}</span>
                 </div>
                 <div className={styles.project_architect}>
-                  {arquitetos.find(arq => arq.id === projeto.arquitetoId)?.nome}
+                  <Link href={`/architect/${projeto.arquitetoId}`}>
+                    {arquitetos.find(arq => arq.id === projeto.arquitetoId)?.nome}
+                  </Link>
                 </div>
-                <a href={`/architect/chatillon-architectes/project/${projeto.id}`} className='primary_button'>
+                <Link href={`/architect/chatillon-architectes/project/${projeto.id}`} className='primary_button'>
                   Ver projeto
-                </a>
+                </Link>
               </div>
             </div>
           ))}
@@ -123,7 +89,7 @@ export default function HomePage() {
         </div>
         <div className={styles.esg_grid}>
           {projetosESG.slice(0, 3).map((projeto) => (
-            <div key={projeto.id} className={`${styles.project_card} ${projeto.seloESG ? styles.esg : ''}`}>
+            <div key={projeto.id} className={`${styles.project_card} ${projeto.seloESG && 'esg'}`}>
               <div className={styles.project_image}>
                 <Image
                   src={getProjectImage(projeto.id)}
@@ -131,22 +97,13 @@ export default function HomePage() {
                   width={400}
                   height={300}
                 />
-                {projeto.seloESG && (
-                  <div>
-                    <Image
-                      src={seloESG}
-                      alt='Selo ESG'
-                      className={styles.esg_badge}
-                    />
-                  </div>
-                )}
               </div>
               <div className={styles.project_info}>
                 <h3>{projeto.titulo}</h3>
                 <p>{projeto.descricao}</p>
                 <div className={styles.project_meta}>
                   <span>{projeto.area}</span>
-                  <span> • {projeto.localizacao}</span>
+                  <span> • {projeto.localizacao.cidade}, {projeto.localizacao.pais}</span>
                   <span> • {projeto.ano}</span>
                 </div>
                 <div className={styles.project_architect}>

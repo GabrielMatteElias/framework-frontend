@@ -18,7 +18,7 @@ export const arquitetos = [
     },
     biografia: "François Chatillon é um arquiteto francês renomado por sua atuação em preservação do patrimônio histórico. Fundador do escritório Chatillon Architectes em 1986, tornou-se Architecte en Chef des Monuments Historiques da França em 2003. Ao longo de sua carreira, liderou a restauração de ícones arquitetônicos como o Grand Palais, o Obelisco de Luxor e o Musée Carnavalet, sempre combinando técnicas tradicionais com inovação tecnológica.",
     especialidades: ["Restauração Patrimonial", "Arquitetura Pública", "Tecnologia de Preservação", "História da Arquitetura"],
-    foto: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Grand_Palais_-_Nef_-_2016.jpg/640px-Grand_Palais_-_Nef_-_2016.jpg", // imagem mais institucional
+    foto: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg",
     redesSociais: {
       linkedin: "https://linkedin.com/company/chatillon-architectes",
       instagram: "https://instagram.com/chatillon.architectes",

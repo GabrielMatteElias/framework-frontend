@@ -17,16 +17,6 @@ const arquitetosMock = [
         projetosPublicados: 12,
         imagem: '/arquitetos/laura.webp'
     },
-    {
-        id: 2,
-        nome: 'Carlos Souza',
-        especialidade: 'Comercial',
-        localizacao: 'Curitiba - PR',
-        esg: false,
-        anosExperiencia: 3,
-        projetosPublicados: 5,
-        imagem: '/arquitetos/carlos.webp'
-    }
 ];
 
 export default function ArchitectPage() {

@@ -5,7 +5,6 @@ import { useState } from 'react';
 import styles from './EditArchitectModal.module.css';
 
 export default function EditArchitectModal({ arquiteto }) {
-    console.log(arquiteto);
 
     const [open, setOpen] = useState(false);
     const [form, setForm] = useState({

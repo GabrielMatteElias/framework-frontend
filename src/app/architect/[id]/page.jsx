@@ -14,6 +14,8 @@ export default function ArquitetoPage({ params }) {
 
     const arquiteto = getArquitetoById(id);
     const projetos = getProjetosByArquiteto(id);
+    console.log(arquiteto.foto);
+    
 
     const EditArchitectModalButton = dynamic(() => import('./components/EditArchitectModal/EditArchitectModal.jsx'), {
         ssr: false,
@@ -34,7 +36,7 @@ export default function ArquitetoPage({ params }) {
             <section className={styles.profile_header}>
                 <div className={styles.profile_avatar_container}>
                     <ProfileAvatar
-                        image='https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg'
+                        image={arquiteto.foto}
                         name='Chatillon Architectes'
                         width={120}
                         height={120} />
