@@ -87,3 +87,8 @@ li {
   z-index: 1;
   pointer-events: none;
 }
+
+/* Esconde link lib leaflet */
+.leaflet-bottom{
+  display: none;
+}

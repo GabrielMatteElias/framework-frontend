@@ -11,7 +11,12 @@ import img7 from '@/assets/foto7.png'
 
 import { getProjetosById } from '@/data/projetos';
 import Link from 'next/link';
-import { MapComponent } from '@/components/ProjectMapView';
+
+import dynamic from 'next/dynamic';
+
+const MapComponent = dynamic(() => import('@/components/ProjectMapView'), {
+    ssr: false,
+});
 
 export default function ProjectPage({ params }) {
     const { project_id } = params;
@@ -91,6 +96,7 @@ export default function ProjectPage({ params }) {
                                 width={400}
                                 height={300}
                                 className={styles.gallery_image}
+                                priority
                             />
                         </div>
                     ))}

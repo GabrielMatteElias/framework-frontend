@@ -47,7 +47,7 @@ const ProjectCard = ({ projeto, layout }) => {
                     <span> • {projeto.localizacao.cidade}, {projeto.localizacao.pais}</span>
                     <span> • {projeto.ano}</span>
                 </div>
-                <Link href={`/architect/chatillon-architectes/project/${projeto.id}`} className={`primary_button ${layout === 'list' && styles.cta}`}>
+                <Link href={`/architect/francois-chatillon/project/${projeto.id}`} className={`primary_button ${layout === 'list' && styles.cta}`}>
                     Ver projeto
                 </Link>
             </div>

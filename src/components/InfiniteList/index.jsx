@@ -5,7 +5,7 @@ import styles from './index.module.css'
 
 export default function InfiniteList({
     items = [],
-    batchSize = 6,
+    batchSize = 3,
     delay = 1000,
     renderItem,
     loadingComponent = <p style={{ textAlign: 'center' }}>Carregando...</p>,
