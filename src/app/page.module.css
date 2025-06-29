@@ -57,12 +57,6 @@
   margin-bottom: 2rem;
 }
 
-
-.featured_projects,
-.esg_projects {
-  margin-bottom: 4rem;
-}
-
 .section_header {
   display: flex;
   justify-content: space-between;
@@ -80,6 +74,10 @@
   gap: 2rem;
 }
 
+.featured_projects{
+  margin-bottom: 3rem;
+}
+
 .project_card {
   position: relative;
   border-radius: 10px;
@@ -91,7 +89,7 @@
 }
 
 .project_card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .project_image {
@@ -132,71 +130,93 @@
   margin-bottom: 1rem;
 }
 
-.esg_grid {
+/* Arquitetos em Destaque */
+.featured_architects {
+  margin-bottom: 4rem;
+}
+
+.architects_grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
-.esg_card {
-  border: 1px solid #eaeaea;
+.architect_card {
+  background-color: #fff;
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
-  background-color: #f0f9f0;
 }
 
-.esg_card:hover {
-  transform: translateY(-5px);
+.architect_card:hover {
+  transform: translateY(-3px);
 }
 
-.esg_image {
-  position: relative;
-  height: 250px;
+.architect_header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-.esg_image img {
+.architect_avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+
+.architect_avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.esg_info {
-  padding: 1.5rem;
+.architect_info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
 }
 
-.esg_info h3 {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-  color: #2e7d32;
+.architect_info p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0;
 }
 
-.esg_info p {
+.architect_connections {
+  font-size: 0.8rem;
   color: #666;
   margin-bottom: 1rem;
-  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
 }
 
-.esg_architect {
-  color: #2e7d32;
-  font-size: 1rem;
-  margin-bottom: 1rem;
+.architect_connections svg {
+  margin-right: 0.3rem;
 }
 
-.view_esg_project {
-  display: inline-block;
-  background-color: #2e7d32;
+.connect_button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #0066cc;
   color: white;
-  padding: 0.6rem 1.2rem;
   border-radius: 5px;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.9rem;
   transition: background-color 0.2s ease;
 }
 
-.view_esg_project:hover {
-  background-color: #1b5e20;
+.connect_button:hover {
+  background-color: #0052a3;
+}
+
+.connect_button.connected {
+  background-color: #e0e0e0;
+  color: #666;
+  cursor: default;
 }
 
 .how_it_works {
@@ -254,67 +274,6 @@
   margin-top: 2rem;
 }
 
-.footer {
-  margin-top: 4rem;
-  padding-top: 3rem;
-  border-top: 1px solid #eaeaea;
-}
-
-.footer_content {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.footer_column h3 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-}
-
-.footer_column ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer_column ul li {
-  margin-bottom: 0.5rem;
-}
-
-.footer_column ul li a {
-  color: #666;
-  text-decoration: none;
-}
-
-.footer_column ul li a:hover {
-  color: #0066cc;
-  text-decoration: underline;
-}
-
-.social_footer {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.social_footer a {
-  color: #666;
-  text-decoration: none;
-}
-
-.social_footer a:hover {
-  color: #0066cc;
-  text-decoration: underline;
-}
-
-.copyright {
-  text-align: center;
-  padding: 1.5rem 0;
-  color: #888;
-  font-size: 0.9rem;
-  border-top: 1px solid #eaeaea;
-}
-
 /* Responsividade */
 @media (min-width: 768px) {
   .hero_content h1 {
@@ -326,17 +285,12 @@
     align-items: center;
   }
 
-  .projects_grid,
-  .esg_grid {
+  .architects_grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .steps_container {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .footer_content {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -349,8 +303,8 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .esg_grid {
-    grid-template-columns: repeat(3, 1fr);
+  .architects_grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .steps_container {

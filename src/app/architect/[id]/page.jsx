@@ -13,9 +13,7 @@ export default function ArquitetoPage({ params }) {
     const { id } = params;
 
     const arquiteto = getArquitetoById(id);
-    const projetos = getProjetosByArquiteto(id);
-    console.log(arquiteto.foto);
-    
+    const projetos = getProjetosByArquiteto(id);    
 
     const EditArchitectModalButton = dynamic(() => import('./components/EditArchitectModal/EditArchitectModal.jsx'), {
         ssr: false,

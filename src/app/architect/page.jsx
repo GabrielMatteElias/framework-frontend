@@ -5,21 +5,13 @@ import Image from 'next/image';
 import { Container } from '@/components/Container';
 import ProfileAvatar from '@/components/Avatar';
 import Link from 'next/link';
-
-const arquitetosMock = [
-    {
-        id: 'francois-chatillon',
-        nome: "François Chatillon",
-        especialidade: 'Residencial',
-        localizacao: "Paris, França",
-        esg: true,
-        anosExperiencia: 8,
-        projetosPublicados: 12,
-        imagem: '/arquitetos/laura.webp'
-    },
-];
+import { arquitetos } from '@/data/arquitetos';
 
 export default function ArchitectPage() {
+
+    const architects = arquitetos
+console.log(architects);
+
     const [filtros, setFiltros] = useState({ localizacao: '', tipo: '', esg: false, experiencia: '', ordenacao: '' });
 
     const handleChange = (e) => {
@@ -27,17 +19,17 @@ export default function ArchitectPage() {
         setFiltros({ ...filtros, [name]: type === 'checkbox' ? checked : value });
     };
 
-    const filtrados = arquitetosMock.filter((arq) => {
-        return (
-            (!filtros.localizacao || arq.localizacao.includes(filtros.localizacao)) &&
-            (!filtros.tipo || arq.especialidade === filtros.tipo) &&
-            (!filtros.experiencia ||
-                (filtros.experiencia === '0-5' && arq.anosExperiencia <= 5) ||
-                (filtros.experiencia === '5-10' && arq.anosExperiencia > 5 && arq.anosExperiencia <= 10) ||
-                (filtros.experiencia === '10+' && arq.anosExperiencia > 10)) &&
-            (!filtros.esg || arq.esg === true)
-        );
-    });
+    // const filtrados = arquiteto.filter((arq) => {
+    //     return (
+    //         (!filtros.localizacao || arq.localizacao.includes(filtros.localizacao)) &&
+    //         (!filtros.tipo || arq.subtitulo === filtros.tipo) &&
+    //         (!filtros.experiencia ||
+    //             (filtros.experiencia === '0-5' && arq.anosExperiencia <= 5) ||
+    //             (filtros.experiencia === '5-10' && arq.anosExperiencia > 5 && arq.anosExperiencia <= 10) ||
+    //             (filtros.experiencia === '10+' && arq.anosExperiencia > 10)) &&
+    //         (!filtros.esg || arq.esg === true)
+    //     );
+    // });
 
     return (
         <Container>
@@ -85,21 +77,20 @@ export default function ArchitectPage() {
 
 
             <section className={styles.listaArquitetos}>
-                {filtrados.map((arq) => (
+                {architects.map((arq) => (
                     <Link key={arq.id} href={`/architect/${arq.id}`} className={styles.arquitetoItem}>
                         <div className={styles.avatar}>
                             <ProfileAvatar
-                                image='https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg'
+                                image={arq.foto}
                                 width={80}
                                 height={80}
                             />
                         </div>
                         <div className={styles.arquitetoInfo}>
                             <h3>{arq.nome}</h3>
-                            <p className={styles.titulo}>{arq.especialidade}</p>
-                            <p className={styles.local}>{arq.localizacao}</p>
-                            <p className={styles.projetos}>{arq.projetosPublicados} projetos publicados</p>
-                            {arq.esg && <span className={styles.esg}>Selo ESG</span>}
+                            <p className={styles.titulo}>{arq.subtitulo}</p>
+                            <p className={styles.local}>{arq.localizacao.cidade}, {arq.localizacao.pais}</p>
+                            <p className={styles.projetos}>{arq.projetosPublicados.length} projetos publicados</p>
                         </div>
                         <div className={styles.acao}>
                             <button className='secundary_button'>Ver perfil</button>

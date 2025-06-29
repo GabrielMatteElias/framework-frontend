@@ -26,16 +26,16 @@ export const projetos = [
       {
         id: "francois-chatillon",
         nome: "François Chatillon",
-        tipo: "Arquiteto Independente",
+        subtitulo: "Arquiteto Independente",
         papel: "Arquiteto Principal",
-        avatar: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg"
+        foto: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg"
       },
       {
         id: "ministerio-cultura-fr",
         nome: "Ministério da Cultura Francês",
-        tipo: "Órgão Governamental",
+        subtitulo: "Órgão Governamental",
         papel: "Financiador e Fiscalizador",
-        avatar: "/icons/government-building.svg"
+        foto: "/icons/government-building.svg"
       }
     ]
   },
@@ -67,14 +67,14 @@ export const projetos = [
         nome: "François Chatillon",
         tipo: "Arquiteto Independente",
         papel: "Design Principal",
-        avatar: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg"
+        foto: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg"
       },
       {
         id: "green-building-council",
         nome: "Green Building Council Brasil",
         tipo: "Organização Não-Governamental",
         papel: "Certificação LEED",
-        avatar: "/icons/leaf.svg"
+        foto: "/icons/leaf.svg"
       }
     ]
   },
@@ -106,14 +106,14 @@ export const projetos = [
         nome: "François Chatillon",
         tipo: "Arquiteto Independente",
         papel: "Coordenador de Restauração",
-        avatar: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg"
+        foto: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg"
       },
       {
         id: "ufrj",
         nome: "Universidade Federal do Rio de Janeiro",
         tipo: "Instituição de Ensino",
         papel: "Proprietária do Museu",
-        avatar: "/icons/university.svg"
+        foto: "/icons/university.svg"
       }
     ]
   },
@@ -145,7 +145,7 @@ export const projetos = [
         nome: "François Chatillon",
         tipo: "Arquiteto Independente",
         papel: "Arquiteto Responsável",
-        avatar: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg"
+        foto: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg"
       }
     ]
   },
@@ -177,14 +177,14 @@ export const projetos = [
         nome: "François Chatillon",
         tipo: "Arquiteto Independente",
         papel: "Consultor Principal",
-        avatar: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg"
+        foto: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg"
       },
       {
         id: "prefeitura-poa",
         nome: "Prefeitura de Porto Alegre",
         tipo: "Governo Municipal",
         papel: "Contratante",
-        avatar: "/icons/city-hall.svg"
+        foto: "/icons/city-hall.svg"
       }
     ]
   },
@@ -215,14 +215,14 @@ export const projetos = [
         nome: "François Chatillon",
         tipo: "Arquiteto Independente",
         papel: "Consultor Internacional",
-        avatar: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg"
+        foto: "https://x.share-architects.com/wp-content/uploads/2024/08/venice.share-architects.com-speakers-francois-chatillon.jpg"
       },
       {
         id: "hamburg-gov",
         nome: "Governo de Hamburgo",
         tipo: "Governo Municipal",
         papel: "Financiador",
-        avatar: "/icons/government-building.svg"
+        foto: "/icons/government-building.svg"
       }
     ]
   }

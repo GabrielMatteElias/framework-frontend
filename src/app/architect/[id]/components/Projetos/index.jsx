@@ -41,7 +41,7 @@ const ProjectCard = ({ projeto, layout }) => {
             </div>
             <div className={`${styles.project_info}  ${layout === "list" && styles.list_info}`}>
                 <h3>{projeto.titulo}</h3>
-                <p>{projeto.descricao}</p>
+                <p>{projeto.descricaoCompleta}</p>
                 <div className={styles.project_meta}>
                     <span>{projeto.area}</span>
                     <span> • {projeto.localizacao.cidade}, {projeto.localizacao.pais}</span>

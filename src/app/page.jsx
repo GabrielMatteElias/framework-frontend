@@ -12,10 +12,12 @@ import edificioComercial from '@/assets/edificio-comercial.webp'
 import hafencityHamburgo from '@/assets/hafencity-hamburgo.webp'
 import SearchAndFilters from './components/SearchAndFilters';
 import Link from 'next/link';
+import { ArchitectCard } from '@/components/ArchitectCard';
+import { Footer } from '@/components/Footer';
 
 export default function HomePage() {
   const projetosDestaque = getProjetosDestaque();
-  const projetosESG = getProjetosESG();
+  const arquitetosDestaque = arquitetos;
 
   const getProjectImage = (id) => {
     const imagens = {
@@ -47,7 +49,7 @@ export default function HomePage() {
       <section className={styles.featured_projects}>
         <div className={styles.section_header}>
           <h2>Projetos em Destaque</h2>
-          <a href="/projetos" className='view_all'>Ver todos</a>
+          <Link href="/project" className='view_all'>Ver todos</Link>
         </div>
         <div className={styles.projects_grid}>
           {projetosDestaque.map((projeto) => (
@@ -82,7 +84,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={styles.esg_projects}>
+      {/* Seção de Arquitetos em Destaque */}
+      <section className={styles.featured_architects}>
+        <div className={styles.section_header}>
+          <h2>Arquitetos em Destaque</h2>
+          <Link href="/architect" className='view_all'>Ver todos</Link>
+        </div>
+        <div className={styles.architects_grid}>
+          {arquitetosDestaque.map((architect) => (
+            <ArchitectCard architect={architect} />
+          ))}
+        </div>
+      </section>
+
+      {/* <section className={styles.esg_projects}>
         <div className={styles.section_header}>
           <h2>Projetos com Selo ESG</h2>
           <a href="/projetos/esg" className='view_all'>Ver todos</a>
@@ -116,7 +131,7 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       <section className={styles.how_it_works}>
         <h2>Como Funciona</h2>
@@ -149,39 +164,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className={styles.footer}>
-        <div className={styles.footer_content}>
-          <div className={styles.footer_column}>
-            <h3>Plataforma</h3>
-            <ul>
-              <li><a href="/sobre">Sobre nós</a></li>
-              <li><a href="/como-funciona">Como funciona</a></li>
-              <li><a href="/contato">Contato</a></li>
-              <li><a href="/termos">Termos de uso</a></li>
-            </ul>
-          </div>
-          <div className={styles.footer_column}>
-            <h3>Explore</h3>
-            <ul>
-              <li><a href="/arquitetos">Arquitetos</a></li>
-              <li><a href="/projetos">Projetos</a></li>
-              <li><a href="/projetos/esg">Projetos ESG</a></li>
-              <li><a href="/blog">Blog</a></li>
-            </ul>
-          </div>
-          <div className={styles.footer_column}>
-            <h3>Siga-nos</h3>
-            <div className={styles.social_footer}>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-            </div>
-          </div>
-        </div>
-        <div className={styles.copyright}>
-          © {new Date().getFullYear()} Plataforma para Arquitetos. Todos os direitos reservados.
-        </div>
-      </footer>
+      <Footer />
     </Container>
   );
 }
