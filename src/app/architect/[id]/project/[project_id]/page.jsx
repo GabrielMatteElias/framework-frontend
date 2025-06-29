@@ -1,6 +1,5 @@
 import { Container } from '@/components/arquitetoEhome/Container';
 import styles from './page.module.css';
-import Badge from '@/components/arquitetoEhome/Badge';
 import Image from 'next/image';
 import img1 from '@/assets/foto1.png'
 import img2 from '@/assets/foto2.png'
@@ -12,6 +11,7 @@ import img7 from '@/assets/foto7.png'
 
 import { getProjetosById } from '@/data/projetos';
 import Link from 'next/link';
+import { MapComponent } from '@/components/ProjectMapView';
 
 export default function ProjectPage({ params }) {
     const { project_id } = params;
@@ -49,14 +49,6 @@ export default function ProjectPage({ params }) {
                             <span className={styles.meta_label}>Localização:</span>
                             <span>{project.localizacao.cidade}, {project.localizacao.pais}</span>
                         </div>
-                        <div className={styles.meta_item}>
-                            <span className={styles.meta_label}>Área:</span>
-                            <span>{project.area}</span>
-                        </div>
-                        <div className={styles.meta_item}>
-                            <span className={styles.meta_label}>Ano:</span>
-                            <span>{project.ano}</span>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -81,7 +73,8 @@ export default function ProjectPage({ params }) {
                 <div className={styles.map_container}>
                     {/* Implementação do mapa virá aqui */}
                     <div className={styles.map_placeholder}>
-                        <p>Mapa interativo será exibido aqui</p>
+                        <MapComponent lat={project.localizacao.coordenadas[0]} lng={project.localizacao.coordenadas[1]} name={project.titulo} />
+
                     </div>
                 </div>
                 <p className={styles.map_note}>Endereço completo: {project.localizacao.endereco}</p>
