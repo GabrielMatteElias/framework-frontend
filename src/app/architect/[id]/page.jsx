@@ -5,15 +5,16 @@ import { getProjetosByArquiteto } from '@/data/projetos';
 import Badge from '@/components/arquitetoEhome/Badge';
 import { getArquitetoById } from '@/data/arquitetos';
 
-import ArchitectProjects from './components/Projetos';
 import dynamic from 'next/dynamic';
+import { ProjectCard } from '@/components/ProjectCard';
+import ViewToggle from '@/components/ViewToggle';
 
 export default function ArquitetoPage({ params }) {
 
     const { id } = params;
 
     const arquiteto = getArquitetoById(id);
-    const projetos = getProjetosByArquiteto(id);    
+    const projetos = getProjetosByArquiteto(id);
 
     const EditArchitectModalButton = dynamic(() => import('./components/EditArchitectModal/EditArchitectModal.jsx'), {
         ssr: false,
@@ -70,7 +71,7 @@ export default function ArquitetoPage({ params }) {
                     </div>
                 </div>
 
-            <EditArchitectModalButton arquiteto={arquiteto} />
+                <EditArchitectModalButton arquiteto={arquiteto} />
 
             </section>
 
@@ -115,7 +116,9 @@ export default function ArquitetoPage({ params }) {
                     <div className={styles.stat_label}>Visualizações</div>
                 </div>
             </section>
-            <ArchitectProjects projects={projetos} />
+
+                <ProjectCard project={projetos} title/>
+
         </Container>
     );
 }

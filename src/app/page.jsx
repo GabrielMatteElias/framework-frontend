@@ -4,33 +4,16 @@ import Image from 'next/image';
 import { getProjetosDestaque, getProjetosESG } from '@/data/projetos';
 import { arquitetos } from '@/data/arquitetos';
 
-import reformaGrandParis from '@/assets/foto4.png'
-import casaSustentavel from '@/assets/casa_sustentavel.webp'
-import orlaGuaiba from '@/assets/revitalizacao-orla-guaiba.webp'
-import museuNacional from '@/assets/museu-nacional-rj.webp'
-import edificioComercial from '@/assets/edificio-comercial.webp'
-import hafencityHamburgo from '@/assets/hafencity-hamburgo.webp'
+
 import SearchAndFilters from './components/SearchAndFilters';
 import Link from 'next/link';
 import { ArchitectCard } from '@/components/ArchitectCard';
 import { Footer } from '@/components/Footer';
+import { ProjectCard } from '@/components/ProjectCard';
 
 export default function HomePage() {
   const projetosDestaque = getProjetosDestaque();
   const arquitetosDestaque = arquitetos;
-
-  const getProjectImage = (id) => {
-    const imagens = {
-      "le-grand-palais": reformaGrandParis,
-      "casa-sustentavel": casaSustentavel,
-      "revitalizacao-orla-guaiba": orlaGuaiba,
-      "museu-nacional-rj": museuNacional,
-      "edificio-comercial": edificioComercial,
-      "hafencity-hamburgo": hafencityHamburgo
-    };
-
-    return imagens[id] || null; // ou uma imagem padrão
-  };
 
   return (
     <Container>
@@ -51,37 +34,7 @@ export default function HomePage() {
           <h2>Projetos em Destaque</h2>
           <Link href="/project" className='view_all'>Ver todos</Link>
         </div>
-        <div className={styles.projects_grid}>
-          {projetosDestaque.map((projeto) => (
-            <div key={projeto.id} className={`${styles.project_card} ${projeto.seloESG ? styles.esg : ''}`} style={{ display: projeto.seloESG ? 'none' : '' }}>
-              <div className={styles.project_image}>
-                <Image
-                  src={getProjectImage(projeto.id)}
-                  alt={projeto.titulo}
-                  width={400}
-                  height={300}
-                />
-              </div>
-              <div className={styles.project_info}>
-                <h3>{projeto.titulo}</h3>
-                <p>{projeto.descricao}</p>
-                <div className={styles.project_meta}>
-                  <span>{projeto.area}</span>
-                  <span> • {projeto.localizacao.cidade}, {projeto.localizacao.pais}</span>
-                  <span> • {projeto.ano}</span>
-                </div>
-                <div className={styles.project_architect}>
-                  <Link href={`/architect/${projeto.arquitetoId}`}>
-                    {arquitetos.find(arq => arq.id === projeto.arquitetoId)?.nome}
-                  </Link>
-                </div>
-                <Link href={`/architect/chatillon-architectes/project/${projeto.id}`} className='primary_button'>
-                  Ver projeto
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
+        <ProjectCard project={projetosDestaque} />
       </section>
 
       {/* Seção de Arquitetos em Destaque */}

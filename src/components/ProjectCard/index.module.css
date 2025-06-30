@@ -3,18 +3,14 @@
 }
 
 .projects_section {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .projects_section h2 {
     font-size: 2.2rem;
-    margin-bottom: 1.5rem;
-}
-
-.section_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 1.5rem;
 }
 

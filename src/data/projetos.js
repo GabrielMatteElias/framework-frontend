@@ -3,7 +3,7 @@ export const projetos = [
     arquitetoId: "francois-chatillon",
     id: "le-grand-palais",
     titulo: "Reforma do Le Grand Palais",
-    descricao: "Reforma e modernização do icônico Grand Palais em Paris, preservando sua arquitetura histórica enquanto atualiza sua infraestrutura.",
+    descricao: "Reforma e modernização do icônico Grand Palais em Paris, preservando sua arquitetura histórica enquanto atualiza sua infraestrutura.Reforma e modernização do icônico Grand Palais em Paris, preservando sua arquitetura histórica enquanto atualiza sua infraestrutura.",
     area: "72000m²",
     localizacao: {
       cidade: "Paris",
@@ -19,7 +19,7 @@ export const projetos = [
       "/projetos/grand-palais/img3.jpg",
       "/projetos/grand-palais/img4.jpg"
     ],
-    descricaoCompleta: "A reforma do Grand Palais em Paris visa preservar e modernizar este ícone da arquitetura Beaux-Arts, inaugurado em 1900. O projeto, liderado por especialistas, restaurará a cúpula de vidro e ferro, melhorará a eficiência energética e atualizará a infraestrutura para atender às normas de segurança e acessibilidade. Os espaços internos serão reorganizados para maior flexibilidade, com novos acessos criados. A intervenção equilibra a preservação do legado histórico com as necessidades contemporâneas.",
+    descricaoCompleta: "A reforma do Grand Palais em Paris visa preservar e modernizar este ícone da arquitetura Beaux-Arts, inaugurado em 1900..",
     seloESG: false,
     destaque: true,
     contribuintes: [

@@ -68,66 +68,8 @@
   font-size: 2.2rem;
 }
 
-.projects_grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 2rem;
-}
-
 .featured_projects{
   margin-bottom: 3rem;
-}
-
-.project_card {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.253);
-  transition: transform 0.2s ease;
-  z-index: 1;
-}
-
-.project_card:hover {
-  transform: translateY(-5px);
-}
-
-.project_image {
-  position: relative;
-  height: 250px;
-}
-
-.project_image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.project_info {
-  padding: 1.5rem;
-}
-
-.project_info h3 {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-}
-
-.project_info p {
-  color: #666;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-}
-
-.project_meta {
-  color: #888;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.project_architect {
-  color: #0066cc;
-  font-size: 1rem;
-  margin-bottom: 1rem;
 }
 
 /* Arquitetos em Destaque */

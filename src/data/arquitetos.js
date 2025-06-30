@@ -85,7 +85,7 @@ export const arquitetos = [
       estado: "MG",
       pais: "Brasil"
     },
-    biografia: "Com mais de 20 anos de trajetória, Marina é referência em restauração de patrimônios históricos...",
+    biografia: "Com mais de 20 anos de trajetória. Referência em restauração de patrimônios históricos...",
     especialidades: ["Restauração", "Residencial Alto Padrão", "Patrimônio Histórico"],
     foto: "https://marcozero.org/wp-content/uploads/2022/06/image-5.png",
     redesSociais: {
@@ -119,7 +119,7 @@ export const arquitetos = [
       estado: "MG",
       pais: "Brasil"
     },
-    biografia: "Com mais de 20 anos de experiência, Carlos é especialista em restauração de patrimônios históricos...",
+    biografia: "Estudande de Arquitetura e Urbanismo com foco em restauração de patrimônios históricos...",
     especialidades: ["Restauração", "Residencial Alto Padrão", "Patrimônio Histórico"],
     foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT_VqaExTJlEVi1Cj-5jdVAcsaffcOs6YIBw&s",
     redesSociais: {
