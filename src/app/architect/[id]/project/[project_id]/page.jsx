@@ -17,8 +17,7 @@ import { Carousel } from '@/components/Carousel';
 
 export async function generateMetadata({ params }) {
     const { project_id } = params
-    const projeto = getProjetosById(project_id)
-    console.log(projeto);
+    const projeto = await getProjetosById(project_id)
 
     if (!projeto) {
         return {
