@@ -1,8 +1,6 @@
 'use client';
 import { useState } from "react";
 import styles from './index.module.css';
-import VerifiedIcon from '@/assets/verified-icon.png';
-import Image from "next/image";
 import Link from "next/link";
 
 export function VerifiedBadge({ disableClick = true, architectName, width }) {
@@ -19,12 +17,12 @@ export function VerifiedBadge({ disableClick = true, architectName, width }) {
 
     return (
         <>
-            <div onClick={handleOpen} className={!disableClick && styles.ableClick}>
+            <div onClick={handleOpen} className={`${!disableClick && styles.ableClick}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" width={width || '16'} height={width || '16'} viewBox="0 0 24 24">
                     <defs>
                         <mask id="cutout">
                             <rect width="100%" height="100%" fill="white" />
-                            <path d="M9 12l2 2 4-4" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M9 12l2 2 4-4" fill="none" stroke="black" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </mask>
                     </defs>
                     <path
