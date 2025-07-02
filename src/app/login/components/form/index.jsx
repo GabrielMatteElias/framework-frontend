@@ -7,7 +7,7 @@ import { useEffect, useReducer, useState } from 'react'
 import styles from './index.module.css'
 
 //google next auth
-import { signIn, signOut, useSession } from "next-auth/react"
+// import { signIn, signOut, useSession } from "next-auth/react"
 
 //components
 import BasicButton from "@/components/Buttons/BasicButton"
@@ -76,7 +76,7 @@ export function FormLogin({ isRegister }) {
         // console.log(response);
     }
 
-    const { status, data } = useSession()
+    // const { status, data } = useSession()
 
     // useEffect(() => {
     //     if (data && data.user) {
@@ -84,18 +84,18 @@ export function FormLogin({ isRegister }) {
     //     }
     // }, [data])
 
-    async function handleGoogleLogin() {
-        await signIn("google")
+    // async function handleGoogleLogin() {
+    //     await signIn("google")
 
-        // if (!data || !data.user) {
-        //     alert("Erro ao logar com conta google")
-        // }
+    //     // if (!data || !data.user) {
+    //     //     alert("Erro ao logar com conta google")
+    //     // }
 
-    }
+    // }
 
-    async function handleGoogleLogOut() {
-        await signOut()
-    }
+    // async function handleGoogleLogOut() {
+    //     await signOut()
+    // }
 
     return (
         <div className={styles.form_Wrapper}>
@@ -123,7 +123,9 @@ export function FormLogin({ isRegister }) {
                     <BasicButton type='submit' text='Submit' />
                 </div>
 
-                <button className={styles.button_google_login} onClick={handleGoogleLogin}>
+                <button className={styles.button_google_login} 
+                // onClick={handleGoogleLogin}
+                >
                     <Image
                         src={googleIcon}
                         alt='Google Icon'
