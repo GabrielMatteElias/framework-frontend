@@ -15,6 +15,39 @@ import dynamic from 'next/dynamic';
 import { ArchitectCard } from '@/components/ArchitectCard';
 import { Carousel } from '@/components/Carousel';
 
+export async function generateMetadata({ params }) {
+    const { project_id } = params
+    const projeto = getProjetosById(project_id)
+    console.log(projeto);
+    
+
+    if (!projeto) {
+        return {
+            title: 'Projeto não encontrado - Framework',
+            description: 'O arquiteto solicitado não foi encontrado.',
+        }
+    }
+
+    return {
+        title: `${projeto.titulo} - Framework`,
+        description: projeto.descricao,
+        openGraph: {
+            title: `${projeto.titulo} - Framework`,
+            description: projeto.descricao,
+            url: `https://framework-frontend-pearl.vercel.app/architect/${project_id}`,
+            images: [
+                {
+                    url: 'https://suoviaggio.com.br/wp-content/uploads/2025/05/Grand-Palais.jpg',
+                    width: 1200,
+                    height: 630,
+                    alt: `Foto de ${projeto.titulo}`
+                }
+            ],
+            type: 'profile',
+        }
+    }
+}
+
 const MapComponent = dynamic(() => import('@/components/ProjectMapView'), {
     ssr: false,
 });

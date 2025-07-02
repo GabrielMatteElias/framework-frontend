@@ -10,16 +10,33 @@ import { ProjectCard } from '@/components/ProjectCard';
 import ViewToggle from '@/components/ViewToggle';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 
-export const generateMetadata = async ({ params }) => {
-    const { id } = params;
-    const arquiteto = getArquitetoById(id);
+export async function generateMetadata({ params }) {
+    const { id } = params
+    const arquiteto = getArquitetoById(id)
+
+    if (!arquiteto) {
+        return {
+            title: 'Arquiteto não encontrado - Framework',
+            description: 'O arquiteto solicitado não foi encontrado.',
+        }
+    }
 
     return {
         title: `${arquiteto.nome} - Framework`,
         description: arquiteto.subtitulo,
         openGraph: {
-            title: arquiteto.nome,
-            images: [arquiteto.foto],
+            title: `${arquiteto.nome} - Framework`,
+            description: arquiteto.subtitulo,
+            url: `https://framework-frontend-pearl.vercel.app/architect/${id}`,
+            images: [
+                {
+                    url: arquiteto.foto,
+                    width: 1200,
+                    height: 630,
+                    alt: `Foto de ${arquiteto.nome}`
+                }
+            ],
+            type: 'profile',
         }
     }
 }
