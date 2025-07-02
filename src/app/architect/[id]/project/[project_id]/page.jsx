@@ -19,7 +19,6 @@ export async function generateMetadata({ params }) {
     const { project_id } = params
     const projeto = getProjetosById(project_id)
     console.log(projeto);
-    
 
     if (!projeto) {
         return {
@@ -29,21 +28,29 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-        title: `${projeto.titulo} - Framework`,
-        description: projeto.descricao,
+        title: `${projeto.titulo} | Projeto Arquitetônico - Framework`,
+        description: projeto.descricao || 'Veja detalhes sobre este projeto arquitetônico publicado na Framework.',
         openGraph: {
-            title: `${projeto.titulo} - Framework`,
-            description: projeto.descricao,
+            title: `${projeto.titulo} | Projeto Arquitetônico - Framework`,
+            description: projeto.descricao || 'Projeto em destaque na plataforma Framework.',
             url: `https://framework-frontend-pearl.vercel.app/architect/${project_id}`,
             images: [
                 {
                     url: 'https://suoviaggio.com.br/wp-content/uploads/2025/05/Grand-Palais.jpg',
                     width: 1200,
                     height: 630,
-                    alt: `Foto de ${projeto.titulo}`
+                    alt: `Imagem do projeto ${projeto.titulo}`,
                 }
             ],
-            type: 'profile',
+            type: 'article',
+            locale: 'pt_BR',
+            siteName: 'Framework',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: `${projeto.titulo} | Projeto Arquitetônico - Framework`,
+            description: projeto.descricao || '',
+            images: [projeto.imagemPrincipal],
         }
     }
 }
