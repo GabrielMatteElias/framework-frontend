@@ -15,7 +15,7 @@ import hafencityHamburgo from '@/assets/hafencity-hamburgo.webp'
 import ViewToggle from '../ViewToggle';
 import { useState } from 'react';
 
-export function ProjectCard({ project, title = false }) {
+export function ProjectCard({ project, title = '', viewToggle = false }) {
 
     const getProjectImage = (id) => {
         const imagens = {
@@ -36,14 +36,14 @@ export function ProjectCard({ project, title = false }) {
             <div className={styles.projects_section}>
                 {title && (
                     <div className={styles.section_header}>
-                        <h2>Projetos</h2>
+                        <h2>{title || 'Projetos'}</h2>
                     </div>
                 )}
-                <ViewToggle layout={layout} setLayout={setLayout} />
+                { viewToggle && (<ViewToggle layout={layout} setLayout={setLayout} />)}
             </div>
 
             <div className={layout === 'grid' ? styles.projects_grid : styles.projects_list}>
-                {project.map((projeto) => (
+                {project.slice(0,3).map((projeto) => (
                     <div key={projeto.id} className={`${layout === 'grid' ? styles.project_card : styles.project_list_item} ${projeto.seloESG && 'esg'}`}>
                         <div className={`${layout === 'grid' ? styles.project_image : styles.list_image}`}>
                             <Image

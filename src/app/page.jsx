@@ -5,7 +5,7 @@ import { getProjetosDestaque, getProjetosESG } from '@/data/projetos';
 import { arquitetos } from '@/data/arquitetos';
 
 
-import SearchAndFilters from './components/SearchAndFilters';
+import SearchAndFilters from '../components/SearchAndFilters';
 import Link from 'next/link';
 import { ArchitectCard } from '@/components/ArchitectCard';
 import { Footer } from '@/components/Footer';
@@ -45,7 +45,9 @@ export default function HomePage() {
         </div>
         <div className={styles.architects_grid}>
           {arquitetosDestaque.map((architect) => (
-            <ArchitectCard architect={architect} />
+            <div key={architect.id}>
+              <ArchitectCard architect={architect} />
+            </div>
           ))}
         </div>
       </section>

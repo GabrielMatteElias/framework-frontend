@@ -25,6 +25,7 @@ export const projetos = [
     contribuintes: [
       {
         id: "francois-chatillon",
+        destaque: true,
         nome: "François Chatillon",
         subtitulo: "Arquiteto Independente",
         papel: "Arquiteto Principal",
@@ -63,6 +64,7 @@ export const projetos = [
     destaque: false,
     contribuintes: [
       {
+        destaque: true,
         id: "francois-chatillon",
         nome: "François Chatillon",
         tipo: "Arquiteto Independente",
@@ -102,6 +104,7 @@ export const projetos = [
     destaque: true,
     contribuintes: [
       {
+        destaque: true,
         id: "francois-chatillon",
         nome: "François Chatillon",
         tipo: "Arquiteto Independente",
@@ -141,6 +144,7 @@ export const projetos = [
     destaque: true,
     contribuintes: [
       {
+        destaque: true,
         id: "francois-chatillon",
         nome: "François Chatillon",
         tipo: "Arquiteto Independente",
@@ -173,6 +177,7 @@ export const projetos = [
     destaque: true,
     contribuintes: [
       {
+        destaque: true,
         id: "francois-chatillon",
         nome: "François Chatillon",
         tipo: "Arquiteto Independente",
@@ -211,6 +216,7 @@ export const projetos = [
     destaque: true,
     contribuintes: [
       {
+        destaque: true,
         id: "francois-chatillon",
         nome: "François Chatillon",
         tipo: "Arquiteto Independente",

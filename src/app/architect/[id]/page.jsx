@@ -8,6 +8,21 @@ import { getArquitetoById } from '@/data/arquitetos';
 import dynamic from 'next/dynamic';
 import { ProjectCard } from '@/components/ProjectCard';
 import ViewToggle from '@/components/ViewToggle';
+import { VerifiedBadge } from '@/components/VerifiedBadge';
+
+export const generateMetadata = async ({ params }) => {
+    const { id } = params;
+    const arquiteto = getArquitetoById(id);
+
+    return {
+        title: `${arquiteto.nome} - Framework`,
+        description: arquiteto.subtitulo,
+        openGraph: {
+            title: arquiteto.nome,
+            images: [arquiteto.foto],
+        }
+    }
+}
 
 export default function ArquitetoPage({ params }) {
 
@@ -39,7 +54,7 @@ export default function ArquitetoPage({ params }) {
                         name='Chatillon Architectes'
                         width={120}
                         height={120} />
-                    {arquiteto.verificado && (
+                    {arquiteto.destaque && (
                         <div className={styles.verified_badge}>
                             <Badge type="verified" size='large' />
                         </div>
@@ -47,7 +62,14 @@ export default function ArquitetoPage({ params }) {
                 </div>
 
                 <div className={styles.profile_info}>
-                    <h1>{arquiteto.nome}</h1>
+                    <div className={styles.name}>
+                        <h1>{arquiteto.nome}</h1>
+                        {arquiteto.destaque && (
+                            <div>
+                                <VerifiedBadge disableClick={false} architectName={arquiteto.nome} width={21} />
+                            </div>
+                        )}
+                    </div>
                     <p className={styles.location}>
                         {arquiteto.localizacao.cidade}, {arquiteto.localizacao.estado}, {arquiteto.localizacao.pais}
                     </p>
@@ -117,8 +139,8 @@ export default function ArquitetoPage({ params }) {
                 </div>
             </section>
 
-                <ProjectCard project={projetos} title/>
+            <ProjectCard project={projetos} title='Projetos' viewToggle />
 
-        </Container>
+        </Container >
     );
 }

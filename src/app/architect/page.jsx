@@ -6,11 +6,11 @@ import { Container } from '@/components/Container';
 import ProfileAvatar from '@/components/Avatar';
 import Link from 'next/link';
 import { arquitetos } from '@/data/arquitetos';
+import { VerifiedBadge } from '@/components/VerifiedBadge';
 
 export default function ArchitectPage() {
 
     const architects = arquitetos
-console.log(architects);
 
     const [filtros, setFiltros] = useState({ localizacao: '', tipo: '', esg: false, experiencia: '', ordenacao: '' });
 
@@ -70,6 +70,12 @@ console.log(architects);
                     <option value="11+">11+</option>
                 </select>
 
+                <select name="qtdProjetos" onChange={handleChange} defaultValue="">
+                    <option value="">Verificado</option>
+                    <option value="1">Sim</option>
+                    <option value="0">Não</option>
+                </select>
+
                 <label>
                     <input type="checkbox" name="esg" onChange={handleChange} /> Selo ESG
                 </label>
@@ -87,7 +93,14 @@ console.log(architects);
                             />
                         </div>
                         <div className={styles.arquitetoInfo}>
-                            <h3>{arq.nome}</h3>
+                            <div className={styles.name}>
+                                <h3>{arq.nome}</h3>
+                                {arq.destaque && (
+                                    <div className={styles.verifiedBadge}>
+                                        <VerifiedBadge />
+                                    </div>
+                                )}
+                            </div>
                             <p className={styles.titulo}>{arq.subtitulo}</p>
                             <p className={styles.local}>{arq.localizacao.cidade}, {arq.localizacao.pais}</p>
                             <p className={styles.projetos}>{arq.projetosPublicados.length} projetos publicados</p>

@@ -27,7 +27,6 @@ export default function SearchAndFilters() {
                         { id: 'comercial', label: 'Comercial' },
                         { id: 'urbano', label: 'Urbano' },
                         { id: 'sustentavel', label: 'Sustentável' },
-                        { id: 'esg', label: 'Selo ESGaaa' }
                     ]}
                     selectedFilter={selectedFilter}
                     onFilterChange={handleFilterChange}

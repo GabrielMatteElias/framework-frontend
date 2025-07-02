@@ -32,6 +32,17 @@
     margin-bottom: 0.5rem;
 }
 
+.name{
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.name svg{
+    margin-top: .3rem;
+    color: #0066cc;
+}
+
 .location {
     color: rgb(102, 102, 102);
     font-size: 1.4rem;

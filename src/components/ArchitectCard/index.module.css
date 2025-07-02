@@ -46,6 +46,14 @@
     margin-bottom: 1rem;
 }
 
+.architect_name {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #0066cc;
+}
+
 .architect_info h3 {
     font-size: 1.4rem;
     margin-bottom: 0.3rem;

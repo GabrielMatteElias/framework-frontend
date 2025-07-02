@@ -87,15 +87,17 @@ export default function ProjectPage({ params }) {
             </section>
 
             <section className={styles.gallery}>
-                <h2>Galeria</h2>               
-                <Carousel imagens={imagens}/>
+                <h2>Galeria</h2>
+                <Carousel imagens={imagens} />
             </section>
 
             <section className={styles.contributors}>
                 <h2>Contribuintes</h2>
                 <div className={styles.contributor_grid}>
                     {project.contribuintes.map((contribuinte) => (
-                        <ArchitectCard  architect={contribuinte}/>
+                        <div key={contribuinte.id}>
+                            <ArchitectCard architect={contribuinte} />
+                        </div>
                     ))}
                 </div>
             </section>

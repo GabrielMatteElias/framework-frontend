@@ -1,7 +1,8 @@
 import Link from "next/link";
 import styles from "./index.module.css";
 import Image from "next/image";
-export function ArchitectCard({ architect }) {    
+import { VerifiedBadge } from "../VerifiedBadge";
+export function ArchitectCard({ architect }) {
     return (
         <Link
             href={`/architect/${architect.id}`}
@@ -25,9 +26,13 @@ export function ArchitectCard({ architect }) {
                 </div>
                 <div className={styles.architect_content}>
                     <div className={styles.architect_info}>
-                        <h3>{architect.nome}</h3>
+                        <div className={styles.architect_name}>
+                            <h3>{architect.nome}</h3>
+                            {architect.destaque && (
+                                <VerifiedBadge disableClick={true}/>
+                            )}
+                        </div>
                         <span>{architect.subtitulo}</span>
-
                         {architect.papel && (
                             <p>{architect.papel}</p>
                         )}

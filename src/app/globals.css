@@ -92,3 +92,33 @@ li {
 .leaflet-bottom{
   display: none;
 }
+
+/* Modal */
+.modal_overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal_container {
+  background: #fff;
+  padding-top: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 76rem;
+}
+
+.modal_title{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.363);
+    padding-bottom: .5rem;
+    font-size: 2rem;
+}
+
+.modal_title h2{
+  padding-left: 2.4rem;
+  font-size: 1.8rem;
+}

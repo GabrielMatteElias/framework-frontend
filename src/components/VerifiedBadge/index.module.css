@@ -1,0 +1,28 @@
+.ableClick{
+  cursor: pointer;
+}
+
+.modal_content {
+  font-size: 1.4rem;
+  padding: 2.4rem;
+}
+
+.modal_question {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.6rem;
+}
+
+.modal_text {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.modal_link {
+  color: #0a66c2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.modal_link:hover {
+  text-decoration: underline;
+}

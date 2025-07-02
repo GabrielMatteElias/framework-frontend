@@ -31,12 +31,11 @@ export default function EditArchitectModal({ arquiteto }) {
             <button className={styles.edit_button} onClick={() => setOpen(true)}>Editar Perfil</button>
 
             {open && (
-                <div className={styles.modal_overlay} onClick={() => setOpen(false)}>
+                <div className='modal_overlay' onClick={() => setOpen(false)}>
 
-                    <div className={styles.modal_container} onClick={(e) => e.stopPropagation()}>
-                        <div className={styles.modal_title}>
+                    <div className='modal_container' onClick={(e) => e.stopPropagation()}>
+                        <div className='modal_title'>
                             <h2>Editar Perfil</h2>
-
                         </div>
                         <div className={styles.form_group}>
                             <label>Nome</label>
