@@ -15,10 +15,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* <AuthProvider> */}
+        <AuthProvider>
           <Header />
           <main style={{ paddingTop: "3rem" }}>{children}</main>
-        {/* </AuthProvider> */}
+        </AuthProvider>
       </body>
     </html>
   );
