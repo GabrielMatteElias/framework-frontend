@@ -1,5 +1,3 @@
-import perfilPic from '../assets/profilePic.jpg';
-
 export const arquitetos = [
   {
     id: "francois-chatillon",
@@ -30,7 +28,9 @@ export const arquitetos = [
     estatisticas: {
       totalProjetos: 6,
       projetosESG: 3,
-      visualizacoes: 18500
+      visualizacoes: 23578,
+      likes: 4089,
+      seguidores: 568
     },
     projetosPublicados: [
       "Restauração do Grand Palais",
@@ -54,7 +54,7 @@ export const arquitetos = [
     },
     biografia: "Arquiteta e urbanista com foco em projetos de revitalização urbana e espaços públicos...",
     especialidades: ["Urbano", "Espaços Públicos", "Sustentável"],
-    foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_Wu5sy3WwF0LRnxkNAJx4g2ZK4KASdc8Jxg&s",
+    foto: "https://media.licdn.com/dms/image/v2/D4D03AQHnzavOPiczdw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1715674818716?e=1756944000&v=beta&t=BR0hx5P4iIHS_hgTV9yGkxpPgna0x5THktYSy1gCb7A",
     redesSociais: {
       linkedin: "https://linkedin.com/in/ana-silva-mendes",
       instagram: "https://instagram.com/ana.arq.urbanismo",

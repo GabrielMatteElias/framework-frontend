@@ -3,7 +3,6 @@ import styles from './page.module.css';
 import Image from 'next/image';
 import img1 from '@/assets/foto1.png'
 import img2 from '@/assets/foto2.png'
-import img3 from '@/assets/foto3.png'
 import img4 from '@/assets/foto4.png'
 import img5 from '@/assets/foto5.png'
 import img6 from '@/assets/foto6.png'
@@ -14,6 +13,9 @@ import { getProjetosById } from '@/data/projetos';
 import dynamic from 'next/dynamic';
 import { ArchitectCard } from '@/components/ArchitectCard';
 import { Carousel } from '@/components/Carousel';
+import LikeButton from '@/components/LikeButton';
+import { formataValorVirgula, formatNumberByCountry } from '@/utils/formaters';
+import { ShareMenu } from '@/components/ShareMenu';
 
 export async function generateMetadata({ params }) {
     const { project_id } = params
@@ -27,10 +29,10 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-        title: `${projeto.titulo} | Projeto Arquitetônico - Framework`,
+        title: `${projeto.titulo} - Framework`,
         description: projeto.descricao || 'Veja detalhes sobre este projeto arquitetônico publicado na Framework.',
         openGraph: {
-            title: `${projeto.titulo} | Projeto Arquitetônico - Framework`,
+            title: `${projeto.titulo} - Framework`,
             description: projeto.descricao || 'Projeto em destaque na plataforma Framework.',
             url: `https://framework-frontend-pearl.vercel.app/architect/${project_id}`,
             images: [
@@ -78,7 +80,7 @@ export default function ProjectPage({ params }) {
                 <div className={styles.project_image}>
                     <Image
                         src={img1}
-                        alt={project.titulo}
+                        // alt={project.titulo}
                         width={800}
                         height={450}
                         className={styles.main_image}
@@ -86,26 +88,35 @@ export default function ProjectPage({ params }) {
                 </div>
 
                 <div className={styles.project_info}>
-                    <h1>{project.titulo}</h1>
-                    <p className={styles.short_description}>{project.descricaoCompleta}</p>
+                    <div className={styles.project_title}>
+                        <h1>{project.titulo}</h1>
+                        <div className={styles.project_actions}>
+                            <ShareMenu title={project.titulo} />
+                            <LikeButton isPage />
 
-                    <div className={styles.project_meta}>
-                        <div className={styles.meta_item}>
-                            <span className={styles.meta_label}>Localização:</span>
-                            <span>{project.localizacao.cidade}, {project.localizacao.pais}</span>
                         </div>
                     </div>
+                    <div className={styles.project_meta}>
+                        <div className={styles.meta_item}>
+                            <span>{project.localizacao.cidade}, {project.localizacao.pais}</span>
+                            <span className={styles.meta_label}> • </span>
+                            <span>{project.area}</span>
+                            <span className={styles.meta_label}> • </span>
+                            <span>{project.ano}</span>
+                        </div>
+                    </div>
+                    <p className={styles.description}>{project.descricaoCompleta}</p>
                 </div>
             </section>
 
             <section className={styles.project_stats}>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{project.area}</div>
-                    <div className={styles.stat_label}>Área Construída</div>
+                    <div className={styles.stat_value}>{formatNumberByCountry(project.estatisticas.views, 'br')}</div>
+                    <div className={styles.stat_label}>Visualizações</div>
                 </div>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{project.ano}</div>
-                    <div className={styles.stat_label}>Ano de Conclusão</div>
+                    <div className={styles.stat_value}>{formatNumberByCountry(project.estatisticas.likes, 'br')}</div>
+                    <div className={styles.stat_label}>Curtidas</div>
                 </div>
                 <div className={styles.stat_card}>
                     <div className={styles.stat_value}>{project.seloESG ? 'Sim' : 'Não'}</div>

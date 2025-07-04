@@ -33,7 +33,19 @@
     color: #333;
 }
 
-.short_description {
+.project_title{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-between;
+}
+
+.project_actions {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.description {
     color: #666;
     font-size: 1.4rem;
     line-height: 1.5;
@@ -43,18 +55,18 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
-    margin-top: 1rem;
 }
 
 .meta_item {
     display: flex;
     gap: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
 }
 
 .meta_label {
     font-weight: 600;
     color: #555;
+    margin-left: 0.2rem;
 }
 
 .project_stats {
@@ -150,7 +162,7 @@
 @media (min-width: 768px) {
     .project_header {
         flex-direction: row;
-        align-items: center;
+        align-items: flex-start;
     }
 
     .project_image {

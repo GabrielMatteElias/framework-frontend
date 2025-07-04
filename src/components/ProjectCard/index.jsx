@@ -14,6 +14,7 @@ import edificioComercial from '@/assets/edificio-comercial.webp'
 import hafencityHamburgo from '@/assets/hafencity-hamburgo.webp'
 import ViewToggle from '../ViewToggle';
 import { useState } from 'react';
+import LikeButton from '../LikeButton';
 
 export function ProjectCard({ project, title = '', viewToggle = false }) {
 
@@ -39,11 +40,11 @@ export function ProjectCard({ project, title = '', viewToggle = false }) {
                         <h2>{title || 'Projetos'}</h2>
                     </div>
                 )}
-                { viewToggle && (<ViewToggle layout={layout} setLayout={setLayout} />)}
+                {viewToggle && (<ViewToggle layout={layout} setLayout={setLayout} />)}
             </div>
 
             <div className={layout === 'grid' ? styles.projects_grid : styles.projects_list}>
-                {project.slice(0,3).map((projeto) => (
+                {project.slice(0, 6).map((projeto) => (
                     <div key={projeto.id} className={`${layout === 'grid' ? styles.project_card : styles.project_list_item} ${projeto.seloESG && 'esg'}`}>
                         <div className={`${layout === 'grid' ? styles.project_image : styles.list_image}`}>
                             <Image
@@ -53,6 +54,9 @@ export function ProjectCard({ project, title = '', viewToggle = false }) {
                                 height={layout === 'grid' ? 300 : 90}
                                 className={`${layout === 'grid' ? styles.project_image_content : styles.list_image_content}`}
                             />
+                            <div className={styles.like_overlay}>
+                                <LikeButton initialLiked={false} onChange={next => handleLike(projeto.id, next)} />
+                            </div>
                         </div>
                         <div className={`${styles.project_info}  ${layout === "list" && styles.list_info}`}>
                             <h3>{projeto.titulo}</h3>

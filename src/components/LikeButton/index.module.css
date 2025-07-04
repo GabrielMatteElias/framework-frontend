@@ -1,0 +1,39 @@
+.like_button {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Overlay no formato do coração */
+.like_button.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.555);
+  transition: background 0.2s ease;
+  pointer-events: none;
+  /* Usa clip-path com o mesmo shape do SVG */
+  clip-path: path("M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z");
+}
+
+.heart_icon {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.2s ease, stroke 0.2s ease, fill 0.2s ease;
+}
+
+.like_button:hover .heart_icon {
+  transform: scale(1.1);
+}
+
+.liked .heart_icon {
+  animation: pop 0.2s ease forwards;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}

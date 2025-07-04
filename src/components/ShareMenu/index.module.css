@@ -1,0 +1,26 @@
+.container {
+  position: relative;
+}
+
+.share_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #7c7c7c;
+}
+
+.share_button:hover {
+  color: #aaa;
+}
+
+.drawer .MuiPaper-root {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  padding: 8px 0;
+}
+
+.listItem {
+  text-align: center;
+  font-size: 1rem;
+}

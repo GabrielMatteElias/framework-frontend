@@ -30,17 +30,17 @@
     overflow: hidden;
     background-color: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.253);
-    transition: transform 0.2s ease;
     z-index: 1;
 }
 
-.project_card:hover {
-    transform: translateY(-5px);
-}
-
 .project_image {
-    position: relative;
-    height: 250px;
+  position: relative;
+}
+.like_overlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
 }
 
 .project_image_content {

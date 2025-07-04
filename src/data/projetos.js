@@ -3,7 +3,7 @@ export const projetos = [
     arquitetoId: "francois-chatillon",
     id: "le-grand-palais",
     titulo: "Reforma do Le Grand Palais",
-    descricao: "Reforma e modernização do icônico Grand Palais em Paris, preservando sua arquitetura histórica enquanto atualiza sua infraestrutura.Reforma e modernização do icônico Grand Palais em Paris, preservando sua arquitetura histórica enquanto atualiza sua infraestrutura.",
+    descricao: "A reforma do Grand Palais em Paris visa preservar e modernizar este ícone da arquitetura Beaux-Arts, inaugurado em 1900.",
     area: "72000m²",
     localizacao: {
       cidade: "Paris",
@@ -19,7 +19,11 @@ export const projetos = [
       "/projetos/grand-palais/img3.jpg",
       "/projetos/grand-palais/img4.jpg"
     ],
-    descricaoCompleta: "A reforma do Grand Palais em Paris visa preservar e modernizar este ícone da arquitetura Beaux-Arts, inaugurado em 1900..",
+    estatisticas: {
+      likes: 178948,
+      views: 1250895
+    },
+    descricaoCompleta: "A reforma do Grand Palais em Paris é um projeto ambicioso que combina preservação histórica com modernização tecnológica. O projeto incluiu a restauração da icônica nave de vidro e estrutura metálica, a atualização dos sistemas elétricos e de segurança, e a criação de novos espaços expositivos subterrâneos. A intervenção respeitou rigorosamente os elementos originais do edifício enquanto introduziu soluções contemporâneas de acessibilidade e eficiência energética. O projeto também contemplou a melhoria da conexão do monumento com seu entorno urbano, facilitando o fluxo de visitantes que chegam a ultrapassar 2 milhões por ano.",
     seloESG: false,
     destaque: true,
     contribuintes: [
@@ -54,12 +58,16 @@ export const projetos = [
     },
     ano: 2021,
     arquitetoId: "francois-chatillon",
+    estatisticas: {
+      likes: 322,
+      views: 7286
+    },
     imagens: [
       "/projetos/edificio-comercial/principal.jpg",
       "/projetos/edificio-comercial/img1.jpg",
       "/projetos/edificio-comercial/img2.jpg"
     ],
-    descricaoCompleta: "Projeto inovador de edifício comercial que integra tecnologias sustentáveis...",
+    descricaoCompleta: "Este edifício comercial inovador em Porto Alegre foi concebido como um modelo de sustentabilidade urbana. O projeto integra painéis fotovoltaicos, sistema de captação e reutilização de água pluvial, e fachada ventilada que regula naturalmente a temperatura interna. Os espaços internos foram planejados para maximizar a iluminação natural, reduzindo em 40% o consumo energético em comparação com edifícios convencionais. O átrio central funciona como um jardim vertical que melhora a qualidade do ar e proporciona um ambiente agradável aos usuários. A certificação LEED Gold foi alcançada graças a estas e outras características ecológicas, tornando-o referência em arquitetura comercial sustentável no sul do Brasil.",
     seloESG: true,
     destaque: false,
     contribuintes: [
@@ -94,12 +102,16 @@ export const projetos = [
     },
     ano: 2023,
     arquitetoId: "francois-chatillon",
+    estatisticas: {
+      likes: 349,
+      views: 74879
+    },
     imagens: [
       "/projetos/museu-nacional-rj/principal.jpg",
       "/projetos/museu-nacional-rj/img1.jpg",
       "/projetos/museu-nacional-rj/img2.jpg"
     ],
-    descricaoCompleta: "Após o incêndio devastador de 2018, o projeto de reconstrução do Museu Nacional...",
+    descricaoCompleta: "Após o incêndio devastador de 2018, o projeto de reconstrução do Museu Nacional do Rio de Janeiro buscou conciliar a recuperação fiel dos elementos históricos preservados com a implantação de um moderno complexo museológico. A intervenção incluiu a restauração da fachada imperial, a criação de novos espaços expositivos com tecnologia museográfica de ponta, e a construção de um anexo subterrâneo para abrigar reservas técnicas e laboratórios. O projeto incorporou sistemas avançados de prevenção e combate a incêndios, além de soluções de acessibilidade universal. O jardim histórico da Quinta da Boa Vista foi integrado ao percurso museológico, criando um diálogo entre patrimônio arquitetônico, acervo científico e espaço público.",
     seloESG: false,
     destaque: true,
     contribuintes: [
@@ -134,12 +146,16 @@ export const projetos = [
     },
     ano: 2022,
     arquitetoId: "francois-chatillon",
+    estatisticas: {
+      likes: 29,
+      views: 589
+    },
     imagens: [
       "/projetos/casa-sustentavel/img1.jpg",
       "/projetos/casa-sustentavel/img2.jpg",
       "/projetos/casa-sustentavel/img3.jpg"
     ],
-    descricaoCompleta: "Projeto residencial que incorpora os mais avançados conceitos de sustentabilidade...",
+    descricaoCompleta: "Esta residência em Manaus representa o estado da arte em arquitetura sustentável para climas tropicais. O projeto incorporou estratégias passivas de ventilação e sombreamento, telhado verde com espécies nativas, e sistema de refrigeração geotérmica que reduz o consumo energético em 60%. Os materiais foram selecionados por seu baixo impacto ambiental, incluindo madeira certificada e tijolos ecológicos produzidos localmente. O sistema hidráulico integra captação de água da chuva, tratamento de efluentes e reúso, tornando a casa quase autossuficiente em recursos hídricos. A certificação LEED Platinum foi conquistada graças a este conjunto de soluções inovadoras, que servem de modelo para construções sustentáveis na região amazônica.",
     seloESG: true,
     destaque: true,
     contribuintes: [
@@ -167,12 +183,16 @@ export const projetos = [
     },
     ano: 2020,
     arquitetoId: "francois-chatillon",
+    estatisticas: {
+      likes: 4875,
+      views: 55146
+    },
     imagens: [
       "/projetos/revitalizacao-orla-guaiba/principal.jpg",
       "/projetos/revitalizacao-orla-guaiba/img1.jpg",
       "/projetos/revitalizacao-orla-guaiba/img2.jpg"
     ],
-    descricaoCompleta: "A revitalização da Orla do Guaíba é um marco de urbanismo contemporâneo...",
+    descricaoCompleta: "A revitalização da Orla do Guaíba em Porto Alegre transformou uma área subutilizada em um dos mais vibrantes espaços públicos do Brasil. O projeto criou uma sequência de praças, decks de madeira certificada, ciclovias e áreas de estar que se integram harmoniosamente com o lago. A intervenção incluiu soluções de drenagem sustentável, iluminação LED de baixo consumo, e mobiliário urbano produzido com materiais reciclados. O desenho paisagístico privilegiou espécies nativas adaptadas às variações do nível d'água. O projeto tornou-se um caso de sucesso de requalificação urbana, aumentando em 300% o uso público da área e servindo como catalisador para o desenvolvimento do entorno, sempre respeitando a identidade cultural e paisagística do local.",
     seloESG: false,
     destaque: true,
     contribuintes: [
@@ -206,12 +226,16 @@ export const projetos = [
     },
     ano: 2022,
     arquitetoId: "francois-chatillon",
+    estatisticas: {
+      likes: 42068,
+      views: 569984
+    },
     imagens: [
       "/projetos/hafencity-hamburgo/principal.jpg",
       "/projetos/hafencity-hamburgo/img1.jpg",
       "/projetos/hafencity-hamburgo/img2.jpg"
     ],
-    descricaoCompleta: "O projeto HafenCity representa uma das maiores iniciativas de reurbanização da Europa...",
+    descricaoCompleta: "HafenCity em Hamburgo é um dos maiores projetos de reurbanização portuária da Europa, transformando 157 hectares de docas obsoletas em um distrito urbano modelo. O plano diretor integrou soluções pioneiras de adaptação às mudanças climáticas, incluindo elevação do nível do solo e sistemas de drenagem resilientes. O bairro mistura usos residenciais, comerciais e culturais, com 40% de áreas públicas e espaços verdes. Os edifícios seguem rigorosos padrões de eficiência energética, muitos utilizando energia geotérmica da água do rio Elba. O projeto preservou elementos do patrimônio industrial enquanto criou uma identidade contemporânea, tornando-se referência global em desenvolvimento urbano sustentável e regeneração de áreas portuárias.",
     seloESG: true,
     destaque: true,
     contribuintes: [
