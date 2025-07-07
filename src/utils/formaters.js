@@ -60,17 +60,33 @@ const formatNumberByCountry = (value, countryCode = 'US') => {
         RU: 'ru-RU',
         CN: 'zh-CN',
     };
-
     const locale = localeMap[countryCode.toUpperCase()] || 'en-US';
 
     return new Intl.NumberFormat(locale).format(value);
 }
 
+const formatNumberShort = (numero, countryCode = 'pt-BR', options = { notation: 'compact'}) => {
+    const localeMap = {
+        BR: 'pt-BR',
+        US: 'en-US',
+        DE: 'de-DE',
+        FR: 'fr-FR',
+        ES: 'es-ES',
+        IN: 'en-IN',
+        JP: 'ja-JP',
+        RU: 'ru-RU',
+        CN: 'zh-CN',
+    };
+    const locale = localeMap[countryCode.toUpperCase()] || 'en-US';
+
+    return new Intl.NumberFormat(locale, options).format(numero);
+}
 
 export {
     formataData,
     formataCpf,
     formataValorVirgula,
     calcularDiferencaDataEmDias,
-    formatNumberByCountry
+    formatNumberByCountry,
+    formatNumberShort
 }

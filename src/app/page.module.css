@@ -14,11 +14,11 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('../assets/banner_home.webp');
+  background-image: url('https://images.adsttc.com/media/images/680f/763b/52b0/7701/8782/3249/slideshow/sunner-museum-atelier-alter-architects_2.jpg?1745843781');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  filter: brightness(0.4) contrast(1.1);
+  filter: brightness(0.5);
   /* opacidade e definição */
   z-index: 1;
   transform: scale(1.02);
@@ -57,6 +57,11 @@
   margin-bottom: 2rem;
 }
 
+.hero_content a {
+  font-size: 1.1rem;
+}
+
+
 .section_header {
   display: flex;
   justify-content: space-between;
@@ -68,7 +73,7 @@
   font-size: 2.2rem;
 }
 
-.featured_projects{
+.featured_projects {
   margin-bottom: 3rem;
 }
 

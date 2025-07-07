@@ -11,7 +11,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.555);
+  background: #888;
   transition: background 0.2s ease;
   pointer-events: none;
   /* Usa clip-path com o mesmo shape do SVG */

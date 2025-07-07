@@ -31,16 +31,21 @@
     background-color: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.253);
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .project_image {
-  position: relative;
+    position: relative;
+    flex-grow: 1;
 }
+
 .like_overlay {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 10;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
 }
 
 .project_image_content {
@@ -51,6 +56,9 @@
 
 .project_info {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .project_info h3 {
@@ -58,16 +66,45 @@
     margin-bottom: 0.5rem;
 }
 
-.project_info p {
+.description {
     color: #666;
     margin-bottom: 1rem;
     font-size: 1.2rem;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .project_meta {
     color: #888;
     font-size: 1rem;
     margin-bottom: 1rem;
+}
+
+.project_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.stats {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #888;
+}
+
+.stats svg {
+    margin-right: 4px;
+}
+
+.stats_actions{
+    display: flex;
+    align-items: center;
 }
 
 /* Responsividade */
@@ -148,7 +185,6 @@
     margin-left: auto;
     padding: 0.5rem 1rem;
     max-width: 150px;
-    /* evita que o botão fique gigante */
     width: auto;
 }
 

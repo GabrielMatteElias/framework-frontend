@@ -33,7 +33,6 @@ li {
   padding: 0.6rem 1.2rem;
   border-radius: 5px;
   text-decoration: none;
-  font-size: 1rem;
   transition: background-color 0.2s ease;
   border: none;
 }
@@ -121,4 +120,10 @@ li {
 .modal_title h2{
   padding-left: 2.4rem;
   font-size: 1.8rem;
+}
+
+/* rounded border phone drawer */
+.MuiDrawer-paper{
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }

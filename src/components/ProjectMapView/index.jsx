@@ -29,7 +29,7 @@ function ResetMapView({ coords }) {
     return null;
 }
 
-export default function MapComponent({ lat, lng, name }) {
+export function MapComponent({ lat, lng, name }) {
     const mapRef = useRef(null);
     const initialPosition = [lat, lng];
 

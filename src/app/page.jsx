@@ -1,6 +1,5 @@
 import { Container } from '@/components/arquitetoEhome/Container';
 import styles from './page.module.css';
-import Image from 'next/image';
 import { getProjetosDestaque, getProjetosESG } from '@/data/projetos';
 import { arquitetos } from '@/data/arquitetos';
 
@@ -19,11 +18,11 @@ export default function HomePage() {
     <Container>
       <section className={styles.hero_banner}>
         <div className={styles.hero_content}>
-          <h1>Arquitetura Sustentável para um Futuro Melhor</h1>
+          <h1>Boas ideias para mudar um mundo em construção</h1>
           <p>Conectando os melhores arquitetos com projetos que respeitam o meio ambiente e transformam vidas.</p>
-          <a href="/cadastro" className='primary_button'>
+          <Link href="/cadastro" className='primary_button'>
             Quero cadastrar meu perfil
-          </a>
+          </Link>
         </div>
       </section>
 

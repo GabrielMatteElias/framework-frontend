@@ -14,8 +14,7 @@ import dynamic from 'next/dynamic';
 import { ArchitectCard } from '@/components/ArchitectCard';
 import { Carousel } from '@/components/Carousel';
 import LikeButton from '@/components/LikeButton';
-import { formataValorVirgula, formatNumberByCountry } from '@/utils/formaters';
-import { ShareMenu } from '@/components/ShareMenu';
+import { formatNumberByCountry } from '@/utils/formaters';
 
 export async function generateMetadata({ params }) {
     const { project_id } = params
@@ -56,9 +55,15 @@ export async function generateMetadata({ params }) {
     }
 }
 
-const MapComponent = dynamic(() => import('@/components/ProjectMapView'), {
-    ssr: false,
-});
+const MapComponent = dynamic(
+  () => import('@/components/ProjectMapView').then((c) => c.MapComponent),
+  { ssr: false }
+)
+
+const ShareMenu = dynamic(
+    () => import('@/components/ShareMenu').then((c) => c.ShareMenu),
+    { ssr: false }
+)
 
 export default function ProjectPage({ params }) {
     const { project_id } = params;
@@ -80,7 +85,7 @@ export default function ProjectPage({ params }) {
                 <div className={styles.project_image}>
                     <Image
                         src={img1}
-                        // alt={project.titulo}
+                        alt={project.titulo}
                         width={800}
                         height={450}
                         className={styles.main_image}
