@@ -7,6 +7,7 @@ import ProfileAvatar from '@/components/Avatar';
 import Link from 'next/link';
 import { arquitetos } from '@/data/arquitetos';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
+import Filtros from './components';
 
 export default function ArchitectPage() {
 
@@ -31,56 +32,44 @@ export default function ArchitectPage() {
     //     );
     // });
 
+    const [showFiltroModal, setShowFiltroModal] = useState(false);
+
+    const toggleFiltroModal = () => setShowFiltroModal(prev => !prev);
+
     return (
         <Container>
             <section className={styles.hero}>
                 <h1>Encontre o Arquiteto Ideal</h1>
                 <p>Filtre por localização, especialidade e muito mais</p>
             </section>
-            <section className={styles.filtros}>
-                <input name="localizacao" placeholder="Localização" onChange={handleChange} />
 
-                <select name="tipo" onChange={handleChange} defaultValue="">
-                    <option value="">Tipo de Arquitetura</option>
-                    <option value="Residencial">Residencial</option>
-                    <option value="Comercial">Comercial</option>
-                    <option value="Urbano">Urbano</option>
-                    <option value="Sustentável">Sustentável</option>
-                </select>
+            <button className={styles.btnFiltroMobile} onClick={() => setShowFiltroModal(true)}>
+                Filtrar
+            </button>
 
-                <select name="experiencia" onChange={handleChange} defaultValue="">
-                    <option value="">Anos de experiência</option>
-                    <option value="0-5">0-5 anos</option>
-                    <option value="5-10">5-10 anos</option>
-                    <option value="10+">10+ anos</option>
-                </select>
-
-                <select name="formacao" onChange={handleChange} defaultValue="">
-                    <option value="">Formação Acadêmica</option>
-                    <option value="USP">USP</option>
-                    <option value="UFPR">UFPR</option>
-                    <option value="UFRJ">UFRJ</option>
-                    <option value="Outros">Outros</option>
-                </select>
-
-                <select name="qtdProjetos" onChange={handleChange} defaultValue="">
-                    <option value="">Projetos Publicados</option>
-                    <option value="1-5">1-5</option>
-                    <option value="6-10">6-10</option>
-                    <option value="11+">11+</option>
-                </select>
-
-                <select name="qtdProjetos" onChange={handleChange} defaultValue="">
-                    <option value="">Verificado</option>
-                    <option value="1">Sim</option>
-                    <option value="0">Não</option>
-                </select>
-
-                <label>
-                    <input type="checkbox" name="esg" onChange={handleChange} /> Selo ESG
-                </label>
+            {/* Filtros desktop sticky */}
+            <section className={styles.filtrosDesktop}>
+                <Filtros handleChange={handleChange} />
             </section>
 
+            {/* Modal mobile */}
+            {showFiltroModal && (
+                <div className={styles.filtroModalOverlay} onClick={() => setShowFiltroModal(false)}>
+                    <div className={styles.filtroModalContent} onClick={(e) => e.stopPropagation()}>
+                        <button className={styles.closeButton} onClick={() => setShowFiltroModal(false)}>×</button>
+                        <h2>Filtros</h2>
+                        <div className={styles.filtrosMobile}>
+                            <Filtros handleChange={handleChange} />
+                            <button
+                                className={styles.applyButton}
+                                onClick={() => setShowFiltroModal(false)}
+                            >
+                                Aplicar Filtros
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <section className={styles.listaArquitetos}>
                 {architects.map((arq) => (
