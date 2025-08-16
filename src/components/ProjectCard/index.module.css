@@ -18,6 +18,23 @@
     font-size: 2.2rem;
 }
 
+.actions_section{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.add_project_button_architect_page{
+    color: #666;
+  padding: 5px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #fff;
+}
+
 .projects_grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);

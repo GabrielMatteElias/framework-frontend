@@ -59,6 +59,30 @@ li {
   color: #ffffff;
 }
 
+/* btn add project header */
+.add_project_button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #007bff; /* cor primária */
+  color: white;
+  padding: 5px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add_project_button:hover {
+  background: #005fcc; /* tom mais escuro no hover */
+}
+
+.add_project_button svg {
+  stroke: white;
+}
+
 .view_all {
   color: #0066cc;
   text-decoration: none;

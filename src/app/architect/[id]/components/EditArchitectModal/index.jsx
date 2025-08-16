@@ -2,7 +2,7 @@
 'use client';
 
 import { useState } from 'react';
-import styles from './EditArchitectModal.module.css';
+import styles from './index.module.css';
 
 export default function EditArchitectModal({ arquiteto }) {
 

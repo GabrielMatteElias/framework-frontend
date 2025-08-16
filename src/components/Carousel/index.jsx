@@ -36,7 +36,7 @@ export function Carousel({ imagens }) {
                 {imagens.map((image, index) => (
                     <div key={index} className={styles.gallery_item}>
                         <Image
-                            src={image}
+                            src={`data:image/jpeg;base64,${image}`}
                             alt={`Image ${index + 1}`}
                             width={400}
                             height={300}
@@ -59,7 +59,14 @@ export function Carousel({ imagens }) {
                             </svg>
                         </button>
 
-                        <Image src={imagens[indiceAtual]} alt={`Projeto ${indiceAtual + 1}`} className={styles.modalImage} />
+                        <Image
+                            src={`data:image/jpeg;base64,${imagens[indiceAtual]}`}
+                            alt={`Projeto ${indiceAtual + 1}`}
+                            className={styles.modalImage}
+                            width='800'
+                            height='800'
+                            unoptimized
+                        />
 
                         <button className={styles.arrow} onClick={proximo}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"

@@ -1,12 +1,6 @@
 import { Container } from '@/components/arquitetoEhome/Container';
 import styles from './page.module.css';
 import Image from 'next/image';
-import img1 from '@/assets/foto1.png'
-import img2 from '@/assets/foto2.png'
-import img4 from '@/assets/foto4.png'
-import img5 from '@/assets/foto5.png'
-import img6 from '@/assets/foto6.png'
-import img7 from '@/assets/foto7.png'
 
 import { getProjetosById } from '@/data/projetos';
 
@@ -16,9 +10,9 @@ import { Carousel } from '@/components/Carousel';
 import LikeButton from '@/components/LikeButton';
 import { formatNumberByCountry } from '@/utils/formaters';
 
-export async function generateMetadata({ params }) {
+export function generateMetadata({ params }) {
     const { project_id } = params
-    const projeto = await getProjetosById(project_id)
+    const projeto = getProjetosById(project_id)
 
     if (!projeto) {
         return {
@@ -56,8 +50,8 @@ export async function generateMetadata({ params }) {
 }
 
 const MapComponent = dynamic(
-  () => import('@/components/ProjectMapView').then((c) => c.MapComponent),
-  { ssr: false }
+    () => import('@/components/ProjectMapView').then((c) => c.MapComponent),
+    { ssr: false }
 )
 
 const ShareMenu = dynamic(
@@ -65,30 +59,32 @@ const ShareMenu = dynamic(
     { ssr: false }
 )
 
-export default function ProjectPage({ params }) {
+async function getProject(id) {
+    const res = await fetch(`http://localhost:3000/api/projects/${id}`, {
+        cache: "no-store" // garante dados atualizados
+    });
+
+    if (!res.ok) throw new Error("Erro ao buscar projeto", res.status);
+
+    return res.json();
+}
+
+export default async function ProjectPage({ params }) {
     const { project_id } = params;
 
-    const project = getProjetosById(project_id);
-
-    const imagens = [
-        img7,
-        img4,
-        img5,
-        img1,
-        img6,
-        img2,
-    ]
+    const project = await getProject(project_id);
 
     return (
         <Container>
             <section className={styles.project_header}>
                 <div className={styles.project_image}>
                     <Image
-                        src={img1}
+                        src={`data:image/jpeg;base64,${project.imagens[5]}`}
                         alt={project.titulo}
                         width={800}
                         height={450}
                         className={styles.main_image}
+                        unoptimized
                     />
                 </div>
 
@@ -143,7 +139,7 @@ export default function ProjectPage({ params }) {
 
             <section className={styles.gallery}>
                 <h2>Galeria</h2>
-                <Carousel imagens={imagens} />
+                <Carousel imagens={project.imagens} />
             </section>
 
             <section className={styles.contributors}>

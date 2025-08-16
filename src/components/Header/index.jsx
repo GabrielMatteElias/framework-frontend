@@ -4,11 +4,27 @@ import Link from 'next/link';
 import styles from './index.module.css';
 import logo from '@/assets/framework-icon.png';
 import Image from 'next/image';
+import { useParams, usePathname, useRouter } from 'next/navigation';
+import { isArchitectProfile } from '@/utils/validators';
 
 export function Header() {
+    const pathname = usePathname();
+    const router = useRouter();
+
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [search, setSearch] = useState('');
+    const [isArchitect, setIsArchitect] = useState(false);
+    const [architectID, setIsArchitectID] = useState(null);
+
+    useEffect(() => {
+        setIsArchitect(localStorage.getItem('isArchitect') === 'true');
+        setIsArchitectID(localStorage.getItem('architectID'))
+
+        const handleScroll = () => setScrolled(window.scrollY > 0);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -18,14 +34,17 @@ export function Header() {
         setIsOpen(false);
     };
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 0);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    const handleNewProject = () => {
+        if (isArchitectProfile(pathname)) {
+            // estamos na página do arquiteto → apenas atualiza query param
+            const url = new URL(window.location.href);
+            url.searchParams.set('modal', 'newProject');
+            window.history.replaceState({}, '', url);
+        } else {
+            // estamos em outra página → navega para o perfil
+            router.push(`/architect/${architectID}?modal=newProject`);
+        }
+    };
 
     return (
         <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
@@ -43,8 +62,6 @@ export function Header() {
                     <span className={`${styles.hamburgerLine} ${isOpen ? styles.open : ''}`}></span>
                     <span className={`${styles.hamburgerLine} ${isOpen ? styles.open : ''}`}></span>
                 </button>
-
-
 
                 <div className={styles.options}>
                     <nav className={`${styles.nav} ${isOpen ? styles.navOpen : ''}`}>
@@ -80,6 +97,17 @@ export function Header() {
                             onChange={(e) => setSearch(e.target.value)}
                         />
                     </div>
+                    {isArchitect && (
+                        <button className='add_project_button' onClick={handleNewProject}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-house-plus-icon lucide-house-plus">
+                                <path d="M12.662 21H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v2.475" />
+                                <path d="M14.959 12.717A1 1 0 0 0 14 12h-4a1 1 0 0 0-1 1v8" />
+                                <path d="M15 18h6" />
+                                <path d="M18 15v6" />
+                            </svg>
+                            <span className={styles.add_project_label}>Novo Projeto</span>
+                        </button>
+                    )}
                     <div className={styles.user_icon}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="#aaa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-user-round-icon lucide-circle-user-round">
                             <path d="M18 20a6 6 0 0 0-12 0" />

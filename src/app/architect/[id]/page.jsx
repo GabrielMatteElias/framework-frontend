@@ -7,7 +7,6 @@ import { getArquitetoById } from '@/data/arquitetos';
 
 import dynamic from 'next/dynamic';
 import { ProjectCard } from '@/components/ProjectCard';
-import ViewToggle from '@/components/ViewToggle';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 
 export async function generateMetadata({ params }) {
@@ -41,14 +40,31 @@ export async function generateMetadata({ params }) {
     }
 }
 
-export default function ArquitetoPage({ params }) {
+async function getArchitect(id) {
+    const res = await fetch(`http://localhost:3000/api/architects/${id}`, {
+        cache: "no-store"
+    });
+
+    if (!res.ok) throw new Error("Erro ao buscar arquiteto: " + res.status);
+
+    return res.json();
+}
+
+export default async function ArquitetoPage({ params, searchParams }) {
 
     const { id } = params;
+    const modalAberto = searchParams?.modal === 'newProject';
+console.log('AQUI', modalAberto);
 
-    const arquiteto = getArquitetoById(id);
+    const arquiteto = await getArchitect(id);
+
     const projetos = getProjetosByArquiteto(id);
 
-    const EditArchitectModalButton = dynamic(() => import('./components/EditArchitectModal/EditArchitectModal.jsx'), {
+    const EditArchitectModalButton = dynamic(() => import('./components/EditArchitectModal/index.jsx'), {
+        ssr: false,
+    });
+
+    const NewProjectModalButton = dynamic(() => import('./components/NewProject/index.jsx'), {
         ssr: false,
     });
 
@@ -111,6 +127,7 @@ export default function ArquitetoPage({ params }) {
                 </div>
 
                 <EditArchitectModalButton arquiteto={arquiteto} />
+                <NewProjectModalButton arquiteto={arquiteto} isOpen={modalAberto} />
 
             </section>
 

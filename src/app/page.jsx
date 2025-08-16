@@ -10,9 +10,27 @@ import { ArchitectCard } from '@/components/ArchitectCard';
 import { Footer } from '@/components/Footer';
 import { ProjectCard } from '@/components/ProjectCard';
 
-export default function HomePage() {
-  const projetosDestaque = getProjetosDestaque();
+async function getProjects(filtros = {}) {
+  const params = new URLSearchParams();
+
+  if (filtros.seloESG !== undefined) {
+    params.append('seloESG', filtros.seloESG);
+  }
+
+  if (filtros.destaque !== undefined) {
+    params.append('destaque', filtros.destaque);
+  }
+
+  const res = await fetch(`http://localhost:3000/api/projects?${params.toString()}`);  
+  if (!res.ok) throw new Error('Falha ao buscar projetos');
+  return res.json();
+}
+
+export default async function HomePage() {
   const arquitetosDestaque = arquitetos;
+
+  const projetosDestaque = await getProjects({destaque: true})  
+  const projetosEsg = await getProjects({seloESG: true})
 
   return (
     <Container>
@@ -34,6 +52,14 @@ export default function HomePage() {
           <Link href="/project" className='view_all'>Ver todos</Link>
         </div>
         <ProjectCard project={projetosDestaque} />
+      </section>
+
+      <section className={styles.featured_projects}>
+        <div className={styles.section_header}>
+          <h2>Projetos com Selo ESG</h2>
+          <Link href="/project" className='view_all'>Ver todos</Link>
+        </div>
+        <ProjectCard project={projetosEsg} />
       </section>
 
       {/* Seção de Arquitetos em Destaque */}
