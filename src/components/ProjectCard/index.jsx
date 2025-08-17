@@ -12,6 +12,8 @@ import orlaGuaiba from '@/assets/revitalizacao-orla-guaiba.webp'
 import museuNacional from '@/assets/museu-nacional-rj.webp'
 import edificioComercial from '@/assets/edificio-comercial.webp'
 import hafencityHamburgo from '@/assets/hafencity-hamburgo.webp'
+import zeitzOcaa from '@/assets/zeitz-ocaa.webp'
+
 import ViewToggle from '../ViewToggle';
 import { useState } from 'react';
 import LikeButton from '../LikeButton';
@@ -25,14 +27,14 @@ export function ProjectCard({ project, title = '', viewToggle = false, addProjec
             "revitalizacao-orla-guaiba": orlaGuaiba,
             "museu-nacional-rj": museuNacional,
             "edificio-comercial": edificioComercial,
-            "hafencity-hamburgo": hafencityHamburgo
+            "hafencity-hamburgo": hafencityHamburgo,
+            "zeitz-mocaa": zeitzOcaa
         };
         return imagens[id] || null;
     }
 
     const [layout, setLayout] = useState('grid');
 
-    // Função para truncar a descrição
     const truncateDescription = (text, maxLength = 100) => {
         if (text.length <= maxLength) return text;
         return `${text.substring(0, maxLength)}...`;

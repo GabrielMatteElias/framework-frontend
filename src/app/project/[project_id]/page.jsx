@@ -79,7 +79,7 @@ export default async function ProjectPage({ params }) {
             <section className={styles.project_header}>
                 <div className={styles.project_image}>
                     <Image
-                        src={`data:image/jpeg;base64,${project.imagens[5]}`}
+                        src={`data:image/jpeg;base64,${project.imagens[0]}`}
                         alt={project.titulo}
                         width={800}
                         height={450}
