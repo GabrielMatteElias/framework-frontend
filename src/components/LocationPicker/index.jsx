@@ -33,7 +33,6 @@ export default function LocationPicker({ form, setForm }) {
                 alert('Endereço não encontrado!');
             }
         } catch (err) {
-            console.error('Erro ao buscar coordenadas:', err);
             alert('Erro ao buscar localização.');
         } finally {
             setLoading(false);

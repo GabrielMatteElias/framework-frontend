@@ -13,6 +13,7 @@ import museuNacional from '@/assets/museu-nacional-rj.webp'
 import edificioComercial from '@/assets/edificio-comercial.webp'
 import hafencityHamburgo from '@/assets/hafencity-hamburgo.webp'
 import zeitzOcaa from '@/assets/zeitz-ocaa.webp'
+import theForestias from '@/assets/the-forestias.webp'
 
 import ViewToggle from '../ViewToggle';
 import { useState } from 'react';
@@ -28,7 +29,8 @@ export function ProjectCard({ project, title = '', viewToggle = false, addProjec
             "museu-nacional-rj": museuNacional,
             "edificio-comercial": edificioComercial,
             "hafencity-hamburgo": hafencityHamburgo,
-            "zeitz-mocaa": zeitzOcaa
+            "zeitz-mocaa": zeitzOcaa,
+            "the-forestias": theForestias,
         };
         return imagens[id] || null;
     }

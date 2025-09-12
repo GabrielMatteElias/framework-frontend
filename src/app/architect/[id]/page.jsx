@@ -8,10 +8,11 @@ import { getArquitetoById } from '@/data/arquitetos';
 import dynamic from 'next/dynamic';
 import { ProjectCard } from '@/components/ProjectCard';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
+import { formataData } from '@/utils/formaters';
 
 export async function generateMetadata({ params }) {
     const { id } = params
-    const arquiteto = getArquitetoById(id)
+    const [arquiteto] = await getArchitect()
 
     if (!arquiteto) {
         return {
@@ -21,18 +22,18 @@ export async function generateMetadata({ params }) {
     }
 
     return {
-        title: `${arquiteto.nome} - Framework`,
-        description: arquiteto.subtitulo,
+        title: `${arquiteto.name} - Framework`,
+        description: arquiteto.subtitle,
         openGraph: {
-            title: `${arquiteto.nome} - Framework`,
-            description: arquiteto.subtitulo,
+            title: `${arquiteto.name} - Framework`,
+            description: arquiteto.subtitle,
             url: `https://framework-frontend-pearl.vercel.app/architect/${id}`,
             images: [
                 {
-                    url: arquiteto.foto,
+                    url: arquiteto.picture,
                     width: 1200,
                     height: 630,
-                    alt: `Foto de ${arquiteto.nome}`
+                    alt: `Foto de ${arquiteto.name}`
                 }
             ],
             type: 'profile',
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }) {
 }
 
 async function getArchitect(id) {
-    const res = await fetch(`http://localhost:3000/api/architects/${id}`, {
+    const res = await fetch(`http://framework-backend-endq.onrender.com/api/architect`, {
         cache: "no-store"
     });
 
@@ -54,9 +55,8 @@ export default async function ArquitetoPage({ params, searchParams }) {
 
     const { id } = params;
     const modalAberto = searchParams?.modal === 'newProject';
-console.log('AQUI', modalAberto);
 
-    const arquiteto = await getArchitect(id);
+    const [arquiteto] = await getArchitect(id);
 
     const projetos = getProjetosByArquiteto(id);
 
@@ -83,11 +83,11 @@ console.log('AQUI', modalAberto);
             <section className={styles.profile_header}>
                 <div className={styles.profile_avatar_container}>
                     <ProfileAvatar
-                        image={arquiteto.foto}
+                        image={arquiteto.picture}
                         name='Chatillon Architectes'
                         width={120}
                         height={120} />
-                    {arquiteto.destaque && (
+                    {arquiteto.verified && (
                         <div className={styles.verified_badge}>
                             <Badge type="verified" size='large' />
                         </div>
@@ -96,30 +96,30 @@ console.log('AQUI', modalAberto);
 
                 <div className={styles.profile_info}>
                     <div className={styles.name}>
-                        <h1>{arquiteto.nome}</h1>
-                        {arquiteto.destaque && (
+                        <h1>{arquiteto.name}</h1>
+                        {arquiteto.verified && (
                             <div>
-                                <VerifiedBadge disableClick={false} architectName={arquiteto.nome} width={21} />
+                                <VerifiedBadge disableClick={false} architectName={arquiteto.name} width={21} />
                             </div>
                         )}
                     </div>
                     <p className={styles.location}>
-                        {arquiteto.localizacao.cidade}, {arquiteto.localizacao.estado}, {arquiteto.localizacao.pais}
+                        {arquiteto.location.city}, {arquiteto.location.state}, {arquiteto.location.country}
                     </p>
 
                     <div className={styles.social_links}>
-                        {arquiteto.redesSociais.linkedin && (
-                            <a href={arquiteto.redesSociais.linkedin} target="_blank" rel="noopener noreferrer">
+                        {arquiteto.socialMedia.linkedin && (
+                            <a href={arquiteto.socialMedia.linkedin} target="_blank" rel="noopener noreferrer">
                                 LinkedIn
                             </a>
                         )}
-                        {arquiteto.redesSociais.instagram && (
-                            <a href={arquiteto.redesSociais.instagram} target="_blank" rel="noopener noreferrer">
+                        {arquiteto.socialMedia.instagram && (
+                            <a href={arquiteto.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
                                 Instagram
                             </a>
                         )}
-                        {arquiteto.redesSociais.portfolio && (
-                            <a href={arquiteto.redesSociais.portfolio} target="_blank" rel="noopener noreferrer">
+                        {arquiteto.socialMedia.portfolio && (
+                            <a href={arquiteto.socialMedia.portfolio} target="_blank" rel="noopener noreferrer">
                                 Portfólio
                             </a>
                         )}
@@ -128,7 +128,6 @@ console.log('AQUI', modalAberto);
 
                 <EditArchitectModalButton arquiteto={arquiteto} />
                 <NewProjectModalButton arquiteto={arquiteto} isOpen={modalAberto} />
-
             </section>
 
             <section className={styles.personal_info}>
@@ -136,16 +135,16 @@ console.log('AQUI', modalAberto);
                     <h2>Informações Pessoais</h2>
                     <div className={styles.info_item}>
                         <span className={styles.info_label}>Data de Nascimento:</span>
-                        <span>{arquiteto.dataNascimento}</span>
+                        <span>{formataData(arquiteto.birthDate)}</span>
                     </div>
                     <div className={styles.info_item}>
                         <span className={styles.info_label}>Formação:</span>
-                        <span>{arquiteto.formacao.instituicao}, {arquiteto.formacao.ano}</span>
+                        <span>{arquiteto.training.name}, {arquiteto.training.year}</span>
                     </div>
                     <div className={styles.info_item}>
                         <span className={styles.info_label}>Especialidades:</span>
                         <div className={styles.specialties}>
-                            {arquiteto.especialidades.map((especialidade, index) => (
+                            {arquiteto.speciality.map((especialidade, index) => (
                                 <span key={index} className={styles.specialty_tag}>{especialidade}</span>
                             ))}
                         </div>
@@ -154,21 +153,21 @@ console.log('AQUI', modalAberto);
 
                 <div className={styles.bio_card}>
                     <h2>Biografia</h2>
-                    <p>{arquiteto.biografia}</p>
+                    <p>{arquiteto.biography}</p>
                 </div>
             </section>
 
             <section className={styles.statistics}>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{arquiteto.estatisticas.totalProjetos}</div>
+                    <div className={styles.stat_value}>{arquiteto.stats.totalProjects}</div>
                     <div className={styles.stat_label}>Projetos</div>
                 </div>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{arquiteto.estatisticas.projetosESG}</div>
+                    <div className={styles.stat_value}>{arquiteto.stats.esgProjects}</div>
                     <div className={styles.stat_label}>Projetos ESG</div>
                 </div>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{arquiteto.estatisticas.visualizacoes.toLocaleString()}</div>
+                    <div className={styles.stat_value}>{arquiteto.stats.views.toLocaleString()}</div>
                     <div className={styles.stat_label}>Visualizações</div>
                 </div>
             </section>

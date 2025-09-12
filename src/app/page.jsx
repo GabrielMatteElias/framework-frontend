@@ -1,13 +1,10 @@
 import { Container } from '@/components/arquitetoEhome/Container';
 import styles from './page.module.css';
-import { getProjetosDestaque, getProjetosESG } from '@/data/projetos';
 import { arquitetos } from '@/data/arquitetos';
-
 
 import SearchAndFilters from '../components/SearchAndFilters';
 import Link from 'next/link';
 import { ArchitectCard } from '@/components/ArchitectCard';
-import { Footer } from '@/components/Footer';
 import { ProjectCard } from '@/components/ProjectCard';
 
 async function getProjects(filtros = {}) {
@@ -143,8 +140,6 @@ export default async function HomePage() {
           </a>
         </div>
       </section>
-
-      <Footer />
     </Container>
   );
 }

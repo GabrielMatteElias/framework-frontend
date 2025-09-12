@@ -124,7 +124,7 @@ export const arquitetos = [
     },
     biografia: "Estudande de Arquitetura e Urbanismo com foco em restauração de patrimônios históricos...",
     especialidades: ["Restauração", "Residencial Alto Padrão", "Patrimônio Histórico"],
-    foto: "https://www.uniceplac.edu.br/app/uploads/2021/04/foto-coordenador-reitora-1-255x255.png",
+    foto: "https://media.licdn.com/dms/image/v2/C5603AQGAQ3Z4NtF01Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1544139144247?e=1758153600&v=beta&t=-RCeTJhW_2TAczLrJ1ivGWxlu4MLxiHQwxU8orsV6rw",
     redesSociais: {
       linkedin: "https://linkedin.com/in/carlos-ferreira",
       instagram: "https://instagram.com/carlos.patrimonio",

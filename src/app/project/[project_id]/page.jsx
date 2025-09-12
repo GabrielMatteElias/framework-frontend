@@ -59,20 +59,10 @@ const ShareMenu = dynamic(
     { ssr: false }
 )
 
-async function getProject(id) {
-    const res = await fetch(`http://localhost:3000/api/projects/${id}`, {
-        cache: "no-store" // garante dados atualizados
-    });
-
-    if (!res.ok) throw new Error("Erro ao buscar projeto", res.status);
-
-    return res.json();
-}
-
 export default async function ProjectPage({ params }) {
     const { project_id } = params;
 
-    const project = await getProject(project_id);
+    const project = getProjetosById(project_id);
 
     return (
         <Container>
@@ -101,7 +91,7 @@ export default async function ProjectPage({ params }) {
                         <div className={styles.meta_item}>
                             <span>{project.localizacao.cidade}, {project.localizacao.pais}</span>
                             <span className={styles.meta_label}> • </span>
-                            <span>{project.area}</span>
+                            <span>{project.area}m²</span>
                             <span className={styles.meta_label}> • </span>
                             <span>{project.ano}</span>
                         </div>
