@@ -78,18 +78,6 @@ export default function NewProjectModal() {
 
         setErrors(newErrors);
 
-        if (Object.keys(newErrors).length === 0) {
-            const response = await fetch('http://localhost:3000/api/projects', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(form)
-            });
-
-            const data = await response.json();
-
-        }
     };
 
     return (

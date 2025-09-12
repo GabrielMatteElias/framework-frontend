@@ -6,28 +6,13 @@ import SearchAndFilters from '../components/SearchAndFilters';
 import Link from 'next/link';
 import { ArchitectCard } from '@/components/ArchitectCard';
 import { ProjectCard } from '@/components/ProjectCard';
-
-async function getProjects(filtros = {}) {
-  const params = new URLSearchParams();
-
-  if (filtros.seloESG !== undefined) {
-    params.append('seloESG', filtros.seloESG);
-  }
-
-  if (filtros.destaque !== undefined) {
-    params.append('destaque', filtros.destaque);
-  }
-
-  const res = await fetch(`http://localhost:3000/api/projects?${params.toString()}`);  
-  if (!res.ok) throw new Error('Falha ao buscar projetos');
-  return res.json();
-}
+import { getProjetosDestaque, getProjetosESG } from '@/data/projetos';
 
 export default async function HomePage() {
   const arquitetosDestaque = arquitetos;
 
-  const projetosDestaque = await getProjects({destaque: true})  
-  const projetosEsg = await getProjects({seloESG: true})
+  const projetosDestaque = getProjetosDestaque({destaque: true})  
+  const projetosEsg = getProjetosESG({seloESG: true})
 
   return (
     <Container>
