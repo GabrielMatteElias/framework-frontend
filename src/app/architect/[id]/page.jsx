@@ -3,16 +3,18 @@ import styles from './page.module.css';
 import ProfileAvatar from '@/components/Avatar';
 import { getProjetosByArquiteto } from '@/data/projetos';
 import Badge from '@/components/arquitetoEhome/Badge';
-import { getArquitetoById } from '@/data/arquitetos';
 
 import dynamic from 'next/dynamic';
 import { ProjectCard } from '@/components/ProjectCard';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { formataData } from '@/utils/formaters';
+import { apiServer } from '@/services/server/apiServer';
+
 
 export async function generateMetadata({ params }) {
     const { id } = params
-    const [arquiteto] = await getArchitect()
+
+    const { data: arquiteto} = await apiServer.getArchitect(id)
 
     if (!arquiteto) {
         return {
@@ -41,22 +43,11 @@ export async function generateMetadata({ params }) {
     }
 }
 
-async function getArchitect(id) {
-    const res = await fetch(`http://framework-backend-endq.onrender.com/api/architect`, {
-        cache: "no-store"
-    });
-
-    if (!res.ok) throw new Error("Erro ao buscar arquiteto: " + res.status);
-
-    return res.json();
-}
-
 export default async function ArquitetoPage({ params, searchParams }) {
-
     const { id } = params;
     const modalAberto = searchParams?.modal === 'newProject';
 
-    const [arquiteto] = await getArchitect(id);
+    const { data: arquiteto} = await apiServer.getArchitect(id)
 
     const projetos = getProjetosByArquiteto(id);
 
@@ -104,22 +95,22 @@ export default async function ArquitetoPage({ params, searchParams }) {
                         )}
                     </div>
                     <p className={styles.location}>
-                        {arquiteto.location.city}, {arquiteto.location.state}, {arquiteto.location.country}
+                        {arquiteto.location?.city}, {arquiteto.location?.state}, {arquiteto.location?.country}
                     </p>
 
                     <div className={styles.social_links}>
-                        {arquiteto.socialMedia.linkedin && (
-                            <a href={arquiteto.socialMedia.linkedin} target="_blank" rel="noopener noreferrer">
+                        {arquiteto.socialMedia?.linkedin && (
+                            <a href={arquiteto.socialMedia?.linkedin} target="_blank" rel="noopener noreferrer">
                                 LinkedIn
                             </a>
                         )}
-                        {arquiteto.socialMedia.instagram && (
-                            <a href={arquiteto.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
+                        {arquiteto.socialMedia?.instagram && (
+                            <a href={arquiteto.socialMedia?.instagram} target="_blank" rel="noopener noreferrer">
                                 Instagram
                             </a>
                         )}
-                        {arquiteto.socialMedia.portfolio && (
-                            <a href={arquiteto.socialMedia.portfolio} target="_blank" rel="noopener noreferrer">
+                        {arquiteto.socialMedia?.portfolio && (
+                            <a href={arquiteto.socialMedia?.portfolio} target="_blank" rel="noopener noreferrer">
                                 Portfólio
                             </a>
                         )}
@@ -139,12 +130,12 @@ export default async function ArquitetoPage({ params, searchParams }) {
                     </div>
                     <div className={styles.info_item}>
                         <span className={styles.info_label}>Formação:</span>
-                        <span>{arquiteto.training.name}, {arquiteto.training.year}</span>
+                        <span>{arquiteto.training?.name}, {arquiteto.training?.year}</span>
                     </div>
                     <div className={styles.info_item}>
                         <span className={styles.info_label}>Especialidades:</span>
                         <div className={styles.specialties}>
-                            {arquiteto.speciality.map((especialidade, index) => (
+                            {arquiteto.speciality?.map((especialidade, index) => (
                                 <span key={index} className={styles.specialty_tag}>{especialidade}</span>
                             ))}
                         </div>
@@ -159,15 +150,15 @@ export default async function ArquitetoPage({ params, searchParams }) {
 
             <section className={styles.statistics}>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{arquiteto.stats.totalProjects}</div>
+                    <div className={styles.stat_value}>{arquiteto.stats?.totalProjects}</div>
                     <div className={styles.stat_label}>Projetos</div>
                 </div>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{arquiteto.stats.esgProjects}</div>
+                    <div className={styles.stat_value}>{arquiteto.stats?.esgProjects}</div>
                     <div className={styles.stat_label}>Projetos ESG</div>
                 </div>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{arquiteto.stats.views.toLocaleString()}</div>
+                    <div className={styles.stat_value}>{arquiteto.stats?.views.toLocaleString()}</div>
                     <div className={styles.stat_label}>Visualizações</div>
                 </div>
             </section>

@@ -9,17 +9,17 @@ export default function EditArchitectModal({ arquiteto }) {
     const [open, setOpen] = useState(false);
     const [form, setForm] = useState({
         nome: arquiteto.name,
-        cidade: arquiteto.location.city,
-        estado: arquiteto.location.state,
-        pais: arquiteto.location.country,
-        linkedin: arquiteto.socialMedia.linkedin || '',
-        instagram: arquiteto.socialMedia.instagram || '',
-        portfolio: arquiteto.socialMedia.portfolio || '',
+        cidade: arquiteto.location?.city,
+        estado: arquiteto.location?.state,
+        pais: arquiteto.location?.country,
+        linkedin: arquiteto.socialMedia?.linkedin || '',
+        instagram: arquiteto.socialMedia?.instagram || '',
+        portfolio: arquiteto.socialMedia?.portfolio || '',
         dataNascimento: arquiteto.birthDate,
-        formacaoInstituicao: arquiteto.training.name,
-        formacaoAno: arquiteto.training.year,
+        formacaoInstituicao: arquiteto.training?.name,
+        formacaoAno: arquiteto.training?.year,
         biografia: arquiteto.biography,
-        especialidades: arquiteto.speciality.join(', '),
+        especialidades: arquiteto.speciality?.join(', '),
     });
 
     const handleChange = (e) => {
@@ -42,14 +42,27 @@ export default function EditArchitectModal({ arquiteto }) {
                             <input name="nome" value={form.nome} onChange={handleChange} />
 
                             <label>Biografia</label>
-                            <textarea name="biografia" value={form.biografia} onChange={handleChange} />
+                            <div className={styles.textareaWrapper}>
+                                <textarea
+                                    name="biografia"
+                                    value={form.biografia}
+                                    onChange={handleChange}
+                                    className={styles.biography}
+                                    maxLength={500}
+                                />
+                                <div
+                                    className={styles.counter}
+                                >
+                                    {form.biografia.length}/500
+                                </div>
+                            </div>
 
                             <label>Data de Nascimento</label>
                             <input name="dataNascimento" type="date" value={form.dataNascimento} onChange={handleChange} />
 
                             <label>Formação</label>
-                            <input name="formacaoInstituicao" value={form.formacaoInstituicao} onChange={handleChange} />
-                            <input name="formacaoAno" type="number" value={form.formacaoAno} onChange={handleChange} />
+                            <input name="formacaoInstituicao" placeholder="Instituição" value={form.formacaoInstituicao} onChange={handleChange} />
+                            <input name="formacaoAno" placeholder="Ano de conclusão" type="number" value={form.formacaoAno} onChange={handleChange} />
 
                             <label>Localização</label>
                             <input name="cidade" placeholder="Cidade" value={form.cidade} onChange={handleChange} />
