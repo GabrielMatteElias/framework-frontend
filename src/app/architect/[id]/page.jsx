@@ -3,16 +3,18 @@ import styles from './page.module.css';
 import ProfileAvatar from '@/components/Avatar';
 import { getProjetosByArquiteto } from '@/data/projetos';
 import Badge from '@/components/arquitetoEhome/Badge';
-import { getArquitetoById } from '@/data/arquitetos';
 
 import dynamic from 'next/dynamic';
 import { ProjectCard } from '@/components/ProjectCard';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { formataData } from '@/utils/formaters';
+import { apiServer } from '@/services/server/apiServer';
 
 export async function generateMetadata({ params }) {
     const { id } = params
     const arquiteto = await getArchitect(id)
+
+    const { data: arquiteto} = await apiServer.getArchitect(id)
 
     if (!arquiteto) {
         return {
@@ -64,8 +66,8 @@ async function getProjectsByArchitect(id) {
 }
 
 export default async function ArquitetoPage({ params, searchParams }) {
-
     const { id } = params;
+
     const modalAberto = searchParams?.modal === 'newProject';
 
     const arquiteto = await getArchitect(id);
@@ -116,7 +118,7 @@ export default async function ArquitetoPage({ params, searchParams }) {
                         )}
                     </div>
                     <p className={styles.location}>
-                        {arquiteto.location.city}, {arquiteto.location.state}, {arquiteto.location.country}
+                        {arquiteto.location?.city}, {arquiteto.location?.state}, {arquiteto.location?.country}
                     </p>
 
                     <div className={styles.social_links}>
@@ -156,7 +158,7 @@ export default async function ArquitetoPage({ params, searchParams }) {
                     <div className={styles.info_item}>
                         <span className={styles.info_label}>Especialidades:</span>
                         <div className={styles.specialties}>
-                            {arquiteto.speciality.map((especialidade, index) => (
+                            {arquiteto.speciality?.map((especialidade, index) => (
                                 <span key={index} className={styles.specialty_tag}>{especialidade}</span>
                             ))}
                         </div>
@@ -171,7 +173,7 @@ export default async function ArquitetoPage({ params, searchParams }) {
 
             <section className={styles.statistics}>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{arquiteto.stats.totalProjects}</div>
+                    <div className={styles.stat_value}>{arquiteto.stats?.totalProjects}</div>
                     <div className={styles.stat_label}>Projetos</div>
                 </div>
                 <div className={styles.stat_card}>

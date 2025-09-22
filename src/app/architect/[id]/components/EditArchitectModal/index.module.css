@@ -19,18 +19,52 @@
 
 .form_group label {
 font-size: 1.4rem;
+font-weight: bold;
 }
 
 .form_group label:first-of-type {
   margin-top: 1.5rem;
 }
 
-.form_group input,
-.form_group textarea {
+.form_group input{
   padding: 0.5rem;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1.4rem;
+}
+
+.form_group input:focus,
+.form_group textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+}
+
+.textareaWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.biography {
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: none;
+}
+
+.counter {
+  margin-top: 4px;
+  font-size: 1.2rem;
+  text-align: right;
+  color: #888;
+  transition: color 0.2s;
 }
 
 .button_group {
