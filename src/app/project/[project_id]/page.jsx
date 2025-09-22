@@ -2,8 +2,6 @@ import { Container } from '@/components/arquitetoEhome/Container';
 import styles from './page.module.css';
 import Image from 'next/image';
 
-import { getProjetosById } from '@/data/projetos';
-
 import dynamic from 'next/dynamic';
 import { ArchitectCard } from '@/components/ArchitectCard';
 import { Carousel } from '@/components/Carousel';
@@ -12,7 +10,7 @@ import { formatNumberByCountry } from '@/utils/formaters';
 
 export function generateMetadata({ params }) {
     const { project_id } = params
-    const projeto = getProjetosById(project_id)
+    const projeto = getProject(project_id)
 
     if (!projeto) {
         return {
@@ -73,19 +71,19 @@ export default async function ProjectPage({ params }) {
     const { project_id: id } = params;
 
     const project = await getProject(id);
-console.log(project);
 
     return (
         <Container>
             <section className={styles.project_header}>
                 <div className={styles.project_image}>
                     <Image
-                        src={project.images[0]}
+                        src={'https://images.adsttc.com/media/images/5ddc/a1bf/3312/fd4e/d000/006a/slideshow/_JBM6070.jpg?1574740384'}
                         alt={project.title}
                         width={800}
                         height={450}
                         className={styles.main_image}
                         unoptimized
+                        priority
                     />
                 </div>
 

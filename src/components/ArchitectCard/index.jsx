@@ -2,9 +2,7 @@ import Link from "next/link";
 import styles from "./index.module.css";
 import Image from "next/image";
 import { VerifiedBadge } from "../VerifiedBadge";
-export function ArchitectCard({ architect }) {
-    console.log(architect);
-    
+export function ArchitectCard({ architect }) {    
     return (
         <Link
             href={`/architect/${architect.id}`}

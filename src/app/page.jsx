@@ -8,11 +8,20 @@ import { ArchitectCard } from '@/components/ArchitectCard';
 import { ProjectCard } from '@/components/ProjectCard';
 import { getProjetosDestaque, getProjetosESG } from '@/data/projetos';
 
+async function getAllProjects() {
+    const res = await fetch(`http://zenith:5000/api/project`, {
+        cache: "no-store",
+    });
+
+    if (!res.ok) throw new Error("Erro ao buscar arquiteto: " + res.status);
+
+    return res.json();
+}
+
 export default async function HomePage() {
   const arquitetosDestaque = arquitetos;
 
-  const projetosDestaque = getProjetosDestaque({destaque: true})  
-  const projetosEsg = getProjetosESG({seloESG: true})
+  const projetos = await getAllProjects();
 
   return (
     <Container>
@@ -30,18 +39,10 @@ export default async function HomePage() {
 
       <section className={styles.featured_projects}>
         <div className={styles.section_header}>
-          <h2>Projetos em Destaque</h2>
+          <h2>Projetos</h2>
           <Link href="/project" className='view_all'>Ver todos</Link>
         </div>
-        <ProjectCard project={projetosDestaque} />
-      </section>
-
-      <section className={styles.featured_projects}>
-        <div className={styles.section_header}>
-          <h2>Projetos com Selo ESG</h2>
-          <Link href="/project" className='view_all'>Ver todos</Link>
-        </div>
-        <ProjectCard project={projetosEsg} />
+        <ProjectCard project={projetos} />
       </section>
 
       {/* Seção de Arquitetos em Destaque */}
