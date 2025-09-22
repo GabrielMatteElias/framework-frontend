@@ -14,17 +14,17 @@ export function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [search, setSearch] = useState('');
-    const [isArchitect, setIsArchitect] = useState(false);
+    const [isArchitect, setIsArchitect] = useState(true);
     const [architectID, setIsArchitectID] = useState(null);
 
-    useEffect(() => {
-        setIsArchitect(localStorage.getItem('isArchitect') === 'true');
-        setIsArchitectID(localStorage.getItem('architectID'))
+    // useEffect(() => {
+    //     setIsArchitect(localStorage.getItem('isArchitect') === 'true');
+    //     setIsArchitectID(localStorage.getItem('architectID'))
 
-        const handleScroll = () => setScrolled(window.scrollY > 0);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    //     const handleScroll = () => setScrolled(window.scrollY > 0);
+    //     window.addEventListener('scroll', handleScroll);
+    //     return () => window.removeEventListener('scroll', handleScroll);
+    // }, []);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -42,7 +42,7 @@ export function Header() {
             window.history.replaceState({}, '', url);
         } else {
             // estamos em outra página → navega para o perfil
-            router.push(`/architect/${architectID}?modal=newProject`);
+            router.push(`/architect/1?modal=newProject`);
         }
     };
 

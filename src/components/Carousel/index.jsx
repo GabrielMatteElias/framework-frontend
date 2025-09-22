@@ -36,7 +36,7 @@ export function Carousel({ imagens }) {
                 {imagens.map((image, index) => (
                     <div key={index} className={styles.gallery_item}>
                         <Image
-                            src={`data:image/jpeg;base64,${image}`}
+                            src={image}
                             alt={`Image ${index + 1}`}
                             width={400}
                             height={300}
@@ -60,7 +60,7 @@ export function Carousel({ imagens }) {
                         </button>
 
                         <Image
-                            src={`data:image/jpeg;base64,${imagens[indiceAtual]}`}
+                            src={imagens[indiceAtual]}
                             alt={`Projeto ${indiceAtual + 1}`}
                             className={styles.modalImage}
                             width='800'

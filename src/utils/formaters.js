@@ -1,9 +1,18 @@
-const formataData = (data) => {
+const formataData = (data, nationality = 'br') => {
     if (data) {
         const [ano, mes, dia] = data.split('-');
+        if(nationality === 'us') {
+            return `${ano}-${mes}-${dia}`
+        } else {
         return `${dia}/${mes}/${ano}`
+        }
     }
 }
+
+const convertMonthToISO = (monthStr) => {
+    if (!monthStr) return null;
+    return new Date(`${monthStr}-01T00:00:00Z`).toISOString();
+};
 
 const formataCpf = (value) => {
     // Remove caracteres não numéricos
@@ -84,6 +93,7 @@ const formatNumberShort = (numero, countryCode = 'pt-BR', options = { notation: 
 
 export {
     formataData,
+    convertMonthToISO,
     formataCpf,
     formataValorVirgula,
     calcularDiferencaDataEmDias,

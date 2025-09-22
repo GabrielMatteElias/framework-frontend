@@ -12,7 +12,7 @@ import { formataData } from '@/utils/formaters';
 
 export async function generateMetadata({ params }) {
     const { id } = params
-    const [arquiteto] = await getArchitect()
+    const arquiteto = await getArchitect(id)
 
     if (!arquiteto) {
         return {
@@ -42,9 +42,21 @@ export async function generateMetadata({ params }) {
 }
 
 async function getArchitect(id) {
-    const res = await fetch(`http://framework-backend-endq.onrender.com/api/architect`, {
-        cache: "no-store"
+    const res = await fetch(`http://zenith:5000/api/architect/${id}`, {
+        cache: "no-store",
     });
+    console.log(res);
+
+    if (!res.ok) throw new Error("Erro ao buscar arquiteto: " + res.status);
+
+    return res.json();
+}
+
+async function getProjectsByArchitect(id) {
+    const res = await fetch(`http://zenith:5000/api/architect/${id}/projects`, {
+        cache: "no-store",
+    });
+    console.log(res);
 
     if (!res.ok) throw new Error("Erro ao buscar arquiteto: " + res.status);
 
@@ -56,9 +68,9 @@ export default async function ArquitetoPage({ params, searchParams }) {
     const { id } = params;
     const modalAberto = searchParams?.modal === 'newProject';
 
-    const [arquiteto] = await getArchitect(id);
+    const arquiteto = await getArchitect(id);
 
-    const projetos = getProjetosByArquiteto(id);
+    const projetos = await getProjectsByArchitect(id);
 
     const EditArchitectModalButton = dynamic(() => import('./components/EditArchitectModal/index.jsx'), {
         ssr: false,
@@ -108,18 +120,18 @@ export default async function ArquitetoPage({ params, searchParams }) {
                     </p>
 
                     <div className={styles.social_links}>
-                        {arquiteto.socialMedia.linkedin && (
-                            <a href={arquiteto.socialMedia.linkedin} target="_blank" rel="noopener noreferrer">
+                        {arquiteto.socialMedia?.linkedin && (
+                            <a href={arquiteto.socialMedia?.linkedin} target="_blank" rel="noopener noreferrer">
                                 LinkedIn
                             </a>
                         )}
-                        {arquiteto.socialMedia.instagram && (
-                            <a href={arquiteto.socialMedia.instagram} target="_blank" rel="noopener noreferrer">
+                        {arquiteto.socialMedia?.instagram && (
+                            <a href={arquiteto.socialMedia?.instagram} target="_blank" rel="noopener noreferrer">
                                 Instagram
                             </a>
                         )}
-                        {arquiteto.socialMedia.portfolio && (
-                            <a href={arquiteto.socialMedia.portfolio} target="_blank" rel="noopener noreferrer">
+                        {arquiteto.socialMedia?.portfolio && (
+                            <a href={arquiteto.socialMedia?.portfolio} target="_blank" rel="noopener noreferrer">
                                 Portfólio
                             </a>
                         )}
@@ -127,7 +139,7 @@ export default async function ArquitetoPage({ params, searchParams }) {
                 </div>
 
                 <EditArchitectModalButton arquiteto={arquiteto} />
-                <NewProjectModalButton arquiteto={arquiteto} isOpen={modalAberto} />
+                <NewProjectModalButton />
             </section>
 
             <section className={styles.personal_info}>
@@ -139,7 +151,7 @@ export default async function ArquitetoPage({ params, searchParams }) {
                     </div>
                     <div className={styles.info_item}>
                         <span className={styles.info_label}>Formação:</span>
-                        <span>{arquiteto.training.name}, {arquiteto.training.year}</span>
+                        <span>{arquiteto.training?.name}, {arquiteto.training?.year}</span>
                     </div>
                     <div className={styles.info_item}>
                         <span className={styles.info_label}>Especialidades:</span>
@@ -163,11 +175,11 @@ export default async function ArquitetoPage({ params, searchParams }) {
                     <div className={styles.stat_label}>Projetos</div>
                 </div>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{arquiteto.stats.esgProjects}</div>
+                    <div className={styles.stat_value}>{arquiteto.stats?.esgProjects}</div>
                     <div className={styles.stat_label}>Projetos ESG</div>
                 </div>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{arquiteto.stats.views.toLocaleString()}</div>
+                    <div className={styles.stat_value}>{arquiteto.stats?.views.toLocaleString()}</div>
                     <div className={styles.stat_label}>Visualizações</div>
                 </div>
             </section>

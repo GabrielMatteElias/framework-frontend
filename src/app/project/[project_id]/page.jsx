@@ -59,18 +59,29 @@ const ShareMenu = dynamic(
     { ssr: false }
 )
 
-export default async function ProjectPage({ params }) {
-    const { project_id } = params;
+async function getProject(id) {
+    const res = await fetch(`http://zenith:5000/api/project/${id}`, {
+        cache: "no-store",
+    });
 
-    const project = getProjetosById(project_id);
+    if (!res.ok) throw new Error("Erro ao buscar arquiteto: " + res.status);
+
+    return res.json();
+}
+
+export default async function ProjectPage({ params }) {
+    const { project_id: id } = params;
+
+    const project = await getProject(id);
+console.log(project);
 
     return (
         <Container>
             <section className={styles.project_header}>
                 <div className={styles.project_image}>
                     <Image
-                        src={`data:image/jpeg;base64,${project.imagens[0]}`}
-                        alt={project.titulo}
+                        src={project.images[0]}
+                        alt={project.title}
                         width={800}
                         height={450}
                         className={styles.main_image}
@@ -80,33 +91,36 @@ export default async function ProjectPage({ params }) {
 
                 <div className={styles.project_info}>
                     <div className={styles.project_title}>
-                        <h1>{project.titulo}</h1>
+                        <h1>{project.title}</h1>
                         <div className={styles.project_actions}>
-                            <ShareMenu title={project.titulo} />
+                            <ShareMenu title={project.title} />
                             <LikeButton isPage />
 
                         </div>
                     </div>
                     <div className={styles.project_meta}>
                         <div className={styles.meta_item}>
-                            <span>{project.localizacao.cidade}, {project.localizacao.pais}</span>
+                            <span>{project.location?.city}, {project.location?.country}</span>
                             <span className={styles.meta_label}> • </span>
                             <span>{project.area}m²</span>
                             <span className={styles.meta_label}> • </span>
-                            <span>{project.ano}</span>
+                            <span>
+                                {/* {project.ano} */}
+                                2005
+                            </span>
                         </div>
                     </div>
-                    <p className={styles.description}>{project.descricaoCompleta}</p>
+                    <p className={styles.description}>{project.longDescription}</p>
                 </div>
             </section>
 
             <section className={styles.project_stats}>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{formatNumberByCountry(project.estatisticas.views, 'br')}</div>
+                    <div className={styles.stat_value}>{formatNumberByCountry(project.stats?.views, 'br')}</div>
                     <div className={styles.stat_label}>Visualizações</div>
                 </div>
                 <div className={styles.stat_card}>
-                    <div className={styles.stat_value}>{formatNumberByCountry(project.estatisticas.likes, 'br')}</div>
+                    <div className={styles.stat_value}>{formatNumberByCountry(project.stats?.likes, 'br')}</div>
                     <div className={styles.stat_label}>Curtidas</div>
                 </div>
                 <div className={styles.stat_card}>
@@ -118,26 +132,25 @@ export default async function ProjectPage({ params }) {
             <section className={styles.map_section}>
                 <h2>Localização</h2>
                 <div className={styles.map_container}>
-                    {/* Implementação do mapa virá aqui */}
                     <div className={styles.map_placeholder}>
-                        <MapComponent lat={project.localizacao.coordenadas[0]} lng={project.localizacao.coordenadas[1]} name={project.titulo} />
+                        <MapComponent lat={project.location?.coordinates?.latitude} lng={project.location?.coordinates?.longitude} name={project.title} />
 
                     </div>
                 </div>
-                <p className={styles.map_note}>Endereço completo: {project.localizacao.endereco}</p>
+                <p className={styles.map_note}>Endereço completo: {project.location?.address}</p>
             </section>
 
             <section className={styles.gallery}>
                 <h2>Galeria</h2>
-                <Carousel imagens={project.imagens} />
+                <Carousel imagens={project.images} />
             </section>
 
             <section className={styles.contributors}>
                 <h2>Contribuintes</h2>
                 <div className={styles.contributor_grid}>
-                    {project.contribuintes.map((contribuinte) => (
-                        <div key={contribuinte.id}>
-                            <ArchitectCard architect={contribuinte} />
+                    {project.contributors.map((contributor) => (
+                        <div key={contributor.id}>
+                            <ArchitectCard architect={contributor} />
                         </div>
                     ))}
                 </div>

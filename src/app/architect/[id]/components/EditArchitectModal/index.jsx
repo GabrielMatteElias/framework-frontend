@@ -9,15 +9,15 @@ export default function EditArchitectModal({ arquiteto }) {
     const [open, setOpen] = useState(false);
     const [form, setForm] = useState({
         nome: arquiteto.name,
-        cidade: arquiteto.location.city,
-        estado: arquiteto.location.state,
-        pais: arquiteto.location.country,
-        linkedin: arquiteto.socialMedia.linkedin || '',
-        instagram: arquiteto.socialMedia.instagram || '',
-        portfolio: arquiteto.socialMedia.portfolio || '',
+        cidade: arquiteto.location?.city,
+        estado: arquiteto.location?.state,
+        pais: arquiteto.location?.country,
+        linkedin: arquiteto.socialMedia?.linkedin || '',
+        instagram: arquiteto.socialMedia?.instagram || '',
+        portfolio: arquiteto.socialMedia?.portfolio || '',
         dataNascimento: arquiteto.birthDate,
-        formacaoInstituicao: arquiteto.training.name,
-        formacaoAno: arquiteto.training.year,
+        formacaoInstituicao: arquiteto.training?.name,
+        formacaoAno: arquiteto.training?.year,
         biografia: arquiteto.biography,
         especialidades: arquiteto.speciality.join(', '),
     });
