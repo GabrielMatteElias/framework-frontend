@@ -1,24 +1,23 @@
-'use client'
-import { useState } from 'react';
+// import { useState } from 'react';
 import styles from './page.module.css';
 import Image from 'next/image';
 import { Container } from '@/components/Container';
 import ProfileAvatar from '@/components/Avatar';
 import Link from 'next/link';
-import { arquitetos } from '@/data/arquitetos';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import Filtros from './components';
+import { apiServer } from '@/services/server/apiServer';
 
-export default function ArchitectPage() {
+export default async function ArchitectPage() {
 
-    const architects = arquitetos
+    const {data: architects} = await apiServer.architect.getAll();
 
-    const [filtros, setFiltros] = useState({ localizacao: '', tipo: '', esg: false, experiencia: '', ordenacao: '' });
+    // const [filtros, setFiltros] = useState({ localizacao: '', tipo: '', esg: false, experiencia: '', ordenacao: '' });
 
-    const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setFiltros({ ...filtros, [name]: type === 'checkbox' ? checked : value });
-    };
+    // const handleChange = (e) => {
+    //     const { name, value, type, checked } = e.target;
+    //     setFiltros({ ...filtros, [name]: type === 'checkbox' ? checked : value });
+    // };
 
     // const filtrados = arquiteto.filter((arq) => {
     //     return (
@@ -32,9 +31,9 @@ export default function ArchitectPage() {
     //     );
     // });
 
-    const [showFiltroModal, setShowFiltroModal] = useState(false);
+    // const [showFiltroModal, setShowFiltroModal] = useState(false);
 
-    const toggleFiltroModal = () => setShowFiltroModal(prev => !prev);
+    // const toggleFiltroModal = () => setShowFiltroModal(prev => !prev);
 
     return (
         <Container>
@@ -43,17 +42,17 @@ export default function ArchitectPage() {
                 <p>Filtre por localização, especialidade e muito mais</p>
             </section>
 
-            <button className={styles.btnFiltroMobile} onClick={() => setShowFiltroModal(true)}>
+            {/* <button className={styles.btnFiltroMobile} onClick={() => setShowFiltroModal(true)}>
                 Filtrar
-            </button>
+            </button> */}
 
             {/* Filtros desktop sticky */}
-            <section className={styles.filtrosDesktop}>
+            {/* <section className={styles.filtrosDesktop}>
                 <Filtros handleChange={handleChange} />
-            </section>
+            </section> */}
 
             {/* Modal mobile */}
-            {showFiltroModal && (
+            {/* {showFiltroModal && (
                 <div className={styles.filtroModalOverlay} onClick={() => setShowFiltroModal(false)}>
                     <div className={styles.filtroModalContent} onClick={(e) => e.stopPropagation()}>
                         <button className={styles.closeButton} onClick={() => setShowFiltroModal(false)}>×</button>
@@ -69,30 +68,30 @@ export default function ArchitectPage() {
                         </div>
                     </div>
                 </div>
-            )}
+            )} */}
 
             <section className={styles.listaArquitetos}>
                 {architects.map((arq) => (
                     <Link key={arq.id} href={`/architect/${arq.id}`} className={styles.arquitetoItem}>
                         <div className={styles.avatar}>
                             <ProfileAvatar
-                                image={arq.foto}
+                                image={arq.picture}
                                 width={80}
                                 height={80}
                             />
                         </div>
                         <div className={styles.arquitetoInfo}>
                             <div className={styles.name}>
-                                <h3>{arq.nome}</h3>
-                                {arq.destaque && (
+                                <h3>{arq.name}</h3>
+                                {arq.trending && (
                                     <div className={styles.verifiedBadge}>
                                         <VerifiedBadge />
                                     </div>
                                 )}
                             </div>
-                            <p className={styles.titulo}>{arq.subtitulo}</p>
-                            <p className={styles.local}>{arq.localizacao.cidade}, {arq.localizacao.pais}</p>
-                            <p className={styles.projetos}>{arq.projetosPublicados.length} projetos publicados</p>
+                            <p className={styles.titulo}>{arq.subtitle}</p>
+                            <p className={styles.local}>{arq.location?.city}, {arq.location?.country}</p>
+                            <p className={styles.projetos}>{arq.stats.totalProjects} projetos publicados</p>
                         </div>
                         <div className={styles.acao}>
                             <button className='secundary_button'>Ver perfil</button>

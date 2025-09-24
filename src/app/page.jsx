@@ -1,27 +1,16 @@
 import { Container } from '@/components/arquitetoEhome/Container';
 import styles from './page.module.css';
-import { arquitetos } from '@/data/arquitetos';
 
 import SearchAndFilters from '../components/SearchAndFilters';
 import Link from 'next/link';
 import { ArchitectCard } from '@/components/ArchitectCard';
 import { ProjectCard } from '@/components/ProjectCard';
-import { getProjetosDestaque, getProjetosESG } from '@/data/projetos';
-
-async function getAllProjects() {
-    const res = await fetch(`http://zenith:5000/api/project`, {
-        cache: "no-store",
-    });
-
-    if (!res.ok) throw new Error("Erro ao buscar arquiteto: " + res.status);
-
-    return res.json();
-}
+import { apiServer } from '@/services/server/apiServer';
 
 export default async function HomePage() {
-  const arquitetosDestaque = arquitetos;
-
-  const projetos = await getAllProjects();
+  const { data: architects} = await apiServer.architect.getAll();
+  
+  const {data: projects} = await apiServer.project.getAll();
 
   return (
     <Container>
@@ -42,7 +31,7 @@ export default async function HomePage() {
           <h2>Projetos</h2>
           <Link href="/project" className='view_all'>Ver todos</Link>
         </div>
-        <ProjectCard project={projetos} />
+        <ProjectCard project={projects} />
       </section>
 
       {/* Seção de Arquitetos em Destaque */}
@@ -52,7 +41,7 @@ export default async function HomePage() {
           <Link href="/architect" className='view_all'>Ver todos</Link>
         </div>
         <div className={styles.architects_grid}>
-          {arquitetosDestaque.map((architect) => (
+          {architects.map((architect) => (
             <div key={architect.id}>
               <ArchitectCard architect={architect} />
             </div>

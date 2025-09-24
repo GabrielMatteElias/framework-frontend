@@ -1,18 +1,17 @@
 import { Container } from '@/components/arquitetoEhome/Container';
 import styles from './page.module.css';
 import ProfileAvatar from '@/components/Avatar';
-import { getProjetosByArquiteto } from '@/data/projetos';
 import Badge from '@/components/arquitetoEhome/Badge';
-import { getArquitetoById } from '@/data/arquitetos';
 
 import dynamic from 'next/dynamic';
 import { ProjectCard } from '@/components/ProjectCard';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { formataData } from '@/utils/formaters';
+import { apiServer } from '@/services/server/apiServer';
 
 export async function generateMetadata({ params }) {
     const { id } = params
-    const arquiteto = await getArchitect(id)
+    const { data: arquiteto } = await apiServer.architect.getById(id)
 
     if (!arquiteto) {
         return {
@@ -41,34 +40,13 @@ export async function generateMetadata({ params }) {
     }
 }
 
-async function getArchitect(id) {
-    const res = await fetch(`http://zenith:5000/api/architect/${id}`, {
-        cache: "no-store",
-    });
-
-    if (!res.ok) throw new Error("Erro ao buscar arquiteto: " + res.status);
-
-    return res.json();
-}
-
-async function getProjectsByArchitect(id) {
-    const res = await fetch(`http://zenith:5000/api/architect/${id}/projects`, {
-        cache: "no-store",
-    });
-
-    if (!res.ok) throw new Error("Erro ao buscar arquiteto: " + res.status);
-
-    return res.json();
-}
-
 export default async function ArquitetoPage({ params, searchParams }) {
 
     const { id } = params;
-    const modalAberto = searchParams?.modal === 'newProject';
 
-    const arquiteto = await getArchitect(id);
+    const { data: arquiteto } = await apiServer.architect.getById(id);
 
-    const projetos = await getProjectsByArchitect(id);
+    const { data: projetos } = await apiServer.architect.getProjects(id);
 
     const EditArchitectModalButton = dynamic(() => import('./components/EditArchitectModal/index.jsx'), {
         ssr: false,
@@ -81,7 +59,7 @@ export default async function ArquitetoPage({ params, searchParams }) {
     if (!arquiteto) {
         return (
             <Container>
-                <div className={styles.not_found}>
+                <div className='not_found'>
                     <h1>Arquiteto não encontrado</h1>
                 </div>
             </Container>

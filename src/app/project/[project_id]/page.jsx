@@ -7,10 +7,12 @@ import { ArchitectCard } from '@/components/ArchitectCard';
 import { Carousel } from '@/components/Carousel';
 import LikeButton from '@/components/LikeButton';
 import { formatNumberByCountry } from '@/utils/formaters';
+import { apiServer } from '@/services/server/apiServer';
 
-export function generateMetadata({ params }) {
+export async function generateMetadata({ params }) {
     const { project_id } = params
-    const projeto = getProject(project_id)
+
+    const { data: projeto } = await apiServer.project.getById(project_id)
 
     if (!projeto) {
         return {
@@ -20,18 +22,18 @@ export function generateMetadata({ params }) {
     }
 
     return {
-        title: `${projeto.titulo} - Framework`,
-        description: projeto.descricao || 'Veja detalhes sobre este projeto arquitetônico publicado na Framework.',
+        title: `${projeto.title} - Framework`,
+        description: projeto.shortDescription || 'Veja detalhes sobre este projeto arquitetônico publicado na Framework.',
         openGraph: {
-            title: `${projeto.titulo} - Framework`,
-            description: projeto.descricao || 'Projeto em destaque na plataforma Framework.',
+            title: `${projeto.title} - Framework`,
+            description: projeto.shortDescription || 'Projeto em destaque na plataforma Framework.',
             url: `https://framework-frontend-pearl.vercel.app/architect/${project_id}`,
             images: [
                 {
                     url: 'https://suoviaggio.com.br/wp-content/uploads/2025/05/Grand-Palais.jpg',
                     width: 1200,
                     height: 630,
-                    alt: `Imagem do projeto ${projeto.titulo}`,
+                    alt: `Imagem do projeto ${projeto.title}`,
                 }
             ],
             type: 'article',
@@ -40,9 +42,9 @@ export function generateMetadata({ params }) {
         },
         twitter: {
             card: 'summary_large_image',
-            title: `${projeto.titulo} | Projeto Arquitetônico - Framework`,
-            description: projeto.descricao || '',
-            images: [projeto.imagemPrincipal],
+            title: `${projeto.title} | Projeto Arquitetônico - Framework`,
+            description: projeto.shortDescription || '',
+            images: [projeto.images[0]],
         }
     }
 }
@@ -57,27 +59,27 @@ const ShareMenu = dynamic(
     { ssr: false }
 )
 
-async function getProject(id) {
-    const res = await fetch(`http://zenith:5000/api/project/${id}`, {
-        cache: "no-store",
-    });
-
-    if (!res.ok) throw new Error("Erro ao buscar arquiteto: " + res.status);
-
-    return res.json();
-}
-
 export default async function ProjectPage({ params }) {
     const { project_id: id } = params;
 
-    const project = await getProject(id);
+    const { data: project } = await apiServer.project.getById(id);
+
+    if (!project) {
+        return (
+            <Container>
+                <div className='not_found'>
+                    <h1>Projeto não encontrado</h1>
+                </div>
+            </Container>
+        );
+    }
 
     return (
         <Container>
             <section className={styles.project_header}>
                 <div className={styles.project_image}>
                     <Image
-                        src={'https://images.adsttc.com/media/images/5ddc/a1bf/3312/fd4e/d000/006a/slideshow/_JBM6070.jpg?1574740384'}
+                        src={'https://static8.depositphotos.com/1353542/887/i/450/depositphotos_8873950-stock-photo-house-sign-logo.jpg'}
                         alt={project.title}
                         width={800}
                         height={450}
@@ -140,7 +142,14 @@ export default async function ProjectPage({ params }) {
 
             <section className={styles.gallery}>
                 <h2>Galeria</h2>
-                <Carousel imagens={project.images} />
+                <Carousel imagens={
+                    [
+                        'https://static8.depositphotos.com/1353542/887/i/450/depositphotos_8873950-stock-photo-house-sign-logo.jpg',
+                        'https://s.tmimgcdn.com/scr/800x500/245100/modelo-de-logotipo-de-casa-e-construcao-v10_245131-original.jpg',
+                        'https://s.tmimgcdn.com/scr/800x500/238000/logotipo-de-casa-e-simbolo-de-casa-vetor-v13_238040-original.jpg',
+                        'https://i.pinimg.com/736x/9a/ca/1c/9aca1c317386c7c79d52693c52435904.jpg'
+                    ]
+                } />
             </section>
 
             <section className={styles.contributors}>
