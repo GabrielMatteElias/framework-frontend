@@ -8,9 +8,9 @@ import { ProjectCard } from '@/components/ProjectCard';
 import { apiServer } from '@/services/server/apiServer';
 
 export default async function HomePage() {
-  const { data: architects} = await apiServer.architect.getAll();
-  
-  const {data: projects} = await apiServer.project.getAll();
+  const { data: architects } = await apiServer.architect.getAll();
+
+  const { data: projects } = await apiServer.project.getAll();
 
   return (
     <Container>
@@ -41,11 +41,15 @@ export default async function HomePage() {
           <Link href="/architect" className='view_all'>Ver todos</Link>
         </div>
         <div className={styles.architects_grid}>
-          {architects.map((architect) => (
-            <div key={architect.id}>
-              <ArchitectCard architect={architect} />
-            </div>
-          ))}
+          {Array.isArray(architects) && architects.length > 0 ? (
+            architects.map((architect) => (
+              <div key={architect.id}>
+                <ArchitectCard architect={architect} />
+              </div>
+            ))
+          ) : (
+            <p>Nenhum arquiteto encontrado.</p>
+          )}
         </div>
       </section>
 

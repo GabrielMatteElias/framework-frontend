@@ -10,7 +10,7 @@ import { apiServer } from '@/services/server/apiServer';
 
 export default async function ArchitectPage() {
 
-    const {data: architects} = await apiServer.architect.getAll();
+    const { data: architects } = await apiServer.architect.getAll();
 
     // const [filtros, setFiltros] = useState({ localizacao: '', tipo: '', esg: false, experiencia: '', ordenacao: '' });
 
@@ -71,33 +71,35 @@ export default async function ArchitectPage() {
             )} */}
 
             <section className={styles.listaArquitetos}>
-                {architects.map((arq) => (
-                    <Link key={arq.id} href={`/architect/${arq.id}`} className={styles.arquitetoItem}>
-                        <div className={styles.avatar}>
-                            <ProfileAvatar
-                                image={arq.picture}
-                                width={80}
-                                height={80}
-                            />
-                        </div>
-                        <div className={styles.arquitetoInfo}>
-                            <div className={styles.name}>
-                                <h3>{arq.name}</h3>
-                                {arq.trending && (
-                                    <div className={styles.verifiedBadge}>
-                                        <VerifiedBadge />
-                                    </div>
-                                )}
+                {Array.isArray(architects) && architects.length > 0 ? (
+                    architects.map((arq) => (
+                        <Link key={arq.id} href={`/architect/${arq.id}`} className={styles.arquitetoItem}>
+                            <div className={styles.avatar}>
+                                <ProfileAvatar image={arq.picture} width={80} height={80} />
                             </div>
-                            <p className={styles.titulo}>{arq.subtitle}</p>
-                            <p className={styles.local}>{arq.location?.city}, {arq.location?.country}</p>
-                            <p className={styles.projetos}>{arq.stats.totalProjects} projetos publicados</p>
-                        </div>
-                        <div className={styles.acao}>
-                            <button className='secundary_button'>Ver perfil</button>
-                        </div>
-                    </Link>
-                ))}
+                            <div className={styles.arquitetoInfo}>
+                                <div className={styles.name}>
+                                    <h3>{arq.name}</h3>
+                                    {arq.trending && (
+                                        <div className={styles.verifiedBadge}>
+                                            <VerifiedBadge />
+                                        </div>
+                                    )}
+                                </div>
+                                <p className={styles.titulo}>{arq.subtitle}</p>
+                                <p className={styles.local}>
+                                    {arq.location?.city}, {arq.location?.country}
+                                </p>
+                                <p className={styles.projetos}>{arq.stats?.totalProjects ?? 0} projetos publicados</p>
+                            </div>
+                            <div className={styles.acao}>
+                                <button className="secundary_button">Ver perfil</button>
+                            </div>
+                        </Link>
+                    ))
+                ) : (
+                    <p>Nenhum arquiteto encontrado.</p>
+                )}
             </section>
         </Container >
     );
