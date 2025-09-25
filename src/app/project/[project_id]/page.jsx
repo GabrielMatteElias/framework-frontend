@@ -8,6 +8,7 @@ import { Carousel } from '@/components/Carousel';
 import LikeButton from '@/components/LikeButton';
 import { formatNumberByCountry } from '@/utils/formaters';
 import { apiServer } from '@/services/server/apiServer';
+import Link from 'next/link';
 
 export async function generateMetadata({ params }) {
     const { project_id } = params
@@ -67,8 +68,10 @@ export default async function ProjectPage({ params }) {
     if (!project) {
         return (
             <Container>
-                <div className='not_found'>
-                    <h1>Projeto não encontrado</h1>
+                <div className="not_found">
+                    <h2>Projeto não encontrado</h2>
+                    <p>O projeto que você procura pode ter sido removido ou não existe.</p>
+                    <Link href="/">Voltar para a página inicial</Link>
                 </div>
             </Container>
         );

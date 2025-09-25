@@ -17,7 +17,7 @@ const request = async ({ url, method = 'GET', data = null, headers = {} }) => {
         return { data: response.data, error: null };
     } catch (err) {
         return {
-            data: [],
+            data: null,
             error: {
                 message: err.response?.data?.message || err.message || 'Ocorreu um erro inesperado',
                 status: err.response?.status,

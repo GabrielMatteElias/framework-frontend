@@ -174,7 +174,7 @@ export default function NewProjectModal() {
             }
             return;
         } catch (err) {
-            console.error("Falha ao salvar projeto:", err);
+            return
         }
     };
 

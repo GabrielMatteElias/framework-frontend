@@ -1,3 +1,9 @@
+.architects_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1.5rem;
+}
+
 .architect_link {
     text-decoration: none;
     color: inherit;

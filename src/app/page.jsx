@@ -40,17 +40,7 @@ export default async function HomePage() {
           <h2>Arquitetos em Destaque</h2>
           <Link href="/architect" className='view_all'>Ver todos</Link>
         </div>
-        <div className={styles.architects_grid}>
-          {Array.isArray(architects) && architects.length > 0 ? (
-            architects.map((architect) => (
-              <div key={architect.id}>
-                <ArchitectCard architect={architect} />
-              </div>
-            ))
-          ) : (
-            <p>Nenhum arquiteto encontrado.</p>
-          )}
-        </div>
+          <ArchitectCard architects={architects} />
       </section>
 
       {/* <section className={styles.esg_projects}>
@@ -119,6 +109,6 @@ export default async function HomePage() {
           </a>
         </div>
       </section>
-    </Container>
+    </Container >
   );
 }

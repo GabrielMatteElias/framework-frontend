@@ -137,11 +137,28 @@ input[type="checkbox"] {
 }
 
 .not_found {
-    text-align: center;
-    padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  text-align: center;
 }
 
-/* Adiciona a borda ESG */
+.not_found h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f2933;
+  line-height: 1.1;
+}
+
+.not_found p {
+  font-size: 1.4rem;
+  color: #557483;
+  max-width: 64ch;
+}
+
 .esg::before {
   content: "";
   position: absolute;

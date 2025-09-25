@@ -8,6 +8,7 @@ import ViewToggle from '../ViewToggle';
 import { useEffect, useState } from 'react';
 import LikeButton from '../LikeButton';
 import { formataData, formatNumberShort } from '@/utils/formaters';
+import { Container } from '@mui/material';
 
 const images = [
     'https://ciclovivo.com.br/wp-content/uploads/2020/12/casa-espiral-1.jpg',
@@ -44,6 +45,16 @@ export function ProjectCard({ project, title = '', viewToggle = false, addProjec
     useEffect(() => {
         setImagesShuffled(shuffleArray(images));
     }, []);
+
+    if (!project) {
+        return (
+            <Container>
+                <div className="not_found">
+                    <h2>Ainda não há projetos para mostrar</h2>
+                </div>
+            </Container>
+        );
+    }
 
     return (
         <div className={styles.container}>

@@ -42,7 +42,7 @@ export function Header() {
             window.history.replaceState({}, '', url);
         } else {
             // estamos em outra página → navega para o perfil
-            router.push(`/architect/1?modal=newProject`);
+            router.push(`/architect/5?modal=newProject`);
         }
     };
 
