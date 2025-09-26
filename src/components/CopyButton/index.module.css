@@ -9,7 +9,6 @@
     cursor: pointer;
     transition: all 0.2s ease;
     outline: none;
-    /* Remove outline padrão */
 }
 
 .border_copy:hover {
@@ -24,7 +23,6 @@
     border-color: #bbb;
 }
 
-/* Estilo quando o texto é copiado */
 .border_copy.copied {
     border-color: #4CAF50;
     background-color: #e8f5e9;

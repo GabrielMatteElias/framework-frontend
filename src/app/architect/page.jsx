@@ -37,8 +37,8 @@ export default async function ArchitectPage() {
 
     return (
         <Container>
-            <section className={styles.hero}>
-                <h1>Encontre o Arquiteto Ideal</h1>
+            <section className='hero'>
+                <h2>Encontre o Arquiteto Ideal</h2>
                 <p>Filtre por localização, especialidade e muito mais</p>
             </section>
 
@@ -51,7 +51,6 @@ export default async function ArchitectPage() {
                 <Filtros handleChange={handleChange} />
             </section> */}
 
-            {/* Modal mobile */}
             {/* {showFiltroModal && (
                 <div className={styles.filtroModalOverlay} onClick={() => setShowFiltroModal(false)}>
                     <div className={styles.filtroModalContent} onClick={(e) => e.stopPropagation()}>

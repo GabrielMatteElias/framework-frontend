@@ -34,7 +34,6 @@ export default async function HomePage() {
         <ProjectCard project={projects} />
       </section>
 
-      {/* Seção de Arquitetos em Destaque */}
       <section className={styles.featured_architects}>
         <div className={styles.section_header}>
           <h2>Arquitetos em Destaque</h2>

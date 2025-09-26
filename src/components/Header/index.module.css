@@ -1,4 +1,3 @@
-/* components/Header.module.css */
 .scrolled {
   background-color: rgba(245, 245, 245, 0.85) !important;
   backdrop-filter: saturate(180%) blur(20px);
@@ -28,7 +27,7 @@
   width: 30px !important;
   height: auto;
 }
-/* Navegação Desktop */
+
 .options{
   display: flex;
   align-items: center;
@@ -99,7 +98,6 @@
   cursor: pointer;
 }
 
-/* Hamburger Menu (Mobile) */
 .hamburger {
   display: none;
   background: none;
@@ -130,7 +128,6 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   .container {
     padding: 0 1.5rem;
@@ -180,8 +177,8 @@
   }
 
   .add_project_button {
-    padding: 5px 5px; /* botão mais compacto */
-    border-radius: 50%; /* botão arredondado, estilo FAB */
+    padding: 5px 5px; 
+    border-radius: 50%; 
   }
 }
 

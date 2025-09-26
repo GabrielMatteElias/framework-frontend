@@ -37,6 +37,22 @@ li {
   list-style: none;
 }
 
+.hero {
+  text-align: left;
+  margin-bottom: 2rem;
+  color: #1d1d1f;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1.65rem;
+  color: #86868b;
+}
+
 .primary_button {
   display: inline-block;
   background-color: #0066cc;
@@ -75,7 +91,6 @@ li {
   padding: 0.4rem 1rem;
   border-radius: 20px;
   font-size: 1.2375rem;
-  /* 0.9rem * 1.375 */
   font-weight: 500;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -88,9 +103,9 @@ li {
 
 /*CHECKBOX STYLES */
 input[type="checkbox"] {
-  width: 24px;           /* tamanho maior */
+  width: 24px;          
   height: 24px;
-  accent-color: #0066cc; /* cor quando marcado */
+  accent-color: #0066cc; 
   cursor: pointer;
   margin-right: 0.5rem;
 }
@@ -107,7 +122,7 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: #007bff; /* cor primária */
+  background: #007bff; 
   color: white;
   padding: 5px 14px;
   border-radius: 8px;
@@ -119,7 +134,7 @@ input[type="checkbox"] {
 }
 
 .add_project_button:hover {
-  background: #005fcc; /* tom mais escuro no hover */
+  background: #005fcc; 
 }
 
 .add_project_button svg {
@@ -129,7 +144,7 @@ input[type="checkbox"] {
 .view_all {
   color: #0066cc;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .view_all:hover {

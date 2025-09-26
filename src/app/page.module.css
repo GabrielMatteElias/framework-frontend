@@ -9,7 +9,6 @@
   margin-bottom: 3rem;
 }
 
-/* Camada de imagem */
 .hero_banner::before {
   content: "";
   position: absolute;
@@ -19,13 +18,10 @@
   background-position: center;
   background-repeat: no-repeat;
   filter: brightness(0.5);
-  /* opacidade e definição */
   z-index: 1;
   transform: scale(1.02);
-  /* ligeiro zoom para nitidez */
 }
 
-/* Camada de overlay escuro */
 .hero_banner::after {
   content: "";
   position: absolute;
@@ -34,7 +30,6 @@
   z-index: 2;
 }
 
-/* Conteúdo dentro do banner */
 .hero_banner>* {
   position: relative;
   z-index: 3;
@@ -60,7 +55,6 @@
 .hero_content a {
   font-size: 1.1rem;
 }
-
 
 .section_header {
   display: flex;
@@ -136,7 +130,6 @@
   margin-top: 2rem;
 }
 
-/* Responsividade */
 @media (min-width: 768px) {
   .hero_content h1 {
     font-size: 3rem;

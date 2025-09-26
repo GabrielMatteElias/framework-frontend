@@ -1,5 +1,3 @@
-/* page.module.css */
-
 .project_header {
     display: flex;
     flex-direction: column;
@@ -158,7 +156,6 @@
     gap: 1.5rem;
 }
 
-/* Responsividade */
 @media (min-width: 768px) {
     .project_header {
         flex-direction: row;
