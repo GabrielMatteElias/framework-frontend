@@ -1,7 +1,7 @@
 
-import NewsItem from './components/NewsItem/index';
-import Sidebar from './components/Sidebar/index';
-import { mockNews } from '../../data/mockNews';
+import NewsItem from './components/NewsItem';
+import Sidebar from './components/Sidebar';
+import { mockNews } from '@/data/mockNews';
 import styles from './page.module.css';
 import { Container } from '@/components/Container';
 
