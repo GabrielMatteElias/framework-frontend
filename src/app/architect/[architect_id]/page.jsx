@@ -10,7 +10,7 @@ import { formataData } from '@/utils/formaters';
 import { apiServer } from '@/services/server/apiServer';
 
 export async function generateMetadata({ params }) {
-    const { id } = params
+    const { architect_id: id } = params
     const { data: arquiteto } = await apiServer.architect.getById(id)
 
     if (!arquiteto) {
@@ -40,9 +40,10 @@ export async function generateMetadata({ params }) {
     }
 }
 
-export default async function ArquitetoPage({ params, searchParams }) {
+export default async function ArquitetoDetailsPage({ params }) {
 
-    const { id } = params;
+    const { architect_id: id } = params;
+console.log('AAAAAAAAAAAAAAAA', id);
 
     const { data: arquiteto } = await apiServer.architect.getById(id);
 

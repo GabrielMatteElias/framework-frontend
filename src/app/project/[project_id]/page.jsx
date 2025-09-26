@@ -60,7 +60,7 @@ const ShareMenu = dynamic(
     { ssr: false }
 )
 
-export default async function ProjectPage({ params }) {
+export default async function ProjectDetailsPage({ params }) {
     const { project_id: id } = params;
 
     const { data: project } = await apiServer.project.getById(id);
