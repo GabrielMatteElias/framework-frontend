@@ -1,6 +1,4 @@
-'use client';
 
-import { useState, useMemo } from 'react';
 import NewsCard from './components/NewsItem/index';
 import Sidebar from './components/Sidebar/index'; // Novo componente
 import { mockNews } from '../../data/mockNews';
@@ -8,22 +6,6 @@ import styles from './page.module.css';
 import { Container } from '@/components/Container';
 
 export default function NewsPage() {
-    const [activeCategory, setActiveCategory] = useState('Todos');
-    const [searchQuery, setSearchQuery] = useState('');
-
-    const filteredNews = useMemo(() => {
-        return mockNews.filter(news => {
-            const matchesCategory = activeCategory === 'Todos' || news.category === activeCategory;
-
-            const matchesSearch = searchQuery === '' ||
-                news.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                news.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                news.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-
-            return matchesCategory && matchesSearch;
-        });
-    }, [activeCategory, searchQuery]);
-
     return (
         <Container>
             <section className='hero'>
