@@ -1,7 +1,6 @@
-import React from 'react';
 import styles from './index.module.css';
 
-const Sidebar = () => {
+const SideBar = () => {
     const trendingNews = [
         {
             id: 1,
@@ -84,4 +83,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default SideBar;

@@ -1,9 +1,9 @@
 
 import NewsItem from './components/NewsItem';
-// import Sidebar from './components/Sidebar';
 import { mockNews } from '@/data/mockNews';
 import styles from './page.module.css';
 import { Container } from '@/components/Container';
+import SideBar from './components/SideBar';
 
 export default function NewsPage() {
     return (
@@ -25,7 +25,7 @@ export default function NewsPage() {
                 </section>
 
                 <aside className={styles.sidebar}>
-                    {/* <Sidebar /> */}
+                    <SideBar />
                 </aside>
             </div>
 
