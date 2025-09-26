@@ -1,6 +1,6 @@
 
-import NewsCard from './components/NewsItem/index';
-import Sidebar from './components/Sidebar/index'; // Novo componente
+import NewsItem from './components/NewsItem/index';
+import Sidebar from './components/Sidebar/index';
 import { mockNews } from '../../data/mockNews';
 import styles from './page.module.css';
 import { Container } from '@/components/Container';
@@ -17,7 +17,7 @@ export default function NewsPage() {
                 <section className={styles.news_grid}>
                     {mockNews.length > 0 ? (
                         mockNews.map(news => (
-                            <NewsCard key={news.id} news={news} />
+                            <NewsItem key={news.id} news={news} />
                         ))
                     ) : (
                         <p className={styles.no_results}>Nenhuma notícia encontrada com os filtros aplicados.</p>
