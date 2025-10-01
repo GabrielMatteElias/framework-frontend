@@ -7,11 +7,11 @@ import dynamic from 'next/dynamic';
 import { ProjectCard } from '@/components/ProjectCard';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { formataData } from '@/utils/formaters';
-import { apiServer } from '@/services/server/apiServer';
+import { apiService } from '@/services/apiService';
 
 export async function generateMetadata({ params }) {
     const { architect_id: id } = params
-    const { data: arquiteto } = await apiServer.architect.getById(id)
+    const { data: arquiteto } = await apiService.architect.getById(id)
 
     if (!arquiteto) {
         return {
@@ -43,11 +43,10 @@ export async function generateMetadata({ params }) {
 export default async function ArquitetoDetailsPage({ params }) {
 
     const { architect_id: id } = params;
-console.log('AAAAAAAAAAAAAAAA', id);
 
-    const { data: arquiteto } = await apiServer.architect.getById(id);
+    const { data: arquiteto } = await apiService.architect.getById(id);
 
-    const { data: projetos } = await apiServer.architect.getProjects(id);
+    const { data: projetos } = await apiService.architect.getProjects(id);
 
     const EditArchitectModalButton = dynamic(() => import('./components/EditArchitectModal/index.jsx'), {
         ssr: false,
@@ -115,7 +114,7 @@ console.log('AAAAAAAAAAAAAAAA', id);
                     </div>
                 </div>
 
-                <EditArchitectModalButton arquiteto={arquiteto} />
+                <EditArchitectModalButton architect={arquiteto} />
                 <NewProjectModalButton />
             </section>
 

@@ -2,6 +2,7 @@ const API_BASE_PATH = {
     USER: '/user',
     ARCHITECT: '/architect',
     PROJECT: '/project',
+    NEWS: '/news'
 };
 
 export const API_ENDPOINTS = {
@@ -11,15 +12,19 @@ export const API_ENDPOINTS = {
     },
     ARCHITECT: {
         GET_ALL: () => `${API_BASE_PATH.ARCHITECT}`,
-        CREATE: () => `${API_BASE_PATH.ARCHITECT}`,
         GET_BY_ID: (id) => `${API_BASE_PATH.ARCHITECT}/${id}`,
+        CREATE: () => `${API_BASE_PATH.ARCHITECT}`,
         UPDATE: (id) => `${API_BASE_PATH.ARCHITECT}/${id}`,
         DELETE: (id) => `${API_BASE_PATH.ARCHITECT}/${id}`,
         GET_PROJECTS: (id) => `${API_BASE_PATH.ARCHITECT}/${id}/projects`,
     },
     PROJECT: {
         GET_ALL: () => `${API_BASE_PATH.PROJECT}`,
-        CREATE: () => `${API_BASE_PATH.PROJECT}`,
         GET_BY_ID: (projectId) => `${API_BASE_PATH.PROJECT}/${projectId}`,
+        CREATE: () => `${API_BASE_PATH.PROJECT}`,
     },
+    NEWS: {
+        GET_ALL: () => `${API_BASE_PATH.NEWS}`,
+        GET_BY_ID: () => `${API_BASE_PATH.NEWS}`
+    }
 };

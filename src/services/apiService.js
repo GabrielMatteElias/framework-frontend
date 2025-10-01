@@ -1,5 +1,5 @@
-import api from '../global/api';
-import { API_ENDPOINTS } from '../global/apiEndpoints';
+import api from './apiClient';
+import { API_ENDPOINTS } from './apiRoutes';
 
 const request = async ({ url, method = 'GET', data = null, headers = {} }) => {
     try {
@@ -7,11 +7,16 @@ const request = async ({ url, method = 'GET', data = null, headers = {} }) => {
             'Content-Type': 'application/json',
         };
 
+        const isFormData = data instanceof FormData;
+        const finalHeaders = isFormData
+            ? { ...headers } // axios seta sozinho
+            : { ...defaultHeaders, ...headers };
+
         const response = await api({
             method,
             url,
             data,
-            headers: { ...defaultHeaders, ...headers }, // merge com headers opcionais
+            headers: finalHeaders,
         });
 
         return { data: response.data, error: null };
@@ -26,7 +31,7 @@ const request = async ({ url, method = 'GET', data = null, headers = {} }) => {
     }
 };
 
-export const apiServer = {
+export const apiService = {
     architect: {
         getAll: () => {
             return request({ url: API_ENDPOINTS.ARCHITECT.GET_ALL() })
@@ -69,4 +74,8 @@ export const apiServer = {
         delete: (id, headers) =>
             request({ url: API_ENDPOINTS.PROJECT.DELETE(id), method: 'DELETE', headers }),
     },
+
+    news: {
+        getAll: () => request({ url: API_ENDPOINTS.NEWS.GET_ALL() })
+    }
 };

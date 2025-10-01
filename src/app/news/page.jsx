@@ -4,8 +4,15 @@ import { mockNews } from '@/data/mockNews';
 import styles from './page.module.css';
 import { Container } from '@/components/Container';
 import SideBar from './components/SideBar';
+import { apiService } from '@/services/apiService';
 
-export default function NewsPage() {
+export default async function NewsPage() {
+
+    const { data: news } = await apiService.news.getAll();
+
+    console.log(news);
+    
+
     return (
         <Container>
             <section className='hero'>

@@ -3,28 +3,72 @@
 
 import { useState } from 'react';
 import styles from './index.module.css';
+import { apiService } from '@/services/apiService';
 
-export default function EditArchitectModal({ arquiteto }) {
+export default function EditArchitectModal({ architect }) {
+    console.log(architect);
 
     const [open, setOpen] = useState(false);
     const [form, setForm] = useState({
-        nome: arquiteto.name,
-        cidade: arquiteto.location?.city,
-        estado: arquiteto.location?.state,
-        pais: arquiteto.location?.country,
-        linkedin: arquiteto.socialMedia?.linkedin || '',
-        instagram: arquiteto.socialMedia?.instagram || '',
-        portfolio: arquiteto.socialMedia?.portfolio || '',
-        dataNascimento: arquiteto.birthDate,
-        formacaoInstituicao: arquiteto.training?.name,
-        formacaoAno: arquiteto.training?.year,
-        biografia: arquiteto.biography,
-        especialidades: arquiteto.speciality?.join(', '),
+        name: architect.name || '',
+        nationality: architect.nacionality || '',
+        subtitle: architect.subtitle || '',
+        birthDate: architect.birthDate || '',
+        biography: architect.biography || '',
+        speciality: architect.speciality?.join(', ') || '',
+        trainingName: architect.training?.name || '',
+        trainingYear: architect.training?.year || '',
+        linkedin: architect.socialMedia?.linkedin || '',
+        instagram: architect.socialMedia?.instagram || '',
+        portfolio: architect.socialMedia?.portfolio || '',
+        city: architect.location?.city || '',
+        state: architect.location?.state || '',
+        country: architect.location?.country || '',
     });
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
+
+    const handleUpdate = () => {
+        const payload = {
+            name: form.name,
+            nationality: form.nationality, // cuidado: no state usou "nacionality" (typo)
+            subtitle: form.subtitle,
+            birthDate: form.birthDate,
+            biography: form.biography,
+            speciality: form.speciality.split(',').map(s => s.trim()), // string → array
+            verified: architect.verified ?? false,
+            trending: architect.trending ?? false,
+            training: {
+                name: form.trainingName,
+                year: Number(form.trainingYear),
+            },
+            socialMedia: {
+                linkedin: form.linkedin,
+                instagram: form.instagram,
+                portfolio: form.portfolio,
+            },
+            stats: {
+                totalProjects: 50,
+                esgProjects: 10,
+                views: 5000,
+                likes: 1200,
+                followers: 800
+            },
+            location: {
+                city: form.city,
+                state: form.state,
+                country: form.country,
+            },
+        };
+        console.log(payload);
+        const formData = new FormData();
+        formData.append("data", payload);
+        // formData.append("file", '');
+
+        const res = apiService.architect.update(architect.id, formData, { "Content-Type": "multipart/form-data" })
+    }
 
     return (
         <>
@@ -39,13 +83,16 @@ export default function EditArchitectModal({ arquiteto }) {
                         </div>
                         <div className={styles.form_group}>
                             <label>Nome</label>
-                            <input name="nome" value={form.nome} onChange={handleChange} />
+                            <input name="name" value={form.name} onChange={handleChange} />
+
+                            <label>Subtitulo</label>
+                            <input name="subtitle" value={form.subtitle} onChange={handleChange} />
 
                             <label>Biografia</label>
                             <div className={styles.textareaWrapper}>
                                 <textarea
-                                    name="biografia"
-                                    value={form.biografia}
+                                    name="biography"
+                                    value={form.biography}
                                     onChange={handleChange}
                                     className={styles.biography}
                                     maxLength={500}
@@ -53,24 +100,28 @@ export default function EditArchitectModal({ arquiteto }) {
                                 <div
                                     className={styles.counter}
                                 >
-                                    {form.biografia.length}/500
+                                    {form.biography.length}/500
                                 </div>
                             </div>
 
+                            <label>Nacionalidade</label>
+                            <input name="nationality" placeholder="País" value={form.nationality} onChange={handleChange} />
+
+
                             <label>Data de Nascimento</label>
-                            <input name="dataNascimento" type="date" value={form.dataNascimento} onChange={handleChange} />
+                            <input name="birthDate" type="date" value={form.birthDate} onChange={handleChange} />
 
                             <label>Formação</label>
-                            <input name="formacaoInstituicao" placeholder="Instituição" value={form.formacaoInstituicao} onChange={handleChange} />
-                            <input name="formacaoAno" placeholder="Ano de conclusão" type="number" value={form.formacaoAno} onChange={handleChange} />
+                            <input name="trainingName" placeholder="Instituição" value={form.trainingName} onChange={handleChange} />
+                            <input name="trainingYear" placeholder="Ano de conclusão" type="number" value={form.trainingYear} onChange={handleChange} />
 
                             <label>Localização</label>
-                            <input name="cidade" placeholder="Cidade" value={form.cidade} onChange={handleChange} />
-                            <input name="estado" placeholder="Estado" value={form.estado} onChange={handleChange} />
-                            <input name="pais" placeholder="País" value={form.pais} onChange={handleChange} />
+                            <input name="city" placeholder="Cidade" value={form.city} onChange={handleChange} />
+                            <input name="state" placeholder="Estado" value={form.state} onChange={handleChange} />
+                            <input name="country" placeholder="País" value={form.country} onChange={handleChange} />
 
                             <label>Especialidades</label>
-                            <input name="especialidades" value={form.especialidades} onChange={handleChange} />
+                            <input name="speciality" value={form.speciality} onChange={handleChange} />
 
                             <label>Redes Sociais</label>
                             <input name="linkedin" placeholder="LinkedIn" value={form.linkedin} onChange={handleChange} />
@@ -79,7 +130,7 @@ export default function EditArchitectModal({ arquiteto }) {
 
                         </div>
                         <div className={styles.button_group}>
-                            <button className='primary_button'>Salvar</button>
+                            <button className='primary_button' onClick={handleUpdate}>Salvar</button>
                         </div>
                     </div>
                 </div>

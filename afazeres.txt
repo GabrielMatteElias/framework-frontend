@@ -1,0 +1,48 @@
+Editar arquiteto
+  PUT /api/architect/{id}
+    {
+        "name": "João Silva",
+        "nationality": "Brasileiro",
+        "subtitle": "Arquiteto de Interiores",
+        "birthDate": "1985-07-12",
+        "biography": "João Silva é um arquiteto com 20 anos de experiência em projetos residenciais e comerciais.",
+        "speciality": ["Residencial", "Comercial", "Sustentabilidade"],
+
+        "verified": true,
+        "trending": false,
+        "training": {
+            "name": "Universidade de Arquitetura e Urbanismo",
+            "year": 2008
+        },
+        "socialMedia": {
+            "linkedin": "https://linkedin.com/in/AAAAAAAAAA",
+            "instagram": "https://instagram.com/AAAAAAAAAAA",
+            "portfolio": "https://joaosilva.com"
+        },
+        "stats": {
+            "totalProjects": 50,
+            "esgProjects": 10,
+            "views": 5000,
+            "likes": 1200,
+            "followers": 800
+        },
+        "location": {
+            "city": "São Paulo",
+            "state": "SP",
+            "country": "Brasil"
+        }
+    }
+    
+
+Noticias
+  GET /api/news
+  POST /api/News
+	{   
+        "Title": "Edição de Outubro",   
+        "Date": "2025-10-01",   
+            "Excerpt": "Resumo da edição",   
+        "Category": "Tecnologia",   
+        "Tags": ["IA", "Cloud"],   
+        "BulletPoint": ["Lançamento", "Evento global"] 
+    }
+    

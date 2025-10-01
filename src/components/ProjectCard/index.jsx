@@ -5,32 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import ViewToggle from '../ViewToggle';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import LikeButton from '../LikeButton';
 import { formataData, formatNumberShort } from '@/utils/formaters';
 import { Container } from '@mui/material';
-
-const images = [
-    'https://ciclovivo.com.br/wp-content/uploads/2020/12/casa-espiral-1.jpg',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp6k3rXelV28XgRKx_b3s540EDezAn2drHjA&s',
-    'https://papelsemente.com.br//wp-content/uploads/2017/10/Captura-de-Tela-2017-10-27-a%CC%80s-15.47.17.png',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2rHNuUndvm7O6PgUKQprDbMcNehI6fa7TYg&s',
-    'https://cdn.pixabay.com/photo/2015/03/23/22/43/snow-686783_1280.jpg',
-    'https://images.adsttc.com/media/images/52fe/87e7/e8e4/4e54/8200/0169/medium_jpg/old-monuments-yugoslavia-spomeniks-jan-kempenaers-5.jpg?1392412642',
-    'https://memorialdoconsumo.espm.edu.br/wp-content/uploads/2016/10/Spomenik_01.jpg',
-    'https://blog.archtrends.com/wp-content/uploads/2021/02/Arquitetura-chinesa-3-scaled.jpg',
-    'https://viagemalemanha.com/wp-content/uploads/2023/10/trier-porta-nigra-1024x731.jpg'
-]
-
-function shuffleArray(arr) {
-    const arrayCopy = [...arr];
-    for (let i = arrayCopy.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arrayCopy[i], arrayCopy[j]] = [arrayCopy[j], arrayCopy[i]];
-    }
-    return arrayCopy;
-}
-
 
 export function ProjectCard({ project, title = '', viewToggle = false, addProject = false }) {
     const [layout, setLayout] = useState('grid');
@@ -39,12 +17,6 @@ export function ProjectCard({ project, title = '', viewToggle = false, addProjec
         if (text.length <= maxLength) return text;
         return `${text.substring(0, maxLength)}...`;
     };
-
-    const [imagesShuffled, setImagesShuffled] = useState([]);
-
-    useEffect(() => {
-        setImagesShuffled(shuffleArray(images));
-    }, []);
 
     if (!project) {
         return (
@@ -84,8 +56,7 @@ export function ProjectCard({ project, title = '', viewToggle = false, addProjec
                     <div key={projeto.id} className={`${layout === 'grid' ? styles.project_card : styles.project_list_item} ${projeto.seloESG && 'esg'}`}>
                         <div className={`${layout === 'grid' ? styles.project_image : styles.list_image}`}>
                             <Image
-                                src={imagesShuffled[projeto.id % imagesShuffled.length]}
-                                alt={projeto.title}
+                                src={projeto.id % 2 === 0 ?  "https://blog.archtrends.com/wp-content/uploads/2021/02/Arquitetura-chinesa-3-scaled.jpg" : "https://cdn.pixabay.com/photo/2015/03/23/22/43/snow-686783_1280.jpg" } alt={projeto.title}
                                 width={layout === 'grid' ? 400 : 120}
                                 height={layout === 'grid' ? 300 : 90}
                                 className={`${layout === 'grid' ? styles.project_image_content : styles.list_image_content}`}

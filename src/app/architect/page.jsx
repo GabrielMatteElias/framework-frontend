@@ -6,11 +6,11 @@ import ProfileAvatar from '@/components/Avatar';
 import Link from 'next/link';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import Filtros from './components';
-import { apiServer } from '@/services/server/apiServer';
+import { apiService } from '@/services/apiService';
 
 export default async function ArchitectPage() {
 
-    const { data: architects } = await apiServer.architect.getAll();
+    const { data: architects } = await apiService.architect.getAll();
 
     // const [filtros, setFiltros] = useState({ localizacao: '', tipo: '', esg: false, experiencia: '', ordenacao: '' });
 

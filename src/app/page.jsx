@@ -5,12 +5,12 @@ import SearchAndFilters from '../components/SearchAndFilters';
 import Link from 'next/link';
 import { ArchitectCard } from '@/components/ArchitectCard';
 import { ProjectCard } from '@/components/ProjectCard';
-import { apiServer } from '@/services/server/apiServer';
+import { apiService } from '@/services/apiService';
 
 export default async function HomePage() {
-  const { data: architects } = await apiServer.architect.getAll();
+  const { data: architects } = await apiService.architect.getAll();
 
-  const { data: projects } = await apiServer.project.getAll();
+  const { data: projects } = await apiService.project.getAll();
 
   return (
     <Container>

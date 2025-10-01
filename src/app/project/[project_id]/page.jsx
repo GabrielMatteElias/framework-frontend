@@ -7,13 +7,13 @@ import { ArchitectCard } from '@/components/ArchitectCard';
 import { Carousel } from '@/components/Carousel';
 import LikeButton from '@/components/LikeButton';
 import { formatNumberByCountry } from '@/utils/formaters';
-import { apiServer } from '@/services/server/apiServer';
+import { apiService } from '@/services/apiService';
 import Link from 'next/link';
 
 export async function generateMetadata({ params }) {
     const { project_id } = params
 
-    const { data: projeto } = await apiServer.project.getById(project_id)
+    const { data: projeto } = await apiService.project.getById(project_id)
 
     if (!projeto) {
         return {
@@ -63,7 +63,7 @@ const ShareMenu = dynamic(
 export default async function ProjectDetailsPage({ params }) {
     const { project_id: id } = params;
 
-    const { data: project } = await apiServer.project.getById(id);
+    const { data: project } = await apiService.project.getById(id);
 
     if (!project) {
         return (
