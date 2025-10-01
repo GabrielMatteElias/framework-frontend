@@ -5,7 +5,7 @@ export function Footer() {
     return (
         <footer className={styles.footer}>
             <div className={styles.footer_content}>
-                <div className={styles.footer_column}>
+                {/* <div className={styles.footer_column}>
                     <h3>Plataforma</h3>
                     <ul>
                         <li><Link href="/sobre">Sobre nós</Link></li>
@@ -21,7 +21,7 @@ export function Footer() {
                         <li><Link href="/project">Projetos</Link></li>
                         <li><Link href="/projetos/esg">Selo ESG</Link></li>
                     </ul>
-                </div>
+                </div> */}
                 <div className={styles.footer_column}>
                     <h3>Siga-nos</h3>
                     <div className={styles.social_footer}>
