@@ -7,7 +7,7 @@ import { useEffect, useReducer, useState } from 'react'
 import styles from './index.module.css'
 
 //google next auth
-import { signIn, signOut, useSession } from "next-auth/react"
+// import { signIn, signOut, useSession } from "next-auth/react"
 
 //components
 import BasicButton from "@/components/Buttons/BasicButton"
@@ -76,7 +76,7 @@ export function FormLogin({ isRegister }) {
         // console.log(response);
     }
 
-    const { status, data } = useSession()
+    // const { status, data } = useSession()
 
     // useEffect(() => {
     //     if (data && data.user) {
@@ -131,15 +131,15 @@ export function FormLogin({ isRegister }) {
                         width={24}
                         height={24}
                     />
-                    {status === 'loading' ? (
+                    {/* {status === 'loading' ? (
                         <span>Carregando...</span>
                     ) : (
                         <span>Sigin with Google Account</span>
-                    )}
+                    )} */}
                 </button>
-                {data && (
+                {/* {data && (
                     <p>Bem vindo {data.user.name}</p>
-                )}
+                )} */}
                 {/* <LogoutIcon onClick={handleGoogleLogOut} sx={{ fontSize: '10px', cursor: 'pointer' }} /> */}
 
 
