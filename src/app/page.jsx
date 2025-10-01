@@ -18,9 +18,9 @@ export default async function HomePage() {
         <div className={styles.hero_content}>
           <h1>Boas ideias para mudar um mundo em construção</h1>
           <p>Conectando os melhores arquitetos com projetos que respeitam o meio ambiente e transformam vidas.</p>
-          <Link href="/cadastro" className='primary_button'>
+          {/* <Link href="/cadastro" className='primary_button'>
             Quero cadastrar meu perfil
-          </Link>
+          </Link> */}
         </div>
       </section>
 
@@ -29,7 +29,7 @@ export default async function HomePage() {
       <section className={styles.featured_projects}>
         <div className={styles.section_header}>
           <h2>Projetos</h2>
-          <Link href="/project" className='view_all'>Ver todos</Link>
+          {/* <Link href="/project" className='view_all'>Ver todos</Link> */}
         </div>
         <ProjectCard project={projects} />
       </section>
