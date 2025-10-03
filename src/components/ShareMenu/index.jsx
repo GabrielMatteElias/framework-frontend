@@ -8,7 +8,7 @@ import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { CopyButton } from '../CopyButton'
 
-export function ShareMenu({ title }) {
+export function ShareMenu({ title, showLabel }) {
     const [open, setOpen] = useState(false)
     const [url, setUrl] = useState('')
     const theme = useTheme();
@@ -95,6 +95,7 @@ export function ShareMenu({ title }) {
                     <path d="M12 2v13" /><path d="m16 6-4-4-4 4" />
                     <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
                 </svg>
+                {showLabel && 'Compartilhar'}
             </button>
 
             {isMobile ? (

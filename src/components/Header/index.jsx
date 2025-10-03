@@ -46,6 +46,12 @@ export function Header() {
         }
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter" && search.trim()) {
+            router.push(`/search?keywords=${encodeURIComponent(search.trim())}`)
+        }
+    }
+
     return (
         <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
             <div className={styles.container}>
@@ -67,8 +73,6 @@ export function Header() {
                     <nav className={`${styles.nav} ${isOpen ? styles.navOpen : ''}`}>
                         <ul className={styles.navList}>
                             <li className={styles.navItem}><Link href="/" onClick={closeMenu}>Início</Link></li>
-                            {/* <li className={styles.navItem}><Link href="/projetos" onClick={(e) => e.preventDefault()} >Projetos</Link></li> */}
-                            <li className={styles.navItem}><Link href="/architect" onClick={closeMenu}>Arquitetos</Link></li>
                             <li className={styles.navItem}><Link href="/news" onClick={closeMenu}>Notícias</Link></li>
                         </ul>
                     </nav>
@@ -96,6 +100,7 @@ export function Header() {
                             placeholder="Buscar"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
+                            onKeyDown={handleKeyDown}
                         />
                     </div>
                     {isArchitect && (

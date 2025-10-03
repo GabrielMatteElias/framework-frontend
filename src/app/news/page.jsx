@@ -10,9 +10,6 @@ export default async function NewsPage() {
 
     const { data: news } = await apiService.news.getAll();
 
-    console.log(news);
-    
-
     return (
         <Container>
             <section className='hero'>
@@ -22,8 +19,8 @@ export default async function NewsPage() {
 
             <div className={styles.content_wrapper}>
                 <section className={styles.news_grid}>
-                    {mockNews.length > 0 ? (
-                        mockNews.map(news => (
+                    {news.length > 0 ? (
+                        news.map(news => (
                             <NewsItem key={news.id} news={news} />
                         ))
                     ) : (

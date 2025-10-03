@@ -33,9 +33,7 @@ const request = async ({ url, method = 'GET', data = null, headers = {} }) => {
 
 export const apiService = {
     architect: {
-        getAll: () => {
-            return request({ url: API_ENDPOINTS.ARCHITECT.GET_ALL() })
-        },
+        getAll: () => request({ url: API_ENDPOINTS.ARCHITECT.GET_ALL() }),
 
         getById: (id) => {
             if (!id) throw new Error('ID do arquiteto não fornecido');
@@ -76,6 +74,11 @@ export const apiService = {
     },
 
     news: {
-        getAll: () => request({ url: API_ENDPOINTS.NEWS.GET_ALL() })
+        getAll: () => request({ url: API_ENDPOINTS.NEWS.GET_ALL() }),
+
+        getById: (id) => {
+            if (!id) throw new Error('ID do projeto não fornecido');
+            return request({ url: API_ENDPOINTS.NEWS.GET_BY_ID(id) });
+        },
     }
 };

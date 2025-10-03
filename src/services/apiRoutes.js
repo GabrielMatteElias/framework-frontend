@@ -20,11 +20,11 @@ export const API_ENDPOINTS = {
     },
     PROJECT: {
         GET_ALL: () => `${API_BASE_PATH.PROJECT}`,
-        GET_BY_ID: (projectId) => `${API_BASE_PATH.PROJECT}/${projectId}`,
+        GET_BY_ID: (id) => `${API_BASE_PATH.PROJECT}/${id}`,
         CREATE: () => `${API_BASE_PATH.PROJECT}`,
     },
     NEWS: {
         GET_ALL: () => `${API_BASE_PATH.NEWS}`,
-        GET_BY_ID: () => `${API_BASE_PATH.NEWS}`
+        GET_BY_ID: (id) => `${API_BASE_PATH.NEWS}/${id}`
     }
 };
