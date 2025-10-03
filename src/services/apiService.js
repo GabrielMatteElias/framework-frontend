@@ -80,5 +80,9 @@ export const apiService = {
             if (!id) throw new Error('ID do projeto não fornecido');
             return request({ url: API_ENDPOINTS.NEWS.GET_BY_ID(id) });
         },
+    },
+
+    test: {
+        get: () => request({ url: API_ENDPOINTS.TEST.GET() }),
     }
 };
