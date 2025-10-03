@@ -13,7 +13,7 @@ export default async function SearchPage() {
     console.log('architects', architects);
     return (
         <Container>
-            {architects.length === 0 ? (
+            {architects?.length === 0 ? (
                 <p>Nenhum resultado</p>
             ) : (
                 <ArchitectCard architects={architects} />
