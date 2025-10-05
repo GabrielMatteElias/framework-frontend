@@ -59,15 +59,19 @@ export default async function ArquitetoDetailsPage({ params }) {
         ssr: false,
     });
 
-    if (!arquiteto) {
+    if (1 != 0) {
         return (
             <Container>
-                <div className='not_found'>
-                    <h1>Arquiteto não encontrado</h1>
-                </div>
+                <Teste />
             </Container>
         );
     }
+
+    // <Container>
+    //             <div className='not_found'>
+    //                 <h1>Arquiteto não encontrado</h1>
+    //             </div>
+    //         </Container>
 
     return (
         <Container>
@@ -84,7 +88,7 @@ export default async function ArquitetoDetailsPage({ params }) {
                         </div>
                     )}
                 </div>
-<Teste />
+
                 <div className={styles.profile_info}>
                     <div className={styles.name}>
                         <h1>{arquiteto.name}</h1>

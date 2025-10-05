@@ -22,6 +22,6 @@ export default function Teste() {
 
 
     return (
-        <p>AAAAAAAAAAAAAAAAA</p>
+        <p>Erro ao buscar arquiteto. Testando endpoint /test</p>
     );
 }
