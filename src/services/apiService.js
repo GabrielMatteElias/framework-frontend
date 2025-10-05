@@ -77,5 +77,9 @@ export const apiService = {
 
     news: {
         getAll: () => request({ url: API_ENDPOINTS.NEWS.GET_ALL() })
+    },
+
+    teste: {
+        getAll: () => request({ url: API_ENDPOINTS.TESTE.GET_ALL()})
     }
 };

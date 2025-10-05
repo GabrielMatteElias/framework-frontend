@@ -8,6 +8,7 @@ import { ProjectCard } from '@/components/ProjectCard';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { formataData } from '@/utils/formaters';
 import { apiService } from '@/services/apiService';
+import Teste from '@/components/teste';
 
 export async function generateMetadata({ params }) {
     const { architect_id: id } = params
@@ -81,7 +82,7 @@ export default async function ArquitetoDetailsPage({ params }) {
                         </div>
                     )}
                 </div>
-
+                <Teste />
                 <div className={styles.profile_info}>
                     <div className={styles.name}>
                         <h1>{arquiteto.name}</h1>
