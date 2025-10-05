@@ -6,8 +6,11 @@ import styles from './index.module.css';
 import { apiService } from '@/services/apiService';
 
 export default function EditArchitectModal({ architect }) {
+    console.log(architect);
+
     const [open, setOpen] = useState(false);
     const [form, setForm] = useState({
+        picture: architect.picture || '',
         name: architect.name || '',
         nationality: architect.nacionality || '',
         subtitle: architect.subtitle || '',
@@ -25,7 +28,14 @@ export default function EditArchitectModal({ architect }) {
     });
 
     const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
+        const { name, type, files, value } = e.target;
+
+        if (type === "file") {
+            setForm({ ...form, [name]: files[0] });
+        } else {
+            // Caso normal (texto, número, etc.)
+            setForm({ ...form, [name]: value });
+        }
     };
 
     const handleUpdate = () => {
@@ -62,7 +72,8 @@ export default function EditArchitectModal({ architect }) {
         };
         const formData = new FormData();
         formData.append("data", payload);
-        formData.append("file", '');
+        formData.append("file", form.picture);
+        console.log(formData.get("file"));
 
         const res = apiService.architect.update(architect.id, formData, { "Content-Type": "multipart/form-data" })
     }
@@ -79,6 +90,9 @@ export default function EditArchitectModal({ architect }) {
                             <h2>Editar Perfil</h2>
                         </div>
                         <div className={styles.form_group}>
+                            <label>Foto</label>
+                            <input name="picture" type='file' onChange={handleChange} />
+
                             <label>Nome</label>
                             <input name="name" value={form.name} onChange={handleChange} />
 
