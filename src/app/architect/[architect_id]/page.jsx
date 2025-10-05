@@ -45,6 +45,9 @@ export default async function ArquitetoDetailsPage({ params }) {
 
     const { architect_id: id } = params;
 
+    const { data: teste } = await apiService.test.get();
+    console.log(teste);    
+
     const { data: arquiteto } = await apiService.architect.getById(id);
 
     const { data: projetos } = await apiService.architect.getProjects(id);
