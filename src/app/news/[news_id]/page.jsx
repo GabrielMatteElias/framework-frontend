@@ -17,13 +17,10 @@ A Amazônia também desperta interesse cultural e econômico, mas com grande res
 export default async function NewsPage({ params }) {
     const { news_id: id } = params
     const { data: news } = await apiService.news.getById(id);
-    console.log(news);
 
     const getHeroBanner = () => {
         const choseImage = news.images.find(img => img.first === true);
         const imageUrl = choseImage.image
-        console.log(imageUrl);
-
         return imageUrl
     }
 

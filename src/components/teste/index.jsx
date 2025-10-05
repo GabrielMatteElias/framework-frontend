@@ -9,7 +9,7 @@ export default function Teste() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const res = await apiService.teste.getAll();
+                const res = await apiService.test.get();
                 setData(res);
             } catch (error) {
                 console.error("Erro ao buscar API:", error);
