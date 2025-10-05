@@ -8,7 +8,6 @@ import { ProjectCard } from '@/components/ProjectCard';
 import { VerifiedBadge } from '@/components/VerifiedBadge';
 import { formataData } from '@/utils/formaters';
 import { apiService } from '@/services/apiService';
-import Teste from '@/components/teste';
 
 export async function generateMetadata({ params }) {
     const { architect_id: id } = params
@@ -45,8 +44,6 @@ export default async function ArquitetoDetailsPage({ params }) {
 
     const { architect_id: id } = params;
 
-    const { data: teste } = await apiService.test.get();
-
     const { data: arquiteto } = await apiService.architect.getById(id);
 
     const { data: projetos } = await apiService.architect.getProjects(id);
@@ -59,19 +56,15 @@ export default async function ArquitetoDetailsPage({ params }) {
         ssr: false,
     });
 
-    if (1 != 0) {
+    if (!arquiteto) {
         return (
             <Container>
-                <Teste />
+                <div className='not_found'>
+                    <h1>Arquiteto não encontrado</h1>
+                </div>
             </Container>
         );
     }
-
-    // <Container>
-    //             <div className='not_found'>
-    //                 <h1>Arquiteto não encontrado</h1>
-    //             </div>
-    //         </Container>
 
     return (
         <Container>

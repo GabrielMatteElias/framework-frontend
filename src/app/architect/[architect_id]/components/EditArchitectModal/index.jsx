@@ -62,7 +62,7 @@ export default function EditArchitectModal({ architect }) {
         };
         const formData = new FormData();
         formData.append("data", payload);
-        // formData.append("file", '');
+        formData.append("file", '');
 
         const res = apiService.architect.update(architect.id, formData, { "Content-Type": "multipart/form-data" })
     }
