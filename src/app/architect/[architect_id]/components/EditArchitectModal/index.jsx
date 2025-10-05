@@ -71,7 +71,7 @@ export default function EditArchitectModal({ architect }) {
             },
         };
         const formData = new FormData();
-        formData.append("data", payload);
+        formData.append("data", JSON.stringify(payload));
         formData.append("file", form.picture);
         console.log(formData.get("file"));
 
