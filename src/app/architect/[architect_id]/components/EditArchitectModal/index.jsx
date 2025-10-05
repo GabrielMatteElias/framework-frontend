@@ -6,6 +6,8 @@ import styles from './index.module.css';
 import { apiService } from '@/services/apiService';
 
 export default function EditArchitectModal({ architect }) {
+    console.log(architect);
+
     const [open, setOpen] = useState(false);
     const [form, setForm] = useState({
         name: architect.name || '',
@@ -60,6 +62,7 @@ export default function EditArchitectModal({ architect }) {
                 country: form.country,
             },
         };
+        console.log(payload);
         const formData = new FormData();
         formData.append("data", payload);
         // formData.append("file", '');
