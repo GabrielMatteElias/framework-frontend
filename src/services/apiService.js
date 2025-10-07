@@ -81,8 +81,4 @@ export const apiService = {
             return request({ url: API_ENDPOINTS.NEWS.GET_BY_ID(id) });
         },
     },
-
-    test: {
-        get: () => request({ url: API_ENDPOINTS.TEST.GET() }),
-    }
 };

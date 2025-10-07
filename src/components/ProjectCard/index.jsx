@@ -67,7 +67,7 @@ export function ProjectCard({ projects, title = '', viewToggle = false, addProje
                         </div>
                         <div className={`${styles.project_info}  ${layout === "list" && styles.list_info}`}>
                             <h3>{project.title}</h3>
-                            <p className={styles.description}>{truncateDescription(project.longDescription)}</p>
+                            <p className={styles.description}>{truncateDescription(project.shortDescription)}</p>
                             <div className={styles.project_meta}>
                                 <span>{project.area}</span>
                                 <span> • {project.location?.city}, {project.location?.country}</span>

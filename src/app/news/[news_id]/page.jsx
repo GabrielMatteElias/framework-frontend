@@ -21,7 +21,6 @@ export default async function NewsPage({ params }) {
     const getHeroBanner = () => {
         const choseImage = news.images.find(img => img.first === true);
         const imageUrl = choseImage.image
-
         return imageUrl
     }
 

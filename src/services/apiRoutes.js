@@ -3,7 +3,6 @@ const API_BASE_PATH = {
     ARCHITECT: '/architect',
     PROJECT: '/project',
     NEWS: '/news',
-    TEST: '/test'
 };
 
 export const API_ENDPOINTS = {
@@ -28,8 +27,4 @@ export const API_ENDPOINTS = {
         GET_ALL: () => `${API_BASE_PATH.NEWS}`,
         GET_BY_ID: (id) => `${API_BASE_PATH.NEWS}/${id}`
     },
-
-    TEST: {
-        GET: () => API_BASE_PATH.TEST
-    }
 };
