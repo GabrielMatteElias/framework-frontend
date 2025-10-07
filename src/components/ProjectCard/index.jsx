@@ -17,6 +17,7 @@ export function ProjectCard({ projects, title = '', viewToggle = false, addProje
         if (text.length <= maxLength) return text;
         return `${text.substring(0, maxLength)}...`;
     };
+    console.log(projects);
 
     if (!projects) {
         return (
@@ -57,7 +58,7 @@ export function ProjectCard({ projects, title = '', viewToggle = false, addProje
                         <div className={`${layout === 'grid' ? styles.project_image : styles.list_image}`}>
                             {(Array.isArray(project.images) && project.images.length > 0) && (
                                 <Image
-                                    src={`https://framework-backend-endq.onrender.com${project.images[0]}`}
+                                    src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/${project.images[0]}`}
                                     width={layout === 'grid' ? 400 : 120}
                                     height={layout === 'grid' ? 300 : 90}
                                     style={styles.card_imagem}

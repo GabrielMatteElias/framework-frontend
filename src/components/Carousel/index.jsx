@@ -36,7 +36,7 @@ export function Carousel({ imagens }) {
                 {imagens.map((image, index) => (
                     <div key={index} className={styles.gallery_item}>
                         <Image
-                            src={`https://framework-backend-endq.onrender.com${image}`}
+                        src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/${image}`}
                             alt={`Image ${index + 1}`}
                             width={400}
                             height={300}
@@ -60,7 +60,7 @@ export function Carousel({ imagens }) {
                         </button>
 
                         <Image
-                            src={`https://framework-backend-endq.onrender.com${imagens[indiceAtual]}`}
+                            src={`https://ik.imagekit.io/framework${imagens[indiceAtual]}`}
                             alt={`Projeto ${indiceAtual + 1}`}
                             className={styles.modalImage}
                             width='800'

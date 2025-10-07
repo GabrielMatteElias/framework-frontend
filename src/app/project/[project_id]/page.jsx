@@ -82,7 +82,7 @@ export default async function ProjectDetailsPage({ params }) {
             <section className={styles.project_header}>
                 <div className={styles.project_image}>
                     <Image
-                        src={`https://framework-backend-endq.onrender.com${project.images[0]}`}
+                        src={`${process.env.NEXT_PUBLIC_IMAGEKIT_URL}/${project.images[0]}`}
                         alt={project.title}
                         width={800}
                         height={450}
