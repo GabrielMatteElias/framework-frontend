@@ -10,7 +10,6 @@ import { apiService } from '@/services/apiService'
 export default async function SearchPage() {
 
     const { data: architects } = await apiService.architect.getAll();
-    console.log('architects', architects);
     return (
         <Container>
             {architects?.length === 0 ? (

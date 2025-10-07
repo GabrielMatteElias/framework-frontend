@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import { ArchitectCard } from '@/components/ArchitectCard';
 import { Carousel } from '@/components/Carousel';
 import LikeButton from '@/components/LikeButton';
-import { formatNumberByCountry } from '@/utils/formaters';
+import { formataData, formatNumberByCountry } from '@/utils/formaters';
 import { apiService } from '@/services/apiService';
 import Link from 'next/link';
 
@@ -82,7 +82,7 @@ export default async function ProjectDetailsPage({ params }) {
             <section className={styles.project_header}>
                 <div className={styles.project_image}>
                     <Image
-                        src={'https://static8.depositphotos.com/1353542/887/i/450/depositphotos_8873950-stock-photo-house-sign-logo.jpg'}
+                        src={`https://framework-backend-endq.onrender.com${project.images[0]}`}
                         alt={project.title}
                         width={800}
                         height={450}
@@ -108,8 +108,7 @@ export default async function ProjectDetailsPage({ params }) {
                             <span>{project.area}m²</span>
                             <span className={styles.meta_label}> • </span>
                             <span>
-                                {/* {project.ano} */}
-                                2005
+                                {`${formataData(project.startDate)} - ${formataData(project.endDate)}`}
                             </span>
                         </div>
                     </div>
@@ -145,14 +144,7 @@ export default async function ProjectDetailsPage({ params }) {
 
             <section className={styles.gallery}>
                 <h2>Galeria</h2>
-                <Carousel imagens={
-                    [
-                        'https://static8.depositphotos.com/1353542/887/i/450/depositphotos_8873950-stock-photo-house-sign-logo.jpg',
-                        'https://s.tmimgcdn.com/scr/800x500/245100/modelo-de-logotipo-de-casa-e-construcao-v10_245131-original.jpg',
-                        'https://s.tmimgcdn.com/scr/800x500/238000/logotipo-de-casa-e-simbolo-de-casa-vetor-v13_238040-original.jpg',
-                        'https://i.pinimg.com/736x/9a/ca/1c/9aca1c317386c7c79d52693c52435904.jpg'
-                    ]
-                } />
+                <Carousel imagens={project.images} />
             </section>
 
             <section className={styles.contributors}>

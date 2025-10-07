@@ -45,7 +45,6 @@ export default async function ArquitetoDetailsPage({ params }) {
     const { architect_id: id } = params;
 
     const { data: teste } = await apiService.test.get();
-    console.log(teste);    
 
     const { data: arquiteto } = await apiService.architect.getById(id);
 
@@ -163,7 +162,7 @@ export default async function ArquitetoDetailsPage({ params }) {
                 </div>
             </section>
 
-            <ProjectCard project={projetos} title='Projetos' viewToggle />
+            <ProjectCard projects={projetos} title='Projetos' viewToggle />
 
         </Container >
     );

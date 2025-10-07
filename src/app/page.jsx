@@ -31,7 +31,7 @@ export default async function HomePage() {
           <h2>Projetos</h2>
           {/* <Link href="/project" className='view_all'>Ver todos</Link> */}
         </div>
-        <ProjectCard project={projects} />
+        <ProjectCard projects={projects} />
       </section>
 
       <section className={styles.featured_architects}>

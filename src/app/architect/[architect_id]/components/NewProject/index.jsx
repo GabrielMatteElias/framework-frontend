@@ -67,16 +67,15 @@ export default function NewProjectModal() {
             }
 
         } else if (type === "file") {
+            const fileArray = Array.from(e.target.files);
+
+            const imageUrls = fileArray.map((file) => URL.createObjectURL(file));
+
             setForm({
                 ...form,
-                [name]: [
-                    "https://images.adsttc.com/media/images/5ddc/a1bf/3312/fd4e/d000/006a/slideshow/_JBM6070.jpg?1574740384",
-                    "https://images.adsttc.com/media/images/5ddc/a682/3312/fd73/8600/021c/slideshow/_M1A2920.jpg?1574741601",
-                    "https://images.adsttc.com/media/images/5ddc/a104/3312/fd4e/d000/0069/slideshow/_JBM6048.jpg?1574740196",
-                    "https://images.adsttc.com/media/images/5ddc/a7fa/3312/fd73/8600/0220/newsletter/FEATURED_IMAGE.jpg?1574741977"
-                ]
+                [name]: imageUrls,
+                [`${name}Files`]: fileArray,
             });
-            setErrors((prev) => ({ ...prev, [name]: "" }));
 
         } else if (type === "checkbox") {
             setForm({ ...form, [name]: checked });
@@ -98,7 +97,14 @@ export default function NewProjectModal() {
         let newErrors = {};
 
         requiredFields.forEach((field) => {
-            if (!form[field] || (typeof form[field] === "string" && form[field].trim() === "")) {
+            const value = form[field];
+
+            if (
+                value === undefined ||
+                value === null ||
+                (typeof value === "string" && value.trim() === "") ||
+                (Array.isArray(value) && value.length === 0)
+            ) {
                 newErrors[field] = "Campo obrigatório";
             }
         });
@@ -123,27 +129,24 @@ export default function NewProjectModal() {
         const isoEndDate = form.onGoing ? null : formataData(form.endDate, 'us');
 
         const payload = {
-            project: {
-                title: form.title,
-                shortDescription: form.shortDescription,
-                longDescription: form.longDescription,
-                area: form.area,
-                startDate: isoStartDate,
-                endDate: isoEndDate,
-                ongoing: form.onGoing,
-                location: {
-                    city: form.city,
-                    state: form.state,
-                    country: form.country,
-                    address: form.address,
-                    coordinates: {
-                        latitude: Number(form.coordinates[0]),
-                        longitude: Number(form.coordinates[1])
-                    }
-                },
-                images: form.gallery,
-                esg: form.esg
+            title: form.title,
+            shortDescription: form.shortDescription,
+            longDescription: form.longDescription,
+            area: form.area,
+            startDate: isoStartDate,
+            endDate: isoEndDate,
+            ongoing: form.onGoing,
+            location: {
+                city: form.city,
+                state: form.state,
+                country: form.country,
+                address: form.address,
+                coordinates: {
+                    latitude: Number(form.coordinates[0]),
+                    longitude: Number(form.coordinates[1])
+                }
             },
+            esg: form.esg,
             architects: [
                 {
                     architectId: 1,
@@ -152,13 +155,18 @@ export default function NewProjectModal() {
             ]
         };
 
+        const formData = new FormData();
+        formData.append("data", JSON.stringify(payload))
+        if (form.galleryFiles && form.galleryFiles.length > 0) {
+            form.galleryFiles.forEach((file) => {
+                formData.append("files", file);
+            });
+        }
+
         try {
-            const res = await fetch("http://zenith:5000/api/project", {
+            const res = await fetch("https://framework-backend-endq.onrender.com/api/project", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(payload),
+                body: formData,
             });
 
             if (!res.ok) {

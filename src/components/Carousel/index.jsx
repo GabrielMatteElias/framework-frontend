@@ -36,7 +36,7 @@ export function Carousel({ imagens }) {
                 {imagens.map((image, index) => (
                     <div key={index} className={styles.gallery_item}>
                         <Image
-                            src={image}
+                            src={`https://framework-backend-endq.onrender.com${image}`}
                             alt={`Image ${index + 1}`}
                             width={400}
                             height={300}
@@ -60,7 +60,7 @@ export function Carousel({ imagens }) {
                         </button>
 
                         <Image
-                            src={imagens[indiceAtual]}
+                            src={`https://framework-backend-endq.onrender.com${imagens[indiceAtual]}`}
                             alt={`Projeto ${indiceAtual + 1}`}
                             className={styles.modalImage}
                             width='800'
